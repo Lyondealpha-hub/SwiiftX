@@ -1,11 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import {  Text, View } from 'react-native';
+import TopNav from './components/TopNav';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" /> */}
+    <View className='container h-screen absolute' >
+      <TopNav />
+      <View className='flex-1 justify-center items-center  bg-red-500' >
+        <Text>Open up App.js to start working on your app!</Text>
+        <Text>Oh yeah you there! </Text>
+      </View>
+       
+      <StatusBar style="auto" /> 
     </View>
   );
 }
