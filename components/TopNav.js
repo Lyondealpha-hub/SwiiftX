@@ -10,8 +10,8 @@ import { Entypo, FontAwesome5,MaterialIcons,MaterialCommunityIcons } from '@expo
 
 export default function TopNav() {
   return (
-    <View>
-      <View className='container flex flex-row  mt-9 justify-between items-center'>
+    <View className='mt-11'>
+      <View className='container flex flex-row   justify-between items-center'>
         <View className='w-1/2  justify-start pl-4 items-center  flex flex-row'>
             <Image  className='justify-center items-center ' source={user} />
             {/* <Text className=' items-center'>Hello Good Morning!</Text> */}

@@ -11,6 +11,8 @@
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
     "@expo/webpack-config": "^0.17.2",
+    "@react-navigation/bottom-tabs": "^6.5.7",
+    "@react-navigation/native": "^6.1.6",
     "expo": "~47.0.12",
     "expo-status-bar": "~1.4.2",
     "nativewind": "^2.0.11",
@@ -18,6 +20,7 @@
     "react-dom": "18.1.0",
     "react-native": "0.70.5",
     "react-native-material-cards": "^1.0.16",
+    "react-native-ratings": "^8.1.0",
     "react-native-web": "~0.18.9"
   },
   "devDependencies": {
