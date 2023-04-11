@@ -1,5 +1,6 @@
 import React from 'react'
-import {  Text, View,Image,ImageBackground,ScrollView, TouchableOpacity, Button, Pressable } from 'react-native';
+import {  Text, View,Image,ImageBackground,ScrollView, TouchableOpacity, Button, Pressable, SafeAreaView } from 'react-native';
+import { Entypo, FontAwesome5,MaterialIcons,MaterialCommunityIcons } from '@expo/vector-icons';
 import TopNav from '../../TopNav';
 // import user from '../../../assets/user.png'
 import doc from '../../../assets/doc.jpg';
@@ -20,6 +21,14 @@ export default function Home() {
     {id: 2 , image: lab, text: 'Lab'},
     {id: 3 , image: aid, text: 'Medicine'},
 
+  ]
+
+
+  const doctors = [
+    {id: 0, image: personnel, name: 'Dr. Afrane Aykire', occupation : 'Dentist, BSMMC Hospital', years: 3, cost:600},
+    {id: 1, image: doctor, name: 'Dr. Misbahu Ahmed', occupation : 'Ghanacologist', years: 2, cost:320},
+    {id: 2, image: doctor, name: 'Dr Nii Achomo', occupation : 'Surgeon', years: 7, cost:1200},
+    {id: 3, image: personnel, name: 'Dr Osman', occupation : 'Cardiologist', years: 1, cost:200},
   ]
 
   //  Rating reviews 
@@ -62,50 +71,67 @@ export default function Home() {
         </ScrollView>
       </View>
       {/* Featured Doctors */}
-      <View className='contianer justify-center items-center px-3 bg-blue-800  '>
+      <View className='contianer h-screen  px-3 '>
         {/* header */}
-        <Text>Features Doctors</Text>
+        <Text className='justify-start items-start flex text-2xl p-1.5 italic'>Featured Doctors</Text>
         {/* Body cards Contents */}
-        <View className='container h-32 flex flex-row mb-2 bg-white rounded-3xl  '>
-          {/* Profile */}
-          <View className='w-2/6  justify-center items-center '>
-            <Image  className='justify-center items-center ' source={personnel} />
-          </View>
+          
+          <ScrollView className='container h-screen' scrollToOverflowEnabled={true}  >
+          {
+            doctors.map((doc, index)=>{
+              return(
+                // Card design
+                  <View key={index} className='container h-32 flex flex-row mb-2 bg-white rounded-3xl  '>
+                    {/* Profile */}
+                    <View className='w-2/6  justify-center items-center '>
+                      <Image  className='justify-center items-center ' source={doc.image} />
+                    </View>
 
-          {/* Content texts */}
-          <View className='4/6 justify-center'>
-            <Text className='text-lg'>Dr. Afrane Aykire </Text>
-            <Text className='text-sm '>Dentist, BSMMC Hospital</Text>
-              {/* Rating and years in feild  */}
-              <View className=' flex flex-row justify-between items-center '>
-                {/* <Rating showRating  type='heart' ratingCount={3} imageSize={20} /> */}
-                  <AirbnbRating  size={20} showRating={false}  ratingContainerStyle={{flexDirection: 'row-reverse',}} reviews={rating}  reviewSize={10} count={2}  isDisabled={true} />
-                  {/* <Rating  imageSize={10} readonly={true} showRating={true}  showReadOnlyText={false} ratingCount={3} fractions={1} jumpValue={0.5}  className='flex-row-reverse text-xs' /> */}
-                  {/* <Text>10Yrs</Text> */}
-                  <Image source={year} />
-                  {/* <AirbnbRating starImage={year}  size={30} showRating={false}  ratingContainerStyle={{flexDirection: 'row-reverse',}} reviews={rating}  reviewSize={10} count={1}  isDisabled={true} /> */}
-                
+                    {/* Content texts */}
+                    <View className='w-4/6 justify-center '>
+                      <Text className='text-lg'>{doc.name} </Text>
+                      <Text className='text-sm '>{doc.occupation}</Text>
+                        {/* Rating and years in feild  */}
+                        <View className='w-full flex flex-row justify-between items-center '>
+                          {/* <Rating showRating  type='heart' ratingCount={3} imageSize={20} /> */}
+                            <View className='w-1/2 flex flex-row items-center'>
+                              <MaterialIcons name='history' size={22} />
+                              <Text className='px-1'>{doc.years} Years</Text>
+                            </View>
+                            {/* <Rating  imageSize={10} readonly={true} showRating={true}  showReadOnlyText={false} ratingCount={3} fractions={1} jumpValue={0.5}  className='flex-row-reverse text-xs' /> */}
+                            {/* <Text>10Yrs</Text> */}
+                            <View className='w-1/2'> 
+                              <AirbnbRating  size={15} showRating={true}  ratingContainerStyle={{flexDirection: 'row-reverse'}} reviews={rating}  reviewSize={13} count={3}  isDisabled={true} />
+                            </View>
+                            {/* <AirbnbRating starImage={year}  size={30} showRating={false}  ratingContainerStyle={{flexDirection: 'row-reverse',}} reviews={rating}  reviewSize={10} count={1}  isDisabled={true} /> */}
+                          
 
-            </View>
+                      </View>
 
-            {/* cost & button   */}
-            <View className=' flex flex-row justify-between items-center '>
-              <Text className='justify-start'>Per Season: $400</Text>
-              <TouchableOpacity className='justify-end ml-2'>
-                <Text>Appointment</Text>
-              </TouchableOpacity>
+                      {/* cost & button   */}
+                      <View className=' flex flex-row justify-between items-center '>
+                        <Text className='w-1/2 justify-start'>Cost: ${doc.cost}</Text>
+                        <TouchableOpacity className='w-1/2 justify-end '>
+                          <Text >Appointment</Text>
+                        </TouchableOpacity>
 
-            </View>
-          </View>
+                      </View>
+                    </View>
 
 
-        </View>
+                  </View>
+              )
+            })
+          }
+          </ScrollView>
+          
 
       </View>
-      <View className='flex-1 justify-center items-center  bg-red-500' >
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Oh yeah you there! </Text>
+
+      <View className='contianer h-full  px-3 '>
+        <Text className='justify-start items-start flex text-2xl p-1.5 italic'>Best Selling Products</Text>
       </View>
+      
        
       
     </View>
