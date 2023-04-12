@@ -1,0 +1,112 @@
+import React from 'react';
+import {View, Text, Image,StyleSheet, TouchableOpacity } from 'react-native';
+import { Entypo, FontAwesome5,MaterialIcons,MaterialCommunityIcons } from '@expo/vector-icons';
+import personnel from '../../../assets/personnel.png';
+import { Share } from 'react-native';
+
+export default function Profile (){
+
+      // creating a custom share
+  const CustomShare = () =>{
+    const shareOptions = {
+        message: "This is a test message, Welcome to swiiftX, Loooking for a specialist doctor? Look no further you are in the right spot",
+    }
+    try {
+        const ShareResponse = Share.share(shareOptions);
+        console.log(JSON.stringify(shareOptions));
+    }catch(error){
+        console.log('Error => ', error);
+    }
+}
+
+    const profile = [
+        {id: 0, image: personnel, name: 'Dr. Afrane Aykire', occupation : 'Dentist, BSMMC Hospital', years: 3, cost:600},
+    ]
+
+    const profileSettings = [
+        {id: 0, image: 'local-activity', label: 'My Activity', },
+        {id: 1, image: 'notifications-none', label: 'Reminders', },
+        {id: 2, image: 'payment', label: 'Payments', },
+        {id: 3, image: 'switch-account', label: 'Add account', },
+        {id: 4, image: 'share', label: 'Invite friends via ...', button : CustomShare},
+        {id: 5, image: 'logout', label: 'Log out', },
+    ]
+
+    return(
+        <View className='contianer h-screen '>
+            {/* profile space */}
+            <View className='container mt-2'>
+                {/* Profile picture and name  */}
+                <View className='container flex flex-row'>
+                    <View className='w-2/6  justify-center items-center '>
+                      <Image  className='justify-center items-center ' source={personnel} />
+                    </View>
+                    {/* Name */}
+                    <View className='justify-center items-center'>
+                        <Text className='text-lg'>Dr. Afrane Aykire</Text>
+                        <Text className='text-sm '>Dentist, BSMMC Hospital</Text>
+                    </View>
+                </View>
+
+                {/* Doctor description  */}
+                <View className='container h-28 bg-slate-300 flex flex-row justify-evenly py-5'>
+                    {/* Avalability */}
+                    <View className=' w-1/3 items-center border-r-2 px-2 border-r-slate-500'>
+                        <Text>Availability</Text>
+                        <View className='container h-full flex flex-row px-2 justify-center items-center '>
+                            <MaterialIcons className='' name='history' size={20} />
+                            <Text >6 Years</Text>
+                        </View>
+
+                    </View>
+
+                    {/* Experience */}
+                    <View className='w-1/3 items-center border-r-2 px-2 border-r-slate-500'>
+                        <Text>Experience</Text>
+                        <View className='container h-full flex flex-row px-2 justify-center items-center '>
+                            <MaterialIcons className='' name='history' size={20} />
+                            <Text >6 Years</Text>
+                        </View>
+                    </View>
+
+                    {/*Ratings  */}
+                    <View className='w-1/3  items-center'>
+                        <Text>Ratings</Text>
+                        <View className='container h-full flex flex-row px-2 justify-center items-center '>
+                            <MaterialIcons className='' name='history' size={20} />
+                            <Text >6 Years</Text>
+                        </View>
+                    </View>
+
+                </View>
+
+            </View>
+            {/* Profile settings */}
+
+            <View className='container'>
+                {
+                    profileSettings.map((cat, index)=>{
+                        return(
+                            <TouchableOpacity key={cat.id} onPress={cat.button} style={styles.cardDesign} className='container flex flex-row items-center py-7 shadow-2xl mx-4 '>
+                                <MaterialIcons className='' name={cat.image} size={30}  />
+                                <Text className='px-4'>{cat.label}</Text>
+                            </TouchableOpacity>
+                        )
+                    })
+                }
+
+
+            </View>
+                <View className='container h-28 flex flex-row justify-center items-center'>
+                    <Text className=''>Swiift CopyRights @ 2022</Text>
+                </View>
+        </View>
+    )
+}
+
+
+const styles = new StyleSheet.create({
+    cardDesign : {
+        borderBottomWidth : 0.5,
+    }
+})

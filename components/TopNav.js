@@ -1,21 +1,29 @@
-import React from 'react'
-import {  Text, View,Image, TextInput, StyleSheet } from 'react-native';
+import React, {useState} from 'react'
+import { StatusBar } from 'expo-status-bar';
+import {  Text, View,Image, TextInput, StyleSheet,TouchableOpacity } from 'react-native';
 import user from '../assets/user.png'
 import settings_cog from '../assets/settings-cog.png';
 import cart from '../assets/shopping-cart.png';
 import notification from '../assets/bell.png';
 import search from '../assets/search.png';
-
+import { useNavigation } from '@react-navigation/native';
 import { Entypo, FontAwesome5,MaterialIcons,MaterialCommunityIcons } from '@expo/vector-icons';
+import UserProfileModal from './Modals/userModal';
+
 
 export default function TopNav() {
+
+  const [openProfile, setOpenProfile] = useState(false)
+
+
+
   return (
     <View className='mt-11'>
       <View className='container flex flex-row   justify-between items-center'>
-        <View className='w-1/2  justify-start pl-4 items-center  flex flex-row'>
+        <TouchableOpacity className='w-1/2  justify-start pl-4 items-center  flex flex-row' onPress={()=>{setOpenProfile(true)}}>
             <Image  className='justify-center items-center ' source={user} />
             {/* <Text className=' items-center'>Hello Good Morning!</Text> */}
-        </View>
+        </TouchableOpacity>
 
         <View className='w-1/2 justify-end flex flex-row '>
           <View className='w-3/5 justify-evenly flex flex-row '>
@@ -29,9 +37,13 @@ export default function TopNav() {
     </View>
     {/* Search bar  */}
     <View className='contianer px-3 py-2 flex flex-row'>
-      <TextInput className='w-full h-10 border-2 rounded-2xl bg-slate-300 italic px-3' placeholder={'Search here'} > </TextInput>
+      <TextInput className='w-full h-10 border-2 rounded-2xl   px-3 text-base items-center justify-center' placeholder={'Search here'} > </TextInput>
       <Image style={navStyles.search_icon}  className='justify-center items-center' source={search} />
     </View>
+
+
+    <UserProfileModal openProfile={openProfile} setOpenProfile={setOpenProfile}  />
+
     </View>
   )
 }

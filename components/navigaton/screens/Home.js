@@ -56,7 +56,7 @@ export default function Home() {
               
                 {categories.map((cat,index)=>{
                   return (
-                    <View key={index} className='w-1/4  px-5 justify-center items-center rounded-md '>
+                    <View key={index} className='w-1/4  px-5 justify-center items-center rounded-md shadow-2xl '>
                       <TouchableOpacity className='items-center'>
                         <Image className='justify-center items-center ' source={cat.image}></Image>
                         <Text>{cat.text}</Text>
@@ -76,12 +76,12 @@ export default function Home() {
         <Text className='justify-start items-start flex text-2xl p-1.5 italic'>Featured Doctors</Text>
         {/* Body cards Contents */}
           
-          <ScrollView className='container h-screen' scrollToOverflowEnabled={true}  >
+          <ScrollView className='container h-screen' sc  >
           {
             doctors.map((doc, index)=>{
               return(
                 // Card design
-                  <View key={index} className='container h-32 flex flex-row mb-2 bg-white rounded-3xl  '>
+                  <View key={index} className='container h-32 flex flex-row mb-2 bg-white rounded-3xl shadow-2xl00000000000000000000 '>
                     {/* Profile */}
                     <View className='w-2/6  justify-center items-center '>
                       <Image  className='justify-center items-center ' source={doc.image} />

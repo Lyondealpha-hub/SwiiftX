@@ -1,7 +1,9 @@
 import * as React from 'react'
+import {View, Text} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import Home from './screens/Home';
+import Chat from './screens/Chat';
 import { Ionicons } from '@expo/vector-icons';
 
 
@@ -16,9 +18,15 @@ function BottomNav() {
           tabBarStyle : {
             alignItems : 'center',
             alignSelf : 'baseline',
-            height : 85
+            height : 85,
+            elevation : 3,
+            shadowColor : 0,
+            shadowOffset :{width: 0, height: 2},
+            shadowRadius : 2
+
 
           },
+          
           tabBarIcon : ({focused, color, size})=>{
             let iconName;
             let rn = route.name
@@ -32,6 +40,8 @@ function BottomNav() {
               iconName = focused ? 'car' : 'car';
             }else if (rn === 'Chat'){
               iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
+              
+              
             }
 
             return <Ionicons name={iconName} size={size} color={color} />
@@ -43,7 +53,12 @@ function BottomNav() {
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="News" component={Home} />
         <Tab.Screen name="911" component={Home} />
-        <Tab.Screen name="Chat" component={Home} />
+        <Tab.Screen options={{
+          headerShown:true , 
+          
+         
+          }} 
+            name="Chat" component={Chat} />
       </Tab.Navigator>
     </NavigationContainer>
   )

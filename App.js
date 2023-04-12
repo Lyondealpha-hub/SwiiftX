@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View } from 'react-native';
 import BottomNav from './components/navigaton/BottomNav';
+import Profile from './components/Modals/sheets/profile';
 
 
 export default function App() {
@@ -9,6 +10,7 @@ export default function App() {
   return (
      
        <BottomNav />
+      // <Profile />
 
         // {/* <StatusBar style="auto" />  */}
      
