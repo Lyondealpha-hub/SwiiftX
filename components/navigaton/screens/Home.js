@@ -1,5 +1,5 @@
 import React from 'react'
-import {  Text, View,Image,ImageBackground,ScrollView, TouchableOpacity, Button, Pressable, SafeAreaView } from 'react-native';
+import {  Text, View,Image,ImageBackground, TouchableOpacity, Button, Pressable, SafeAreaView } from 'react-native';
 import { Entypo, FontAwesome5,MaterialIcons,MaterialCommunityIcons } from '@expo/vector-icons';
 import TopNav from '../../TopNav';
 // import user from '../../../assets/user.png'
@@ -11,6 +11,8 @@ import aid from '../../../assets/first-aid.png';
 import lab from '../../../assets/lab.png';
 import year from '../../../assets/year.png';
 import { AirbnbRating, Rating } from 'react-native-ratings';
+import { ScrollView } from 'react-native-gesture-handler';
+
 
 export default function Home() {
      // Categories
@@ -35,7 +37,7 @@ export default function Home() {
   const rating = ['1', '2.5', '3.5', '4.8', '5', ]
 
   return (
-    <View className='container h-screen absolute' >
+    <View className='container absolute' >
       <TopNav />
       {/* Image render */}
       <View className='contianer h-1/6'>
@@ -50,9 +52,9 @@ export default function Home() {
         </ImageBackground>
       </View>
       {/* Category */}
-      <View className='w-full '>
+      <View className='container  '>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} className='container ' >
-          <View className=' flex flex-row px-2  w-full'>
+          <View className=' flex flex-row px-2  container'>
               
                 {categories.map((cat,index)=>{
                   return (
@@ -71,17 +73,19 @@ export default function Home() {
         </ScrollView>
       </View>
       {/* Featured Doctors */}
-      <View className='contianer h-screen  px-3 '>
+      <View className='contianer h-full  px-3 '>
         {/* header */}
         <Text className='justify-start items-start flex text-2xl p-1.5 italic'>Featured Doctors</Text>
         {/* Body cards Contents */}
           
-          <ScrollView className='container h-screen' sc  >
+          <View className='container h-full bg-white'>
+          <ScrollView   showsVerticalScrollIndicator={false}  alwaysBounceVertical={true}  >
+          <View className='container h-full'> 
           {
             doctors.map((doc, index)=>{
               return(
                 // Card design
-                  <View key={index} className='container h-32 flex flex-row mb-2 bg-white rounded-3xl shadow-2xl00000000000000000000 '>
+                  <View key={index} className='container h-32 flex flex-row mb-2 bg-white rounded-3xl shadow-2xl '>
                     {/* Profile */}
                     <View className='w-2/6  justify-center items-center '>
                       <Image  className='justify-center items-center ' source={doc.image} />
@@ -123,7 +127,9 @@ export default function Home() {
               )
             })
           }
+          </View>
           </ScrollView>
+          </View>
           
 
       </View>

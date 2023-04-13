@@ -13,7 +13,7 @@ export default function UserProfileModal (props){
                 <View className='container h-full '>
                     <MaterialIcons style={{marginLeft: 17, marginTop: 60, shadowOpacity:'5px', shadowColor:'#fff', }} onPress={()=>{props.setOpenProfile(false)}} name={'close'} size={30}  />
 
-                    <Profile />
+                    <Profile setOpenProfile={props.setOpenProfile} />
 
                 </View>
             </Modal>

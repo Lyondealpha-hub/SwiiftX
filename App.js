@@ -3,16 +3,18 @@ import React from 'react';
 import { View } from 'react-native';
 import BottomNav from './components/navigaton/BottomNav';
 import Profile from './components/Modals/sheets/profile';
+import NavigationController from './components/hooks/navigationController';
 
 
 export default function App() {
  
   return (
      
-       <BottomNav />
-      // <Profile />
+    <View className='container h-screen '>
+       <StatusBar style="auto"  />
+          <NavigationController />
 
-        // {/* <StatusBar style="auto" />  */}
+  </View>
      
   );
 }

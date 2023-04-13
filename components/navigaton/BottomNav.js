@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator();
 
 function BottomNav() {
   return (
-    <NavigationContainer>
+    
       <Tab.Navigator 
         screenOptions={({route})=>({
           headerShown : false,
@@ -60,7 +60,7 @@ function BottomNav() {
           }} 
             name="Chat" component={Chat} />
       </Tab.Navigator>
-    </NavigationContainer>
+   
   )
 }
 

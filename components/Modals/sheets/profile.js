@@ -3,8 +3,12 @@ import {View, Text, Image,StyleSheet, TouchableOpacity } from 'react-native';
 import { Entypo, FontAwesome5,MaterialIcons,MaterialCommunityIcons } from '@expo/vector-icons';
 import personnel from '../../../assets/personnel.png';
 import { Share } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { ScrollView } from 'react-native-gesture-handler';
 
-export default function Profile (){
+export default function Profile (props){
+
+    const navigation = useNavigation()
 
       // creating a custom share
   const CustomShare = () =>{
@@ -19,17 +23,22 @@ export default function Profile (){
     }
 }
 
+    const MyAppointmentsLink =()=>{
+        navigation.navigate('Appointments')
+        alert(props.setOpenProfile(false));
+    }
+
     const profile = [
         {id: 0, image: personnel, name: 'Dr. Afrane Aykire', occupation : 'Dentist, BSMMC Hospital', years: 3, cost:600},
     ]
 
     const profileSettings = [
-        {id: 0, image: 'local-activity', label: 'My Activity', },
-        {id: 1, image: 'notifications-none', label: 'Reminders', },
-        {id: 2, image: 'payment', label: 'Payments', },
-        {id: 3, image: 'switch-account', label: 'Add account', },
-        {id: 4, image: 'share', label: 'Invite friends via ...', button : CustomShare},
-        {id: 5, image: 'logout', label: 'Log out', },
+        {id: 1, image: 'local-activity', label: 'My Appointments', button : MyAppointmentsLink  },
+        {id: 2, image: 'notifications-none', label: 'Reminders', },
+        {id: 3, image: 'payment', label: 'Payments', },
+        {id: 4, image: 'switch-account', label: 'Add account', },
+        {id: 5, image: 'share', label: 'Invite friends via ...', button : CustomShare},
+        {id: 6, image: 'logout', label: 'Log out', },
     ]
 
     return(
@@ -83,20 +92,22 @@ export default function Profile (){
             </View>
             {/* Profile settings */}
 
-            <View className='container'>
-                {
-                    profileSettings.map((cat, index)=>{
-                        return(
-                            <TouchableOpacity key={cat.id} onPress={cat.button} style={styles.cardDesign} className='container flex flex-row items-center py-7 shadow-2xl mx-4 '>
-                                <MaterialIcons className='' name={cat.image} size={30}  />
-                                <Text className='px-4'>{cat.label}</Text>
-                            </TouchableOpacity>
-                        )
-                    })
-                }
+            <ScrollView scrollEnabled={true} scrollToOverflowEnabled={true}>
+                <View className='container'>
+                    {
+                        profileSettings.map((cat, index)=>{
+                            return(
+                                <TouchableOpacity key={cat.id} onPress={cat.button} style={styles.cardDesign} className='container flex flex-row items-center py-7 shadow-2xl mx-4 '>
+                                    <MaterialIcons className='' name={cat.image} size={30}  />
+                                    <Text className='px-4'>{cat.label}</Text>
+                                </TouchableOpacity>
+                            )
+                        })
+                    }
 
 
-            </View>
+                </View>
+            </ScrollView>
                 <View className='container h-28 flex flex-row justify-center items-center'>
                     <Text className=''>Swiift CopyRights @ 2022</Text>
                 </View>
