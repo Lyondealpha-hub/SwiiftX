@@ -5,6 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import Home from './screens/Home';
 import Chat from './screens/Chat';
 import { Ionicons } from '@expo/vector-icons';
+import ChatNavigation from './ChatNav';
 
 
 const Tab = createBottomTabNavigator();
@@ -53,12 +54,7 @@ function BottomNav() {
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="News" component={Home} />
         <Tab.Screen name="911" component={Home} />
-        <Tab.Screen options={{
-          headerShown:true , 
-          
-         
-          }} 
-            name="Chat" component={Chat} />
+        <Tab.Screen  name="Chat" component={ChatNavigation} />
       </Tab.Navigator>
    
   )

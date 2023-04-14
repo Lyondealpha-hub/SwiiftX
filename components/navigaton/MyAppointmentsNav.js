@@ -19,6 +19,7 @@ export default function MyAppointmentsNavigation (){
             <Tab.Navigator
                 className ="container"
                 initialRouteName='Upcomming'
+                
                 tabBarOptions={({route})=>({
                     headerShown : true,
                     animationEnabled: true,

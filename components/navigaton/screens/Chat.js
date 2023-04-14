@@ -29,9 +29,9 @@ export default function Chat () {
 
 
     return(
-        <View className="container  items-center " >
+        <View className="container h-full mt-3 " >
              {/* Search bar  */}
-            <View className='container px-2 flex flex-row mt-2'>
+            <View className='container px-2 flex flex-row '>
                 <TextInput className='container border-2 h-10 rounded-2xl px-3 text-base items-center'  placeholder={'Search here'}></TextInput>
                 <Image style={navStyles.search_icon}  className='justify-center items-center' source={search} />
             </View>

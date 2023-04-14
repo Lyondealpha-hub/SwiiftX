@@ -12,11 +12,19 @@ import lab from '../../../assets/lab.png';
 import year from '../../../assets/year.png';
 import { AirbnbRating, Rating } from 'react-native-ratings';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function Home() {
-     // Categories
 
+  const navigation = useNavigation()
+
+  const DoctorsLink =()=>{
+    navigation.navigate('Doctor Profile')
+    alert('Welcome to Doctor Profile');
+}
+     
+// Categories
   const categories = [
     {id: 0 , image: doctor, text: 'Doctor'},
     {id: 1 , image: checkup, text: 'Checkup'},
@@ -24,17 +32,18 @@ export default function Home() {
     {id: 3 , image: aid, text: 'Medicine'},
 
   ]
-
-
+// Health Personnels
   const doctors = [
-    {id: 0, image: personnel, name: 'Dr. Afrane Aykire', occupation : 'Dentist, BSMMC Hospital', years: 3, cost:600},
-    {id: 1, image: doctor, name: 'Dr. Misbahu Ahmed', occupation : 'Ghanacologist', years: 2, cost:320},
-    {id: 2, image: doctor, name: 'Dr Nii Achomo', occupation : 'Surgeon', years: 7, cost:1200},
-    {id: 3, image: personnel, name: 'Dr Osman', occupation : 'Cardiologist', years: 1, cost:200},
+    {id: 0, image: personnel, name: 'Dr. Afrane Aykire', occupation : 'Dentist, BSMMC Hospital', years: 3, cost:600, pressable: DoctorsLink },
+    {id: 1, image: doctor, name: 'Dr. Misbahu Ahmed', occupation : 'Ghanacologist', years: 2, cost:320, pressable: DoctorsLink},
+    {id: 2, image: doctor, name: 'Dr Nii Achomo', occupation : 'Surgeon', years: 7, cost:1200, pressable: DoctorsLink},
+    {id: 3, image: personnel, name: 'Dr Osman', occupation : 'Cardiologist', years: 1, cost:200, pressable: DoctorsLink},
   ]
 
   //  Rating reviews 
   const rating = ['1', '2.5', '3.5', '4.8', '5', ]
+
+  
 
   return (
     <View className='container absolute' >
@@ -54,12 +63,12 @@ export default function Home() {
       {/* Category */}
       <View className='container  '>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} className='container ' >
-          <View className=' flex flex-row px-2  container'>
+          <View className='container flex flex-row px-2 justify-center items-center'>
               
                 {categories.map((cat,index)=>{
                   return (
-                    <View key={index} className='w-1/4  px-5 justify-center items-center rounded-md shadow-2xl '>
-                      <TouchableOpacity className='items-center'>
+                    <View key={index} className='w-1/4  px-4 justify-center items-center rounded-md shadow-2xl '>
+                      <TouchableOpacity className=' items-center'>
                         <Image className='justify-center items-center ' source={cat.image}></Image>
                         <Text>{cat.text}</Text>
                       </TouchableOpacity>
@@ -85,7 +94,7 @@ export default function Home() {
             doctors.map((doc, index)=>{
               return(
                 // Card design
-                  <View key={index} className='container h-32 flex flex-row mb-2 bg-white rounded-3xl shadow-2xl '>
+                  <TouchableOpacity onPress={doc.pressable} key={index} className='container h-32 flex flex-row mb-2 bg-white rounded-3xl shadow-2xl '>
                     {/* Profile */}
                     <View className='w-2/6  justify-center items-center '>
                       <Image  className='justify-center items-center ' source={doc.image} />
@@ -116,14 +125,14 @@ export default function Home() {
                       <View className=' flex flex-row justify-between items-center '>
                         <Text className='w-1/2 justify-start'>Cost: ${doc.cost}</Text>
                         <TouchableOpacity className='w-1/2 justify-end '>
-                          <Text >Appointment</Text>
+                          <Text onPress={doc.pressable} >Consult</Text>
                         </TouchableOpacity>
 
                       </View>
                     </View>
 
 
-                  </View>
+                  </TouchableOpacity>
               )
             })
           }

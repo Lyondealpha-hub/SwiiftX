@@ -6,6 +6,7 @@ import Profile from './sheets/profile'
 
 export default function UserProfileModal (props){
 
+    
 
     return(
         <View className='container '>
