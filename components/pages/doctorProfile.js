@@ -1,11 +1,55 @@
-import React from 'react';
-import { View, Text, Image} from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, TextInput, StyleSheet, Pressable, Platform, Button,} from 'react-native';
 import personnel from '../../assets/personnel.png'
 import { MaterialIcons } from '@expo/vector-icons';
+import date from '../../assets/date.png';
+import clock from '../../assets/clock.png';
+import DateTimePicker from '@react-native-community/datetimepicker'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 
 
 
 export default function DoctorProfile(){
+
+    const [date, setDate] = useState(new Date())
+    const [showPicker, setShowPicker] = useState(false)
+    const [showTime, setShowTime] = useState(false)
+    const [showTimePicker, setShowTimePicker] = useState(false)
+
+    const toggleDatepicker = ()=>{
+        setShowPicker(!showPicker)
+    }
+    const toggleTimepicker = ()=>{
+        setShowTime(!showTime)
+    }
+
+    const onChange = ({type}, selectedDate)=>{
+        if(type == 'set'){
+            const currentDate = selectedDate;
+            setDate(currentDate)
+
+            if(Platform.OS === 'android'){
+                toggleDatepicker();
+                setDate(currentDate.toDateString());
+            }
+        }else{
+            toggleDatepicker()
+        }
+    }
+
+    const onChange2 = ({type}, selectedDate)=>{
+        if(type == 'set'){
+            const currentDate = selectedDate;
+            setDate(currentDate)
+
+            if(Platform.OS === 'android'){
+                toggleDatepicker();
+                setDate(currentDate.toDateString());
+            }
+        }else{
+            toggleDatepicker()
+        }
+    }
 
    
 
@@ -61,7 +105,7 @@ export default function DoctorProfile(){
 
                 </View>
 
-                <Text>About</Text>
+                <Text className='container flex py-2 px-3 text-lg'>About</Text>
 
                 <View className='justify-center items-center'>
                     <Text>
@@ -71,6 +115,119 @@ export default function DoctorProfile(){
                        
                     </Text>
                 </View>
+                <ScrollView scrollToOverflowEnabled={true}>
+                    {/* Schedule an appointment section */}
+                <View className='container py-1'>
+                    <View className='bg-slate-300 container p-3'>
+                        <Text className='container text-lg'>Schedule An Appointment</Text>
+                    </View>
+
+                    
+
+                    {/* Date and Time */}
+                    <View className='container flex flex-row justify-between items-center'>
+                            
+
+                        <View className='w-1/2 px-3 py-2 flex flex-row'>
+
+                            <Pressable onPress={toggleDatepicker} className='container'>
+                                <TextInput style={{borderWidth:0.5}} 
+                                    className='w-full h-9  rounded-2xl  px-3 text-base items-center justify-center' 
+                                    placeholder={'Search Date'}
+                                    defaultValue={'Search Date'} 
+                                    value={date}
+                                    editable={false}  
+                                    onPressIn={toggleDatepicker} // for IOS
+                                    
+                                > </TextInput>
+                            </Pressable>
+                            
+                            <Image style={dateTimeStyles.search_icon}  className='justify-center items-center' source={date} />
+                            {/* <MaterialIcons  style={dateTimeStyles.search_icon} name='date-range' size={30} color={'purple'} /> */}
+                        </View>
+
+                        <View className='w-1/2 px-3 py-2 flex flex-row'>
+
+                            <Pressable onPress={toggleTimepicker} className='container'>
+                                    <TextInput style={{borderWidth:0.5}} 
+                                        className='w-full h-9  rounded-2xl  px-3 text-base items-center justify-center' 
+                                        placeholder={'Search Time'}
+                                        defaultValue={'Search Time'} 
+                                        value={date}
+                                        editable={false}  
+                                        onPressIn={toggleTimepicker} // for IOS
+                                        
+                                    > </TextInput>
+                                </Pressable>
+                                <Image style={dateTimeStyles.search_icon}  className='justify-center items-center' source={clock} />
+                                {/* <MaterialIcons  style={dateTimeStyles.search_icon} name='timeline' size={30} color={'purple'} /> */}
+                        </View>
+                    </View>
+                        {/* DatePicker Dispayed here */}
+                        {showPicker && (
+                                <DateTimePicker 
+                                    className='h-10'
+                                    mode='date'
+                                    value={date}
+                                    display = {'spinner'}
+                                    onChange={onChange}
+                            />
+                            )}
+
+                            {showPicker && Platform.OS === 'ios' && (
+                                <View>
+                                    <Button onPress={toggleDatepicker} title='Submit' />
+                                    {/* For buttons  */}
+                                </View>
+                            )}
+
+                            {/* DatePicker Dispayed here */}
+                        {showTime && (
+                                <DateTimePicker 
+                                    className='h-10'
+                                    mode='time'
+                                    value={date}
+                                    display = {'spinner'}
+                                    onChange={onChange}
+                            />
+                            )}
+
+                            {showTime && Platform.OS === 'ios' && (
+                                <View>
+                                    <Button onPress={toggleTimepicker} title='Submit' />
+                                    {/* For buttons  */}
+                                </View>
+                            )}
+
+                    {/*ONline or IN-visit */}
+                    <View className='container flex flex-row justify-between items-center'>
+                            
+                        <View className='w-1/2 px-3 py-2 flex flex-row justify-center'>
+                            <TouchableOpacity style={{borderWidth:0.5}}  className='w-full bg-purple-400 shadow-2xl rounded-2xl py-2 px-3 text-base items-center justify-center'>
+                                <Text className='text-base' >Online Consultation</Text>
+                            </TouchableOpacity> 
+                            {/* <Image style={dateTimeStyles.search_icon}  className='justify-center items-center' source={date} /> */}
+                            {/* <MaterialIcons  style={dateTimeStyles.search_icon} name='date-range' size={30} color={'purple'} /> */}
+                        </View>
+
+                        <View className='w-1/2 px-3 py-2 flex flex-row justify-center'>
+                            <TouchableOpacity  style={{borderWidth:0.5}}  className='w-full bg-blue-400 shadow-2xl rounded-2xl py-2 px-3 text-base items-center justify-center'>
+                                <Text  className='text-base' >HealthCare In-Visit</Text>
+                            </TouchableOpacity>
+                            {/* <Image style={dateTimeStyles.search_icon}  className='justify-center items-center' source={clock} /> */}
+                            {/* <MaterialIcons  style={dateTimeStyles.search_icon} name='timeline' size={30} color={'purple'} /> */}
+                        </View>
+                    </View>
+
+                                {/* Payment section */}
+
+                    <View className='bg-slate-300 container p-3'>
+                        <Text className='container text-lg'>Consultation Fees Information</Text>
+                    </View>
+
+                    
+                </View>
+                </ScrollView>
             </View>
 
 
@@ -92,3 +249,13 @@ export default function DoctorProfile(){
         </View>
     )
 }
+
+
+const dateTimeStyles = StyleSheet.create({
+    search_icon: {
+      marginHorizontal:-45,
+      marginTop: 7,
+      
+    },
+  })
+  

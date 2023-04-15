@@ -1,7 +1,7 @@
 import React from 'react'
 import {  Text, View,Image,ImageBackground, TouchableOpacity, Button, Pressable, SafeAreaView } from 'react-native';
 import { Entypo, FontAwesome5,MaterialIcons,MaterialCommunityIcons } from '@expo/vector-icons';
-import TopNav from '../../TopNav';
+import TopNav from '../reusable/TopNav';
 // import user from '../../../assets/user.png'
 import doc from '../../../assets/doc.jpg';
 import doctor from '../../../assets/doctor.png';

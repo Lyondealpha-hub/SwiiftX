@@ -1,14 +1,15 @@
 import React, {useState} from 'react'
 import { StatusBar } from 'expo-status-bar';
 import {  Text, View,Image, TextInput, StyleSheet,TouchableOpacity } from 'react-native';
-import user from '../assets/user.png'
-import settings_cog from '../assets/settings-cog.png';
-import cart from '../assets/shopping-cart.png';
-import notification from '../assets/bell.png';
-import search from '../assets/search.png';
+import user from '../../../assets/user.png';
+import settings_cog from '../../../assets/settings-cog.png';
+import cart from '../../../assets/shopping-cart.png';
+import notification from '../../../assets/bell.png';
+import search from '../../../assets/search.png';
 import { useNavigation } from '@react-navigation/native';
 import { Entypo, FontAwesome5,MaterialIcons,MaterialCommunityIcons } from '@expo/vector-icons';
-import UserProfileModal from './Modals/userModal';
+import UserProfileModal from '../../Modals/userModal';
+
 
 
 export default function TopNav() {
