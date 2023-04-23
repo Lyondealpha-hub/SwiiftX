@@ -13,13 +13,15 @@ import UserProfileModal from '../../Modals/userModal';
 
 
 export default function TopNav() {
+  const navigation = useNavigation()
 
   const [openProfile, setOpenProfile] = useState(false)
+  
 
 
 
   return (
-    <View className='mt-11'>
+    <View className='mt-2'>
       <View className='container flex flex-row   justify-between items-center'>
         <TouchableOpacity className='w-1/2  justify-start pl-4 items-center  flex flex-row' onPress={()=>{setOpenProfile(true)}}>
             <Image  className='justify-center items-center ' source={user} />
@@ -30,7 +32,9 @@ export default function TopNav() {
           <View className='w-3/5 justify-evenly flex flex-row '>
             <Image  className='justify-center items-center ' source={notification} />
             <Image  className='justify-center items-center ' source={cart} />
-            <Image  className='justify-center items-center ' source={settings_cog} />
+            <TouchableOpacity onPress={()=>{navigation.navigate('Settings')}}>
+              <Image  className='justify-center items-center ' source={settings_cog} />
+            </TouchableOpacity>
            
           </View>
            
@@ -38,7 +42,7 @@ export default function TopNav() {
     </View>
     {/* Search bar  */}
     <View className='contianer px-3 py-2 flex flex-row'>
-      <TextInput className='w-full h-10 border-2 rounded-2xl   px-3 text-base items-center justify-center' placeholder={'Search here'} > </TextInput>
+      <TextInput className='w-full h-10 border-2  justify-center rounded-2xl px-3 text-base items-center' placeholder={'Search here'} > </TextInput>
       <Image style={navStyles.search_icon}  className='justify-center items-center' source={search} />
     </View>
 

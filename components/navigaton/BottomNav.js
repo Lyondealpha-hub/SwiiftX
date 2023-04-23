@@ -19,8 +19,8 @@ function BottomNav() {
           tabBarStyle : {
             alignItems : 'center',
             alignSelf : 'baseline',
-            height : 85,
-            elevation : 3,
+            height : '6%',
+            elevation : 6,
             shadowColor : 0,
             shadowOffset :{width: 0, height: 2},
             shadowRadius : 2

@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { View } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 import BottomNav from './components/navigaton/BottomNav';
 import Profile from './components/Modals/sheets/profile';
 import NavigationController from './components/hooks/navigationController';
@@ -10,11 +10,14 @@ export default function App() {
  
   return (
      
-    <View className='container h-screen '>
+    <SafeAreaView>
+      <View className='container h-full '>
        <StatusBar style="auto"  />
-          <NavigationController />
+         
+           <NavigationController />
 
   </View>
+    </SafeAreaView>
      
   );
 }

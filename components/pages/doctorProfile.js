@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, StyleSheet, Pressable, Platform, Button,} from 'react-native';
 import personnel from '../../assets/personnel.png'
+// import personnel from '../../assets/personnel.png'
 import { MaterialIcons } from '@expo/vector-icons';
-import date from '../../assets/date.png';
+
 import clock from '../../assets/clock.png';
+import datex from '../../assets/date.png';
 import DateTimePicker from '@react-native-community/datetimepicker'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { Chip, Stack, Surface,  } from '@react-native-material/core';
 
 
 
@@ -70,6 +73,7 @@ export default function DoctorProfile(){
                         </View>
                         <Text className='text-sm '>Dentist, BSMMC Hospital</Text>
                     </View>
+                   
                 </View>
 
                 <View className='container h-28 bg-slate-300 flex flex-row justify-evenly py-5'>
@@ -133,8 +137,8 @@ export default function DoctorProfile(){
                             <Pressable onPress={toggleDatepicker} className='container'>
                                 <TextInput style={{borderWidth:0.5}} 
                                     className='w-full h-9  rounded-2xl  px-3 text-base items-center justify-center' 
-                                    placeholder={'Search Date'}
-                                    defaultValue={'Search Date'} 
+                                    // placeholder={'Search Date'}
+                                    // defaultValue={'Search Date'} 
                                     value={date}
                                     editable={false}  
                                     onPressIn={toggleDatepicker} // for IOS
@@ -142,7 +146,7 @@ export default function DoctorProfile(){
                                 > </TextInput>
                             </Pressable>
                             
-                            <Image style={dateTimeStyles.search_icon}  className='justify-center items-center' source={date} />
+                            <Image style={dateTimeStyles.search_icon}  className='justify-center items-center' source={datex} />
                             {/* <MaterialIcons  style={dateTimeStyles.search_icon} name='date-range' size={30} color={'purple'} /> */}
                         </View>
 
@@ -151,8 +155,8 @@ export default function DoctorProfile(){
                             <Pressable onPress={toggleTimepicker} className='container'>
                                     <TextInput style={{borderWidth:0.5}} 
                                         className='w-full h-9  rounded-2xl  px-3 text-base items-center justify-center' 
-                                        placeholder={'Search Time'}
-                                        defaultValue={'Search Time'} 
+                                        // placeholder={'Search Time'}
+                                        // defaultValue={'Search Time'} 
                                         value={date}
                                         editable={false}  
                                         onPressIn={toggleTimepicker} // for IOS
@@ -171,6 +175,7 @@ export default function DoctorProfile(){
                                     value={date}
                                     display = {'spinner'}
                                     onChange={onChange}
+                                    
                             />
                             )}
 
@@ -200,31 +205,49 @@ export default function DoctorProfile(){
                             )}
 
                     {/*ONline or IN-visit */}
-                    <View className='container flex flex-row justify-between items-center'>
+                    {!(showPicker || showTime ) && (
+                        <View className='container flex flex-row justify-between items-center'>
                             
                         <View className='w-1/2 px-3 py-2 flex flex-row justify-center'>
-                            <TouchableOpacity style={{borderWidth:0.5}}  className='w-full bg-purple-400 shadow-2xl rounded-2xl py-2 px-3 text-base items-center justify-center'>
-                                <Text className='text-base' >Online Consultation</Text>
-                            </TouchableOpacity> 
+                            {/* <TouchableOpacity style={{borderWidth:0.5}}  className='w-full  shadow-2xl rounded-2xl py-2 px-3 text-base items-center justify-center'> */}
+                                 <Stack fill center spacing={4}>
+                                    <Surface  elevation={6}>
+                                    <Chip variant="outlined" label="Outlined" />
+                                    </Surface>
+                                 </Stack>
+                                
+                            {/* </TouchableOpacity>  */}
                             {/* <Image style={dateTimeStyles.search_icon}  className='justify-center items-center' source={date} /> */}
                             {/* <MaterialIcons  style={dateTimeStyles.search_icon} name='date-range' size={30} color={'purple'} /> */}
                         </View>
 
                         <View className='w-1/2 px-3 py-2 flex flex-row justify-center'>
-                            <TouchableOpacity  style={{borderWidth:0.5}}  className='w-full bg-blue-400 shadow-2xl rounded-2xl py-2 px-3 text-base items-center justify-center'>
-                                <Text  className='text-base' >HealthCare In-Visit</Text>
-                            </TouchableOpacity>
+                            {/* <TouchableOpacity  style={{borderWidth:0.5}}  className='w-full bg-blue-400 shadow-2xl rounded-2xl py-2 px-3 text-base items-center justify-center'> */}
+                                
+                                <Stack fill center spacing={4}>
+                                    <Surface  elevation={6}>
+                                    
+                                    </Surface>
+                                 </Stack>
+                                 {/* <Text  className='text-base' >HealthCare In-Visit</Text> */}
+                            {/* </TouchableOpacity> */}
                             {/* <Image style={dateTimeStyles.search_icon}  className='justify-center items-center' source={clock} /> */}
                             {/* <MaterialIcons  style={dateTimeStyles.search_icon} name='timeline' size={30} color={'purple'} /> */}
                         </View>
                     </View>
+                    
+                    
+                    
+                    )}
 
                                 {/* Payment section */}
 
-                    <View className='bg-slate-300 container p-3'>
+                   {!(showPicker || showTime) &&(
+                     <View className='bg-slate-300 container p-3'>
                         <Text className='container text-lg'>Consultation Fees Information</Text>
                     </View>
 
+                   )}
                     
                 </View>
                 </ScrollView>

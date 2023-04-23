@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Image,StyleSheet, TouchableOpacity } from 'react-native';
 import { Entypo, FontAwesome5,MaterialIcons,MaterialCommunityIcons } from '@expo/vector-icons';
 import personnel from '../../../assets/personnel.png';
+import edit from '../../../assets/edit.png';
 import { Share } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -55,6 +56,9 @@ export default function Profile (props){
                         <Text className='text-lg'>Dr. Afrane Aykire</Text>
                         <Text className='text-sm '>Dentist, BSMMC Hospital</Text>
                     </View>
+                   <TouchableOpacity className='ml-8 justify-center items-center '>
+                     <Image className='' source={edit} />
+                   </TouchableOpacity>
                 </View>
 
                 {/* Doctor description  */}
