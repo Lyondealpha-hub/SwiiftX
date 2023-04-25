@@ -23,6 +23,7 @@
     "expo-status-bar": "~1.4.2",
     "expo-updates": "~0.15.6",
     "nativewind": "^2.0.11",
+    "publish": "^0.6.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-native": "0.70.8",

@@ -7,6 +7,8 @@ import download from '../../assets/download.png';
 import notification from '../../assets/notification.png';
 import darkmode from '../../assets/darkmode.png';
 import global from '../../assets/global.png';
+import contact from '../../assets/contact.png';
+import about from '../../assets/about.png';
 
 
 export default function Settings() {
@@ -41,8 +43,8 @@ export default function Settings() {
             id: 3, title: 'HELP', 
             data: [
                 {id: 0, label:'Report Bug',image : folder, },
-                {id: 1, label:'Contact Us',image : folder, },
-                {id: 2, label:'About US',image : folder, },
+                {id: 1, label:'Contact Us',image : contact, },
+                {id: 2, label:'About US',image : about, },
                 {id: 3, label:'SwiiftoN FAQ',image : folder, },
                 
 
