@@ -1,5 +1,5 @@
 import React from 'react'
-import {  Text, View,Image,ImageBackground, TouchableOpacity, Button, Pressable, SafeAreaView,ScrollView } from 'react-native';
+import {  Text, View,Image,ImageBackground, TouchableOpacity, Button, Pressable, SafeAreaView,ScrollView, StyleSheet } from 'react-native';
 import { Entypo, FontAwesome5,MaterialIcons,MaterialCommunityIcons } from '@expo/vector-icons';
 import TopNav from '../reusable/TopNav';
 // import user from '../../../assets/user.png'
@@ -62,7 +62,7 @@ export default function Home() {
   
 
   return (
-    <View className='container h-screen' >
+    <View  className='container h-full' >
       <TopNav />
       
       {/* Image render */}
@@ -97,82 +97,81 @@ export default function Home() {
           </View>
         </ScrollView>
       </View>
+
+
       {/* Body */}
-      <SafeAreaView>
-        <View className='contianer   px-3 '>
-        {/* header */}
-        <Text className='justify-start items-start flex text-2xl p-1.5 italic'>Featured Doctors</Text>
-        {/* Featured Doctors Body cards Contents */}
-      
-        <ScrollView className=''>         
-          <View className=''>
-          {
-            doctors.map((doc, index)=>{
-              return(
-                // Card design
-                  <TouchableOpacity onPress={doc.pressable} key={index} className='container h-32 flex flex-row mb-2 bg-white rounded-3xl shadow-2xl '>
-                    {/* Profile */}
-                    <View className='w-2/6  justify-center items-center '>
-                      <Image  className='justify-center items-center ' source={doc.image} />
-                    </View>
 
-                    {/* Content texts */}
-                    <View className='w-4/6 justify-center '>
-                      <Text className='text-lg'>{doc.name} </Text>
-                      <Text className='text-sm '>{doc.occupation}</Text>
-                        {/* Rating and years in feild  */}
-                        <View className='w-full flex flex-row justify-between items-center '>
-                          {/* <Rating showRating  type='heart' ratingCount={3} imageSize={20} /> */}
-                            <View className='w-1/2 flex flex-row items-center'>
-                              <MaterialIcons name='history' size={22} />
-                              <Text className='px-1'>{doc.years} Years</Text>
+      <ScrollView>
+        {/* Parent div */}
+      <View className=' container h-screen'> 
+          {/* For Doctors Page */}
+          <View className='container h-3/5 '>
+            <View className='container flex flex-row justify-between items-center px-2'>
+              <Text className='text-2xl px-2 py-1 italic'>Featured Doctors</Text>
+              <TouchableOpacity><Text>View all</Text></TouchableOpacity>
+            </View>
+            <ScrollView showsVerticalScrollIndicator={false} className=' mx-3'>
+                {
+                    doctors.map((doc, index)=>{
+                      return(
+                        // Card design
+                          <TouchableOpacity onPress={doc.pressable} key={index} className='container h-32 flex  flex-row mb-2 bg-white rounded-3xl shadow-2xl '>
+                            {/* Profile */}
+                            <View className='w-2/6  justify-center items-center '>
+                              <Image  className='justify-center items-center ' source={doc.image} />
                             </View>
-                            {/* <Rating  imageSize={10} readonly={true} showRating={true}  showReadOnlyText={false} ratingCount={3} fractions={1} jumpValue={0.5}  className='flex-row-reverse text-xs' /> */}
-                            {/* <Text>10Yrs</Text> */}
-                            <View className='w-1/2'> 
-                              <AirbnbRating  size={15} showRating={true}  ratingContainerStyle={{flexDirection: 'row-reverse'}} reviews={rating}  reviewSize={13} count={3}  isDisabled={true} />
+
+                            {/* Content texts */}
+                            <View className='w-4/6 justify-center '>
+                              <Text className='text-lg'>{doc.name} </Text>
+                              <Text className='text-sm '>{doc.occupation}</Text>
+                                {/* Rating and years in feild  */}
+                                <View className='w-full flex flex-row justify-between items-center '>
+                                  {/* <Rating showRating  type='heart' ratingCount={3} imageSize={20} /> */}
+                                    <View className='w-1/2 flex flex-row items-center'>
+                                      <MaterialIcons name='history' size={22} />
+                                      <Text className='px-1'>{doc.years} Years</Text>
+                                    </View>
+                                    {/* <Rating  imageSize={10} readonly={true} showRating={true}  showReadOnlyText={false} ratingCount={3} fractions={1} jumpValue={0.5}  className='flex-row-reverse text-xs' /> */}
+                                    {/* <Text>10Yrs</Text> */}
+                                    <View className='w-1/2'> 
+                                      <AirbnbRating  size={15} showRating={true}  ratingContainerStyle={{flexDirection: 'row-reverse'}} reviews={rating}  reviewSize={13} count={3}  isDisabled={true} />
+                                    </View>
+                                    {/* <AirbnbRating starImage={year}  size={30} showRating={false}  ratingContainerStyle={{flexDirection: 'row-reverse',}} reviews={rating}  reviewSize={10} count={1}  isDisabled={true} /> */}
+                                  
+
+                              </View>
+
+                              {/* cost & button   */}
+                              <View className=' flex flex-row justify-between items-center '>
+                                <Text className='w-2/5 justify-start'>Cost: ${doc.cost}</Text>
+                                <TouchableOpacity className='w-3/5 justify-end '>
+                                  <Text className='px-0.5' onPress={doc.pressable} >Book Appointment</Text>
+                                </TouchableOpacity>
+
+                              </View>
                             </View>
-                            {/* <AirbnbRating starImage={year}  size={30} showRating={false}  ratingContainerStyle={{flexDirection: 'row-reverse',}} reviews={rating}  reviewSize={10} count={1}  isDisabled={true} /> */}
-                          
-
-                      </View>
-
-                      {/* cost & button   */}
-                      <View className=' flex flex-row justify-between items-center '>
-                        <Text className='w-2/5 justify-start'>Cost: ${doc.cost}</Text>
-                        <TouchableOpacity className='w-3/5 justify-end '>
-                          <Text className='px-0.5' onPress={doc.pressable} >Book Appointment</Text>
-                        </TouchableOpacity>
-
-                      </View>
-                    </View>
 
 
-                  </TouchableOpacity>
-              )
-            })
-          }
+                          </TouchableOpacity>
+                      )
+                    })
+                  }
+            </ScrollView>
           </View>
-        </ScrollView>
-
-        {/* Products */}
-
-      </View>
-      
-      </SafeAreaView>
-
-      <View className='contianer h-full  px-3 '>
-        <Text className='justify-start items-start flex text-2xl p-1.5 italic'>Best Selling Products</Text>
-      </View>
-      
-
-        <View className=' flex flex-row flex-wrap '>
-                {products.map((prod,index)=>{
+          {/* For products */}
+          <View className='container  h-2/5 '>
+          <View className='container flex flex-row justify-between items-center px-2'>
+              <Text className='text-2xl px-2 py-1 italic'>Best Selling Products</Text>
+              <TouchableOpacity><Text>View all</Text></TouchableOpacity>
+            </View>
+              <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}  className=' mx-3'>
+              {products.map((prod,index)=>{
                   return (
 
                         <Surface elevation={6} style={{marginHorizontal: 5, marginVertical: 5}} >
                             <Wrap shouldWrapChildren={true} m={4} className='container'>
-                               <TouchableOpacity className=' items-center ' style={{width:170, height:230    }}>
+                               <TouchableOpacity className=' items-center ' style={{width:190, height:230    }}>
                                  <View style={{width:190, height:230    }} className='justify-center items-center' >
                                   <Image style={{width:150, height:190    }} className='justify-center flex-row items-center' source={prod.image}></Image> 
                                   
@@ -197,11 +196,27 @@ export default function Home() {
                    
                   )
                 })}
+              </ScrollView>
 
           </View>
+      </View>
+      </ScrollView>
+      
+           
+
+
        
+  
+
+
+    
+
+     
        
       
     </View>
   )
 }
+
+
+

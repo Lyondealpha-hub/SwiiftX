@@ -24,8 +24,8 @@ export default function MyAppointmentsUpcomming(){
             appointments.map((doc, index)=>{
               return(
                 // Card design
-                  <View key={index} className='container h-40 p-1 mb-2 bg-white rounded-3xl shadow-2xl '>
-                    <View className='flex h-12 justify-center items-center bg-purple-600 py-2 rounded-t-3xl'>
+                  <View key={index} className='container h-40 p-1 mb-2 bg-white rounded-xl shadow-2xl '>
+                    <View className='flex h-12 justify-center items-center bg-purple-600 py-2 rounded-t-xl'>
                         <Text>Schediel tome and datyu here</Text>
                     </View>
                     

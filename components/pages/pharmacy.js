@@ -63,19 +63,16 @@ export default function Pharmacy() {
 
                         <Surface elevation={6} style={{marginHorizontal: 5, marginVertical: 5}} >
                             <Wrap shouldWrapChildren={true} m={4} className='container'>
-                               <TouchableOpacity className=' items-center ' style={{width:190, height:230    }}>
-                                 <View style={{width:190, height:230    }} className='justify-center items-center' >
-                                  <Image style={{width:150, height:190    }} className='justify-center flex-row items-center' source={prod.image}></Image> 
-                                  
-                                  <View className='flex flex-row justify-between items-center w-full p-2'>
-                                    <Text className='items-center'>GHC {prod.price}</Text>
-                                    <Image  source={prod.buy} />
+                               <TouchableOpacity className=' container items-center ' style={{width:'100%', height:230    }}>
+                                 <View style={{width:190, height:230    }} className='container justify-center items-center' >
+                                    <Image style={{width:'80%', height:190    }} className='justify-center flex-row items-center' source={prod.image}></Image> 
+                                    
+                                    <View className='flex flex-row justify-between items-center w-full p-2'>
+                                      <Text className='items-center'>GHC {prod.price}</Text>
+                                      <Image  source={prod.buy} />
+                                    </View>
                                   </View>
-                                 </View>
-                                 {/* <View className='flex flex-row justify-between'>
-                                    <Text>Hi</Text>
-                                    <Text>Hello</Text>
-                                 </View> */}
+                
                             </TouchableOpacity> 
                             </Wrap>
                             {/* <View key={index} className='p-16 bg-white mx-1.5 justify-evenly items-center '>
