@@ -42,7 +42,7 @@ export default function TopNav() {
     </View>
     {/* Search bar  */}
     <View className='contianer px-3 py-2 flex flex-row'>
-      <TextInput className='w-full h-10 border-2  justify-center rounded-2xl px-3 text-base items-center' placeholder={'Search here'} > </TextInput>
+      <TextInput style={{borderStyle: 'solid', borderWidth:'1px'}} className='w-full h-10 justify-center rounded-2xl px-3 text-base items-center' placeholder={'Search here'} > </TextInput>
       <Image style={navStyles.search_icon}  className='justify-center items-center' source={search} />
     </View>
 
@@ -58,6 +58,7 @@ const navStyles = StyleSheet.create({
   search_icon: {
     marginHorizontal:-45,
     marginTop: 7,
+    
     
   },
 })
