@@ -9,6 +9,7 @@ import datex from '../../assets/date.png';
 import DateTimePicker from '@react-native-community/datetimepicker'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Chip, Stack, Surface,  } from '@react-native-material/core';
+import { CheckBox } from '@rneui/base';
 
 
 
@@ -18,6 +19,7 @@ export default function DoctorProfile(){
     const [showPicker, setShowPicker] = useState(false)
     const [showTime, setShowTime] = useState(false)
     const [showTimePicker, setShowTimePicker] = useState(false)
+    const [selectedIndex, setIndex] = React.useState(0);
 
     const toggleDatepicker = ()=>{
         setShowPicker(!showPicker)
@@ -206,34 +208,32 @@ export default function DoctorProfile(){
 
                     {/*ONline or IN-visit */}
                     {!(showPicker || showTime ) && (
-                        <View className='container flex flex-row justify-between items-center'>
-                            
-                        <View className='w-1/2 px-3 py-2 flex flex-row justify-center'>
+                        <View className='container flex flex-row justify-between items-center '>
+
+                           
+                        <View className='container  py-2 flex flex-row justify-between items-center'>
                             {/* <TouchableOpacity style={{borderWidth:0.5}}  className='w-full  shadow-2xl rounded-2xl py-2 px-3 text-base items-center justify-center'> */}
-                                 <Stack fill center spacing={4}>
-                                    <Surface  elevation={6}>
-                                    <Chip variant="outlined" label="Outlined" />
-                                    </Surface>
-                                 </Stack>
+                                <CheckBox
+                                    title={"Online Consultation"}
+                                    checked={selectedIndex === 0}
+                                    onPress={() => setIndex(0)}
+                                    checkedIcon="dot-circle-o"
+                                    uncheckedIcon="circle-o"
+                                    />
+                                    <CheckBox
+                                    title={"Hospital In-Visit"}
+                                    checked={selectedIndex === 1}
+                                    onPress={() => setIndex(1)}
+                                    checkedIcon="dot-circle-o"
+                                    uncheckedIcon="circle-o"
+                                    />
                                 
                             {/* </TouchableOpacity>  */}
                             {/* <Image style={dateTimeStyles.search_icon}  className='justify-center items-center' source={date} /> */}
                             {/* <MaterialIcons  style={dateTimeStyles.search_icon} name='date-range' size={30} color={'purple'} /> */}
                         </View>
 
-                        <View className='w-1/2 px-3 py-2 flex flex-row justify-center'>
-                            {/* <TouchableOpacity  style={{borderWidth:0.5}}  className='w-full bg-blue-400 shadow-2xl rounded-2xl py-2 px-3 text-base items-center justify-center'> */}
-                                
-                                <Stack fill center spacing={4}>
-                                    <Surface  elevation={6}>
-                                    
-                                    </Surface>
-                                 </Stack>
-                                 {/* <Text  className='text-base' >HealthCare In-Visit</Text> */}
-                            {/* </TouchableOpacity> */}
-                            {/* <Image style={dateTimeStyles.search_icon}  className='justify-center items-center' source={clock} /> */}
-                            {/* <MaterialIcons  style={dateTimeStyles.search_icon} name='timeline' size={30} color={'purple'} /> */}
-                        </View>
+                       
                     </View>
                     
                     

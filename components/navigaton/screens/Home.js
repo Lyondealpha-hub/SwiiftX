@@ -105,7 +105,7 @@ export default function Home() {
         {/* Parent div */}
       <View className=' container h-screen'> 
           {/* For Doctors Page */}
-          <View className='container h-3/5 '>
+          <View className='container h-4/6 '>
             <View className='container flex flex-row justify-between items-center px-2'>
               <Text className='text-2xl px-2 py-1 italic'>Featured Doctors</Text>
               <TouchableOpacity><Text>View all</Text></TouchableOpacity>
@@ -160,9 +160,9 @@ export default function Home() {
             </ScrollView>
           </View>
           {/* For products */}
-          <View className='container  h-2/5 '>
+          <View className='container  h-2/6 '>
           <View className='container flex flex-row justify-between items-center px-2'>
-              <Text className='text-2xl px-2 py-1 italic'>Best Selling Products</Text>
+              <Text className='text-2xl px-2 py-1 italic'>Best Delivery Products</Text>
               <TouchableOpacity><Text>View all</Text></TouchableOpacity>
             </View>
               <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}  className=' mx-3'>
@@ -171,8 +171,8 @@ export default function Home() {
 
                         <Surface elevation={6} style={{marginHorizontal: 5, marginVertical: 5}} >
                             <Wrap shouldWrapChildren={true} m={4} className='container'>
-                               <TouchableOpacity className=' items-center ' style={{width:190, height:230    }}>
-                                 <View style={{width:190, height:230    }} className='justify-center items-center' >
+                               <TouchableOpacity className=' items-center ' style={{width:'100%', height:230    }}>
+                                 <View style={{width:160, height:230    }} className='justify-center items-center' >
                                   <Image style={{width:150, height:190    }} className='justify-center flex-row items-center' source={prod.image}></Image> 
                                   
                                   <View className='flex flex-row justify-between items-center w-full p-2'>

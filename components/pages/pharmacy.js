@@ -1,13 +1,18 @@
 import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import TopNav from '../navigaton/reusable/TopNav'
 import { Stack, Surface,Box, Wrap } from '@react-native-material/core'
 import erp from '../../assets/erp.jpg'
 import perp1 from '../../assets/perp1.webp'
 import prep from '../../assets/prep.jpg'
 import cart from '../../assets/shopping-cart.png'
+import { useNavigation } from '@react-navigation/native'
+import PharmacyModal from '../Modals/pharmacyModal'
 
 export default function Pharmacy() {
+
+  const navigation = useNavigation()
+  const [openModal, setOpenModal] = useState(false)
 
     // Categories
   const categories = [
@@ -63,7 +68,7 @@ export default function Pharmacy() {
 
                         <Surface elevation={6} style={{marginHorizontal: 5, marginVertical: 5}} >
                             <Wrap shouldWrapChildren={true} m={4} className='container'>
-                               <TouchableOpacity className=' container items-center ' style={{width:'100%', height:230    }}>
+                               <TouchableOpacity onPress={()=>{setOpenModal(true)}} className=' container items-center ' style={{width:'100%', height:230    }}>
                                  <View style={{width:190, height:230    }} className='container justify-center items-center' >
                                     <Image style={{width:'80%', height:190    }} className='justify-center flex-row items-center' source={prod.image}></Image> 
                                     
@@ -88,6 +93,7 @@ export default function Pharmacy() {
 
             </View>
         </ScrollView>
+        <PharmacyModal openModal={openModal} setOpenModal={setOpenModal} />
     </View>
   )
 }
