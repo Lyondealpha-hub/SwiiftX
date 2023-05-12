@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, TextInput } from 'react-native';
 import erp from '../../../assets/erp.jpg'
 import perp1 from '../../../assets/perp1.webp'
@@ -11,7 +11,6 @@ import LinearGradient from 'react-native-linear-gradient';
 export default function PharmacySheet(props) {
 
     const [noItem, setNoItem] = useState(0)
-
 
     const linearGradient_colors = ["#FC466B","#3F5EFB"]
 

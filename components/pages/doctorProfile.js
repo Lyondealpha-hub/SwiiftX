@@ -243,8 +243,31 @@ export default function DoctorProfile(){
                                 {/* Payment section */}
 
                    {!(showPicker || showTime) &&(
-                     <View className='bg-slate-300 container p-3'>
-                        <Text className='container text-lg'>Consultation Fees Information</Text>
+                     <View className=' container '>
+                       <View className='bg-slate-300 p-3'>
+                            <Text className='container text-lg'>Consultation Fees Information</Text>
+                       </View>
+                        <View className='flex flex-row justify-between p-3'>
+                            {/* Addons */}
+                            <View className='w-1/2 flex flex-row justify-start'>
+                                <Text className='text-lg italic'>
+                                    {selectedIndex !== undefined && selectedIndex == 0 ? 'Online Consultation' : 'Hospital In-Visit' }
+                                </Text>
+                            </View>
+                            {/* Pricing */}
+                            <View className='w-1/2 flex flex-row justify-end'>
+                                <Text className='text-lg italic'>GHC 500</Text>
+                            </View>
+
+
+                        </View>
+
+                        
+                        <View className='w-full flex flex-row justify-center items-center pt-6'>
+                            <TouchableOpacity className='w-full py-3 px-28  bg-blue-600 rounded-xl' >
+                            <Text className='text-white text-lg'>Book Appointment</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
 
                    )}
