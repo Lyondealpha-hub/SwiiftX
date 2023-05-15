@@ -31,7 +31,11 @@ export default function TopNav() {
         <View className='w-1/2 justify-end flex flex-row '>
           <View className='w-3/5 justify-evenly flex flex-row '>
             <Image  className='justify-center items-center ' source={notification} />
-            <Image  className='justify-center items-center ' source={cart} />
+
+            <TouchableOpacity onPress={()=>{navigation.navigate('MyCart')}}>
+              <Image  className='justify-center items-center ' source={cart} />
+            </TouchableOpacity>
+
             <TouchableOpacity onPress={()=>{navigation.navigate('Settings')}}>
               <Image  className='justify-center items-center ' source={settings_cog} />
             </TouchableOpacity>
