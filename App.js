@@ -4,6 +4,7 @@ import { SafeAreaView, View, StyleSheet } from 'react-native';
 import BottomNav from './components/navigaton/BottomNav';
 import Profile from './components/Modals/sheets/profile';
 import NavigationController from './components/hooks/navigationController';
+import SignUp from './components/pages/signup';
 
 
 export default function App() {
@@ -14,7 +15,8 @@ export default function App() {
       <View  className='container h-full '>
        <StatusBar style="auto"  />
          
-           <NavigationController />
+           {/* <NavigationController /> */}
+           <SignUp />
 
   </View>
     </SafeAreaView>

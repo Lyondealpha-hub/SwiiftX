@@ -61,7 +61,12 @@ export default function Pharmacy() {
           </View>
         </ScrollView>
 
-        <ScrollView>
+        <ScrollView 
+          automaticallyAdjustContentInsets={false}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+        
+        >
             <View className=' flex flex-row flex-wrap '>
                 {products.map((prod,index)=>{
                   return (
