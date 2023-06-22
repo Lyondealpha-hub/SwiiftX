@@ -26,6 +26,7 @@
     "expo": "~47.0.12",
     "expo-status-bar": "~1.4.2",
     "expo-updates": "~0.15.6",
+    "formik": "^2.4.2",
     "nativewind": "^2.0.11",
     "publish": "^0.6.0",
     "react": "18.1.0",

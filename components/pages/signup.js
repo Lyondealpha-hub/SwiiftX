@@ -1,11 +1,30 @@
-import React, { Component }  from 'react';
-import { View, Text, Image } from 'react-native'
-import { FAB, Icon, Input } from '@rneui/themed';
+import React from 'react';
+import { View, Text, Image, Button, TouchableOpacity } from 'react-native'
+import { FAB, Icon, Input, CheckBox, } from '@rneui/themed';
 import logo from '../../assets/logo.jpg';
+import { Formik } from 'formik';
+import { useState } from 'react';
 
-export default function SignUp(){
+export default function SignUp() {
+
+    const [states, setStates] = useState({
+        agree : false,
+        username : "",
+        email : "",
+        mobile : "",
+        password : "",
+        patientPage : "",
+        doctor : "",
+        userPage : false,
+
+    });
+
+    const updateStates = (key,value)=>{
+        setStates((prev)=>({...prev, [key]:value}))
+    }
+
     return (
-        <View className="container">
+        <View className="container h-full">
             {/* TOP OPTIONS */}
             <View className="container  flex flex-row  justify-between  p-3">
                 <View className="w-1/2 flex-row justify-start ">
@@ -13,11 +32,13 @@ export default function SignUp(){
                         // visible={visible}
                         size='small'
                         title="Patient"
+                        onPress={()=>{updateStates('patientPage',"#Ba68c8" );updateStates('userPage',true ); console.log(states.patientPage) }}
                         upperCase
-                        icon={{ name: 'person', color: 'white' }}
-                        color="blue"
-                        className="shadow-2xl"
-                        
+                        icon={{ name: 'person', color: 'black', size:"25" }}
+                        color={states.patientPage }
+                        className="shadow-2xl "
+                        buttonStyle={{backgroundColor:"#ccc", borderColor:"#ccc", borderWidth:1,}}
+
                     />
                 </View>
 
@@ -31,7 +52,7 @@ export default function SignUp(){
                         icon={{ name: 'person', color: 'white' }}
                         className="shadow-2xl"
 
-                        
+
                     />
 
                 </View>
@@ -44,20 +65,87 @@ export default function SignUp(){
                 <View className='flex-row justify-items-center'>
                     <Image className="w-36 h-36" source={logo} alt='' />
                 </View>
-                
+
             </View>
 
             {/* Form */}
-            <View>
+
+            <View className="mx-auto">
                 <View>
-                    <Input
-                        placeholder="Comment"
-                        leftIcon={{ type: 'font-awesome', name: 'FaUser' }}
-                        onChangeText={value => this.setState({ comment: value })}
-                    />
+
+                    <Formik
+                        initialValues={{ email: '' }}
+                        onSubmit={values => console.log(values)}
+                    >
+                        {({ handleChange, handleBlur, handleSubmit, values }) => (
+                            <View>
+                                <View id="username">
+                                    <Input
+                                        placeholder="Username or Full Name "
+                                        leftIcon={{ type: 'material', name: "person", size: 30 }}
+                                        onChangeText={ handleChange('userName') }
+                                    />
+                                </View>
+
+                                <View id="email">
+                                    <Input
+                                        placeholder="Enter Email Address"
+                                        // errorMessage='password must be at least'
+                                        onChange={(e)=>{console.log(e)}}
+                                        leftIcon={{ type: 'material', name: "mail", size: 30 }}
+                                        onChangeText={ handleChange('email')}
+                                    />
+                                </View>
+                                <View id="mobile">
+                                    <Input
+                                        placeholder="Enter Mobile Number "
+                                        leftIcon={{ type: 'material', name: "call", size: 30 }}
+                                        onChangeText={ handleChange('mobile')}
+                                    />
+                                </View>
+                                <View id="password">
+                                    <Input
+                                        placeholder="Enter Password "
+                                        secureTextEntry={true}
+                                        leftIcon={{ type: 'material', name: "lock", size: 30 }}
+                                        onChangeText={ handleChange('password')}
+                                        
+                                    />
+                                </View>
+
+                                <View id="agreement">
+
+                                    <CheckBox
+                                        checked={states.agree}
+                                        onPress={()=>{updateStates('agree',!states.agree)}}
+                                        title="By signing up, you agree to our Terms & Conditions and Privacy Policy"
+                                    />
+                                </View>
+                                <TouchableOpacity onPress={handleSubmit} className=" bg-purple-400 rounded-md mx-auto px-[135px] py-1 my-8 drop-shadow-2xl justify-center items-center">
+                                    <Text className="text-2xl text-white">Sign Up</Text> 
+                                </TouchableOpacity>
+
+                                <View className="w-full flex flex-row justify-center items-center  inset-x-0 bottom-0 h-16">
+                                    <Text className="text-lg">Join us before? <Text className="font-semibold text-xl">Login</Text></Text>
+                                </View>
+
+                                {/* Below demostrates how it should work here  */}
+                                {/* <TextInput
+                                    onChangeText={handleChange('email')}
+                                    onBlur={handleBlur('email')}
+                                    value={values.email}
+                                />
+                                <Button onPress={handleSubmit} title="Submit" /> */}
+                            </View>
+                         )} 
+                    </Formik>
+
+
+
+
                 </View>
             </View>
         </View>
     )
-    
+
 }
