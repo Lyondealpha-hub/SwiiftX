@@ -35,7 +35,7 @@ export default function SignUp() {
                         onPress={()=>{updateStates('patientPage',"#Ba68c8" );updateStates('userPage',true ); console.log(states.patientPage) }}
                         upperCase
                         icon={{ name: 'person', color: 'black', size:"25" }}
-                        color={states.patientPage }
+                        color={`${states.patientPage}` }
                         className="shadow-2xl "
                         buttonStyle={{backgroundColor:"#ccc", borderColor:"#ccc", borderWidth:1,}}
 
@@ -46,6 +46,7 @@ export default function SignUp() {
                 <View className="w-1/2 flex-row justify-end ">
                     <FAB
                         // visible={visible}
+                        onPress={()=>{updateStates('userPage', false)}}
                         size='small'
                         title="Doctor"
                         upperCase
@@ -71,7 +72,10 @@ export default function SignUp() {
             {/* Form */}
 
             <View className="mx-auto">
-                <View>
+                {states.userPage ?
+
+                // Patient signup form
+                    <View>
 
                     <Formik
                         initialValues={{ email: '' }}
@@ -139,11 +143,80 @@ export default function SignUp() {
                             </View>
                          )} 
                     </Formik>
+                </View>
 
+                :
+                <View>
+                    {/* Doctors signup */}
+                    <Formik
+                        initialValues={{ email: '' }}
+                        onSubmit={values => console.log(values)}
+                    >
+                        {({ handleChange, handleBlur, handleSubmit, values }) => (
+                            <View>
+                                <View id="username">
+                                    <Input
+                                        placeholder="Identification card "
+                                        leftIcon={{ type: 'material', name: "person", size: 30 }}
+                                        onChangeText={ handleChange('userName') }
+                                    />
+                                </View>
 
+                                <View id="email">
+                                    <Input
+                                        placeholder="Enter Email Address"
+                                        // errorMessage='password must be at least'
+                                        onChange={(e)=>{console.log(e)}}
+                                        leftIcon={{ type: 'material', name: "mail", size: 30 }}
+                                        onChangeText={ handleChange('email')}
+                                    />
+                                </View>
+                                <View id="mobile">
+                                    <Input
+                                        placeholder="Enter Mobile Number "
+                                        leftIcon={{ type: 'material', name: "call", size: 30 }}
+                                        onChangeText={ handleChange('mobile')}
+                                    />
+                                </View>
+                                <View id="password">
+                                    <Input
+                                        placeholder="Enter Password "
+                                        secureTextEntry={true}
+                                        leftIcon={{ type: 'material', name: "lock", size: 30 }}
+                                        onChangeText={ handleChange('password')}
+                                        
+                                    />
+                                </View>
 
+                                <View id="agreement">
+
+                                    <CheckBox
+                                        checked={states.agree}
+                                        onPress={()=>{updateStates('agree',!states.agree)}}
+                                        title="By signing up, you agree to our Terms & Conditions and Privacy Policy"
+                                    />
+                                </View>
+                                <TouchableOpacity onPress={handleSubmit} className=" bg-purple-400 rounded-md mx-auto px-[135px] py-1 my-8 drop-shadow-2xl justify-center items-center">
+                                    <Text className="text-2xl text-white">Sign Up</Text> 
+                                </TouchableOpacity>
+
+                                <View className="w-full flex flex-row justify-center items-center  inset-x-0 bottom-0 h-16">
+                                    <Text className="text-lg">Join us before? <Text className="font-semibold text-xl">Login</Text></Text>
+                                </View>
+
+                                {/* Below demostrates how it should work here  */}
+                                {/* <TextInput
+                                    onChangeText={handleChange('email')}
+                                    onBlur={handleBlur('email')}
+                                    value={values.email}
+                                />
+                                <Button onPress={handleSubmit} title="Submit" /> */}
+                            </View>
+                         )} 
+                    </Formik>
 
                 </View>
+                }
             </View>
         </View>
     )
