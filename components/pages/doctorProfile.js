@@ -64,7 +64,7 @@ export default function DoctorProfile(){
             <View className='container mt-4'>
                 {/* Profile space */}
                 <View className='container p-5 '>
-                    <View className='continer  justify-center items-center '>
+                    <View className='container  justify-center items-center '>
                         <Image  className='justify-center items-center ' source={personnel} />
                     </View>
                     {/* Name */}

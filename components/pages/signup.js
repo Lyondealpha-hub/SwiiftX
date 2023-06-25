@@ -4,8 +4,11 @@ import { FAB, Icon, Input, CheckBox, } from '@rneui/themed';
 import logo from '../../assets/logo.jpg';
 import { Formik } from 'formik';
 import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 export default function SignUp() {
+
+    const navigation = useNavigation()
 
     const [states, setStates] = useState({
         agree : false,
@@ -24,7 +27,7 @@ export default function SignUp() {
     }
 
     return (
-        <View className="container h-full">
+        <View className="container h-full bg-white">
             {/* TOP OPTIONS */}
             <View className="container  flex flex-row  justify-between  p-3">
                 <View className="w-1/2 flex-row justify-start ">
@@ -64,7 +67,7 @@ export default function SignUp() {
             <View className='w-full  justify-center items-center py-5'>
                 <Text className="text-3xl ">Welcome To</Text>
                 <View className='flex-row justify-items-center'>
-                    <Image className="w-36 h-36" source={logo} alt='' />
+                    <Image className="w-36 h-36 bg-transparent" source={logo} alt='' />
                 </View>
 
             </View>
@@ -79,7 +82,7 @@ export default function SignUp() {
 
                     <Formik
                         initialValues={{ email: '' }}
-                        onSubmit={values => console.log(values)}
+                        onSubmit={(values) => {console.log(values); navigation.navigate('BottomTab')}}
                     >
                         {({ handleChange, handleBlur, handleSubmit, values }) => (
                             <View>

@@ -5,6 +5,7 @@ import BottomNav from './components/navigaton/BottomNav';
 import Profile from './components/Modals/sheets/profile';
 import NavigationController from './components/hooks/navigationController';
 import SignUp from './components/pages/signup';
+import ProfileEdit from './components/pages/profileEdit';
 
 
 export default function App() {
@@ -16,7 +17,7 @@ export default function App() {
        <StatusBar style="auto"  />
          
            {/* <NavigationController /> */}
-           <SignUp />
+          <ProfileEdit />
 
   </View>
     </SafeAreaView>
