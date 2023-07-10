@@ -7,7 +7,7 @@ import { Share } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native-gesture-handler';
 
-export default function Profile (props){
+export default function Profile ({setOpenProfile}){
 
     const navigation = useNavigation()
 
@@ -26,7 +26,12 @@ export default function Profile (props){
 
     const MyAppointmentsLink =()=>{
         navigation.navigate('Appointments')
-        alert(props.setOpenProfile(false));
+        setOpenProfile !== undefined && setOpenProfile(false)
+
+    }
+    const LogOut =()=>{
+        navigation.navigate('Login')
+        setOpenProfile !== undefined && setOpenProfile(false)
     }
 
     const profile = [
@@ -39,7 +44,7 @@ export default function Profile (props){
         {id: 3, image: 'payment', label: 'Payments', },
         {id: 4, image: 'switch-account', label: 'Add account', },
         {id: 5, image: 'share', label: 'Invite friends via ...', button : CustomShare},
-        {id: 6, image: 'logout', label: 'Log out', },
+        {id: 6, image: 'logout', label: 'Log out', button : LogOut },
     ]
 
     return(

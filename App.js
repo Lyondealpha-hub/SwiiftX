@@ -16,8 +16,8 @@ export default function App() {
       <View  className='container h-full '>
        <StatusBar style="auto"  />
          
-           {/* <NavigationController /> */}
-          <ProfileEdit />
+           <NavigationController />
+          {/* <ProfileEdit /> */}
 
   </View>
     </SafeAreaView>
@@ -27,9 +27,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    
+    fontFamily: 'Narnoor'
   },
 });

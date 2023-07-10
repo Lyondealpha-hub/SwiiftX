@@ -69,7 +69,7 @@ export default function Home() {
       <View className='contianer h-1/6'>
         <ImageBackground resizeMode='cover' source={doc}  className='h-full flex  flex-row  mx-5 rounded-3xl py-1 '>
           <View className='w-4/5 justify-center px-3'>
-            <Text className='text-xl  text-white items-center flex-wrap-reverse'>Looking For Specialist Doctor?</Text>
+            <Text  className='text-xl  text-white items-center flex-wrap-reverse'>Looking For Specialist Doctor?</Text>
             <Text className='text-white'>Join with an Online consultation</Text>
           </View>
        
@@ -86,7 +86,7 @@ export default function Home() {
                     <View key={index} className='  px-4 justify-evenly items-center rounded-md shadow-2xl '>
                       <TouchableOpacity className=' items-center ' onPress={cat.trigger} >
                         <Image className='justify-center items-center ' source={cat.image}></Image>
-                        <Text className='items-center'>{cat.text}</Text>
+                        <Text style={fontFamilyM} className='items-center'>{cat.text}</Text>
                       </TouchableOpacity>
                     </View>
                   )
@@ -107,7 +107,7 @@ export default function Home() {
           {/* For Doctors Page */}
           <View className='container h-4/6 '>
             <View className='container flex flex-row justify-between items-center px-2'>
-              <Text className='text-2xl px-2 py-1 italic'>Featured Doctors</Text>
+              <Text style={fontFamilyDM} className='text-2xl px-2 py-1 italic'>Featured Doctors</Text>
               <TouchableOpacity><Text>View all</Text></TouchableOpacity>
             </View>
             <ScrollView showsVerticalScrollIndicator={false} className=' mx-3'>
@@ -123,14 +123,14 @@ export default function Home() {
 
                             {/* Content texts */}
                             <View className='w-4/6 justify-center '>
-                              <Text className='text-lg'>{doc.name} </Text>
-                              <Text className='text-sm '>{doc.occupation}</Text>
+                              <Text style={fontFamilyM} className='text-lg'>{doc.name} </Text>
+                              <Text style={fontFamilyM} className='text-sm '>{doc.occupation}</Text>
                                 {/* Rating and years in feild  */}
                                 <View className='w-full flex flex-row justify-between items-center '>
                                   {/* <Rating showRating  type='heart' ratingCount={3} imageSize={20} /> */}
                                     <View className='w-1/2 flex flex-row items-center'>
                                       <MaterialIcons name='history' size={22} />
-                                      <Text className='px-1'>{doc.years} Years</Text>
+                                      <Text style={fontFamilyM} className='px-1'>{doc.years} Years</Text>
                                     </View>
                                     {/* <Rating  imageSize={10} readonly={true} showRating={true}  showReadOnlyText={false} ratingCount={3} fractions={1} jumpValue={0.5}  className='flex-row-reverse text-xs' /> */}
                                     {/* <Text>10Yrs</Text> */}
@@ -144,9 +144,9 @@ export default function Home() {
 
                               {/* cost & button   */}
                               <View className=' flex flex-row justify-between items-center '>
-                                <Text className='w-2/5 justify-start'>Cost: ${doc.cost}</Text>
+                                <Text  className='w-2/5 justify-start'>Cost: ${doc.cost}</Text>
                                 <TouchableOpacity className='w-3/5 justify-end '>
-                                  <Text className='px-0.5' onPress={doc.pressable} >Book Appointment</Text>
+                                  <Text  className='px-0.5' onPress={doc.pressable} >Book Appointment</Text>
                                 </TouchableOpacity>
 
                               </View>
@@ -162,7 +162,7 @@ export default function Home() {
           {/* For products */}
           <View className='container  h-2/6 '>
           <View className='container flex flex-row justify-between items-center px-2'>
-              <Text className='text-2xl px-2 py-1 italic'>Best Delivery Products</Text>
+              <Text style={fontFamilyDM} className='text-2xl px-2 py-1 italic'>Best Delivery Products</Text>
               <TouchableOpacity><Text>View all</Text></TouchableOpacity>
             </View>
               <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}  className=' mx-3'>
@@ -219,4 +219,10 @@ export default function Home() {
 }
 
 
+const fontFamilyM = StyleSheet.create({
+  fontFamily: 'AvenirNext-Medium',
+})
+const fontFamilyDM = StyleSheet.create({
+  fontFamily: 'AvenirNext-DemiBold',
+})
 

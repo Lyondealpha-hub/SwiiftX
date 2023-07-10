@@ -4,17 +4,17 @@ import Profile from './sheets/profile'
 
 
 
-export default function UserProfileModal (props){
+export default function UserProfileModal ({openProfile, setOpenProfile}){
 
     
 
     return(
         <View className='container '>
-            <Modal visible={props.openProfile} animationType='slide' >
+            <Modal visible={openProfile} animationType='slide' >
                 <View className='container h-full '>
-                    <MaterialIcons style={{marginLeft: 17, marginTop: 60, shadowOpacity:'5px', shadowColor:'#fff', }} onPress={()=>{props.setOpenProfile(false)}} name={'close'} size={30}  />
+                    <MaterialIcons style={{marginLeft: 17, marginTop: 60, shadowOpacity:'5px', shadowColor:'#fff', }} onPress={()=>{setOpenProfile(false)}} name={'close'} size={30}  />
 
-                    <Profile setOpenProfile={props.setOpenProfile} />
+                    <Profile setOpenProfile={setOpenProfile} />
 
                 </View>
             </Modal>

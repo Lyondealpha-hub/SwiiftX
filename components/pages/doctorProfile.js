@@ -87,7 +87,7 @@ export default function DoctorProfile(){
                             <Text >Mon - Sun</Text>
                         </View>
 
-                        <Text className='text-xs container justify-center items-center'>9:30 AM -4:00 PM </Text>
+                        <Text className='text-xs container justify-center items-center'>9:30 AM - 4:00 PM </Text>
 
                     </View>
 
