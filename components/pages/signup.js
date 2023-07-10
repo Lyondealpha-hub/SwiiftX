@@ -48,7 +48,7 @@ export default function SignUp() {
 
                 <View className="w-1/2 flex-row justify-end ">
                     <FAB
-                        // visible={visible}
+                        visible={states.userPage}
                         onPress={() => { updateStates('userPage', false) }}
                         size='small'
                         title="Doctor"
@@ -133,7 +133,7 @@ export default function SignUp() {
                                     </TouchableOpacity>
 
                                     <View className="w-full flex flex-row justify-center items-center  inset-x-0 bottom-0 h-16">
-                                        <Text className="text-lg">Join us before? <Text className="font-semibold text-xl">Login</Text></Text>
+                                        <Text className="text-lg">Join us before? <TouchableOpacity onPress={() => { navigation.navigate('Login') }} ><Text className="font-semibold text-xl">Login</Text></TouchableOpacity></Text>
                                     </View>
 
                                     {/* Below demostrates how it should work here  */}
@@ -153,7 +153,7 @@ export default function SignUp() {
                         {/* Doctors signup */}
                         <Formik
                             initialValues={{ email: '' }}
-                            onSubmit={values => console.log(values)}
+                            onSubmit={(values) => { console.log(values); navigation.navigate('BottomTab') }}
                         >
                             {({ handleChange, handleBlur, handleSubmit, values }) => (
                                 <View>
@@ -204,16 +204,8 @@ export default function SignUp() {
                                     </TouchableOpacity>
 
                                     <View className="w-full flex flex-row justify-center items-center  inset-x-0 bottom-0 h-16">
-                                        <Text className="text-lg">Join us before? <Text className="font-semibold text-xl">Login</Text></Text>
+                                        <Text className="text-lg">Join us before? <TouchableOpacity onPress={() => { navigation.navigate('Login') }} ><Text className="font-semibold text-xl">Login</Text></TouchableOpacity></Text>
                                     </View>
-
-                                    {/* Below demostrates how it should work here  */}
-                                    {/* <TextInput
-                                    onChangeText={handleChange('email')}
-                                    onBlur={handleBlur('email')}
-                                    value={values.email}
-                                />
-                                <Button onPress={handleSubmit} title="Submit" /> */}
                                 </View>
                             )}
                         </Formik>
