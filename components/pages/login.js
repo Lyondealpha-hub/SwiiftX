@@ -6,7 +6,7 @@ import { Formik } from 'formik';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-export default function SignUp() {
+export default function Login() {
 
     const navigation = useNavigation()
 
@@ -48,7 +48,7 @@ export default function SignUp() {
 
                 <View className="w-1/2 flex-row justify-end ">
                     <FAB
-                        // visible={visible}
+                        visible={states.userPage}
                         onPress={() => { updateStates('userPage', false) }}
                         size='small'
                         title="Doctor"
@@ -65,7 +65,7 @@ export default function SignUp() {
 
             {/* Logo */}
             <View className='w-full  justify-center items-center py-5'>
-                <Text className="text-3xl ">Welcome To</Text>
+                <Text className="text-3xl ">Login To</Text>
                 <View className='flex-row justify-items-center'>
                     <Image className="w-36 h-36 bg-transparent" source={logo} alt='' />
                 </View>
@@ -86,13 +86,7 @@ export default function SignUp() {
                         >
                             {({ handleChange, handleBlur, handleSubmit, values }) => (
                                 <View>
-                                    <View id="username">
-                                        <Input
-                                            placeholder="Username or Full Name "
-                                            leftIcon={{ type: 'material', name: "person", size: 30 }}
-                                            onChangeText={handleChange('userName')}
-                                        />
-                                    </View>
+                                    
 
                                     <View id="email">
                                         <Input
@@ -103,13 +97,7 @@ export default function SignUp() {
                                             onChangeText={handleChange('email')}
                                         />
                                     </View>
-                                    <View id="mobile">
-                                        <Input
-                                            placeholder="Enter Mobile Number "
-                                            leftIcon={{ type: 'material', name: "call", size: 30 }}
-                                            onChangeText={handleChange('mobile')}
-                                        />
-                                    </View>
+                                    
                                     <View id="password">
                                         <Input
                                             placeholder="Enter Password "
@@ -120,20 +108,13 @@ export default function SignUp() {
                                         />
                                     </View>
 
-                                    <View id="agreement">
-
-                                        <CheckBox
-                                            checked={states.agree}
-                                            onPress={() => { updateStates('agree', !states.agree) }}
-                                            title="By signing up, you agree to our Terms & Conditions and Privacy Policy"
-                                        />
-                                    </View>
+                                    
                                     <TouchableOpacity onPress={handleSubmit} className=" bg-purple-400 rounded-md mx-auto px-[135px] py-1 my-8 drop-shadow-2xl justify-center items-center">
                                         <Text className="text-2xl text-white">Sign Up</Text>
                                     </TouchableOpacity>
 
                                     <View className="w-full flex flex-row justify-center items-center  inset-x-0 bottom-0 h-16">
-                                        <Text className="text-lg">Join us before? <Text className="font-semibold text-xl">Login</Text></Text>
+                                    <Text className="text-lg">Are you New? <TouchableOpacity onPress={()=>{navigation.navigate('SignUp')}} ><Text className="font-semibold text-xl">SignUp</Text></TouchableOpacity></Text>
                                     </View>
 
                                     {/* Below demostrates how it should work here  */}
@@ -153,7 +134,7 @@ export default function SignUp() {
                         {/* Doctors signup */}
                         <Formik
                             initialValues={{ email: '' }}
-                            onSubmit={values => console.log(values)}
+                            onSubmit={(values) => { console.log(values); navigation.navigate('BottomTab') }}
                         >
                             {({ handleChange, handleBlur, handleSubmit, values }) => (
                                 <View>
@@ -174,13 +155,7 @@ export default function SignUp() {
                                             onChangeText={handleChange('email')}
                                         />
                                     </View>
-                                    <View id="mobile">
-                                        <Input
-                                            placeholder="Enter Mobile Number "
-                                            leftIcon={{ type: 'material', name: "call", size: 30 }}
-                                            onChangeText={handleChange('mobile')}
-                                        />
-                                    </View>
+                                    
                                     <View id="password">
                                         <Input
                                             placeholder="Enter Password "
@@ -191,29 +166,14 @@ export default function SignUp() {
                                         />
                                     </View>
 
-                                    <View id="agreement">
-
-                                        <CheckBox
-                                            checked={states.agree}
-                                            onPress={() => { updateStates('agree', !states.agree) }}
-                                            title="By signing up, you agree to our Terms & Conditions and Privacy Policy"
-                                        />
-                                    </View>
+                                    
                                     <TouchableOpacity onPress={handleSubmit} className=" bg-purple-400 rounded-md mx-auto px-[135px] py-1 my-8 drop-shadow-2xl justify-center items-center">
                                         <Text className="text-2xl text-white">Sign Up</Text>
                                     </TouchableOpacity>
 
                                     <View className="w-full flex flex-row justify-center items-center  inset-x-0 bottom-0 h-16">
-                                        <Text className="text-lg">Join us before? <Text className="font-semibold text-xl">Login</Text></Text>
+                                    <Text className="text-lg">Are you New? <TouchableOpacity onPress={()=>{navigation.navigate('SignUp')}} ><Text className="font-semibold text-xl">SignUp</Text></TouchableOpacity></Text>
                                     </View>
-
-                                    {/* Below demostrates how it should work here  */}
-                                    {/* <TextInput
-                                    onChangeText={handleChange('email')}
-                                    onBlur={handleBlur('email')}
-                                    value={values.email}
-                                />
-                                <Button onPress={handleSubmit} title="Submit" /> */}
                                 </View>
                             )}
                         </Formik>

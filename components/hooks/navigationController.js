@@ -11,7 +11,11 @@ import settings from "../pages/settings";
 import Pharmacy from "../pages/pharmacy";
 import Cart from "../pages/cart";
 import SignUp from "../pages/signup";
+<<<<<<< HEAD
 import ProfileEdit from "../pages/profileEdit";
+=======
+import Login from "../pages/login";
+>>>>>>> 16822a925b240451e4a646994f66a58e09c98b30
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +23,7 @@ export default function NavigationController() {
     return (
         <NavigationContainer >
             <Stack.Navigator >
+<<<<<<< HEAD
                 <Stack.Screen options={{ headerLargeTitle: false, headerShown: false, headerLargeTitleStyle: { fontSize: '28', fontWeight: 'lighter' }, headerTransparent: false, headerShadowVisible: false, animation: 'default' }} name='SignUp' component={SignUp} />
                 <Stack.Screen options={{ headerLargeTitle: false, headerShown: false, }} name='BottomTab' component={BottomNav} />
                 <Stack.Screen options={{ headerLargeTitle: false, headerShown: true, headerLargeTitleStyle: { fontSize: '28', fontWeight: 'lighter' }, headerTransparent: false, headerShadowVisible: false, animation: 'default' }} name='Edit Profile' component={ProfileEdit} />
@@ -29,6 +34,16 @@ export default function NavigationController() {
 
                 <Stack.Screen options={{ headerLargeTitle: false, headerShown: true, headerLargeTitleStyle: { fontSize: '28', fontWeight: 'lighter' }, headerTransparent: false, headerShadowVisible: true, animation: 'default' }} name='Pharmacy' component={Pharmacy} />
                 <Stack.Screen options={{ headerLargeTitle: true, headerShown: true, headerLargeTitleStyle: { fontSize: '28', fontWeight: 'lighter' }, headerTransparent: true, headerShadowVisible: true, animation: 'default' }} name='Settings' component={settings} />
+=======
+                <Stack.Screen options={{headerLargeTitle : false,headerShown: false, headerLargeTitleStyle:{fontSize:'28',fontWeight:'lighter'}, headerTransparent:false, headerShadowVisible: false, animation:'default'  }} name= 'SignUp' component={SignUp} />
+                <Stack.Screen options={{headerLargeTitle : false,headerShown: false, headerLargeTitleStyle:{fontSize:'28',fontWeight:'lighter'}, headerTransparent:false, headerShadowVisible: false, animation:'default'  }} name= 'Login' component={Login} />
+                <Stack.Screen options={{headerLargeTitle : false,headerShown: false, }} name= 'BottomTab' component={BottomNav} />
+                <Stack.Screen options={{headerLargeTitle : true,headerShown: true, headerLargeTitleStyle:{fontSize:'28',fontWeight:'lighter'}, headerTransparent:false, headerShadowVisible: true, animation:'default'  }} name= 'Appointments' component={MyAppointmentsNavigation} />
+                <Stack.Screen options={{headerLargeTitle : false,headerShown: true, headerLargeTitleStyle:{fontSize:'28',fontWeight:'lighter'}, headerTransparent:false, headerShadowVisible: true, animation:'default'  }} name= 'Doctor Profile' component={DoctorProfile} />
+                <Stack.Screen options={{headerLargeTitle : false,headerShown: true, headerLargeTitleStyle:{fontSize:'28',fontWeight:'lighter'}, headerTransparent:false, headerShadowVisible: false, animation:'default'  }} name= 'MyCart' component={Cart} />
+                <Stack.Screen options={{headerLargeTitle : false,headerShown: true, headerLargeTitleStyle:{fontSize:'28',fontWeight:'lighter'}, headerTransparent:false, headerShadowVisible: true, animation:'default'  }} name= 'Pharmacy' component={Pharmacy} />
+                <Stack.Screen options={{headerLargeTitle : true,headerShown: true, headerLargeTitleStyle:{fontSize:'28',fontWeight:'lighter'}, headerTransparent:true, headerShadowVisible: true, animation:'default'  }} name= 'Settings' component={settings} />
+>>>>>>> 16822a925b240451e4a646994f66a58e09c98b30
             </Stack.Navigator>
         </NavigationContainer>
     )

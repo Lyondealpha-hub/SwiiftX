@@ -26,7 +26,7 @@ export default function MyAppointmentsCompleted(){
                 // Card design
                   <View key={index} className='container h-40  p-1 mb-2 bg-white rounded-xl shadow-2xl '>
                     <View className='flex justify-center items-center bg-purple-600 py-2 rounded-t-xl'>
-                        <Text>Schediel tome and datyu here</Text>
+                        <Text className="text-white">Schediel tome and datyu here</Text>
                     </View>
                     
                     {/* Profile */}
