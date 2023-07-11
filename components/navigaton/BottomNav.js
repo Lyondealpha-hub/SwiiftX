@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Home from './screens/Home';
 import Chat from './screens/Chat';
+import MyAppointmentsNavigation from './MyAppointmentsNav'
 import { Ionicons } from '@expo/vector-icons';
 import ChatNavigation from './ChatNav';
 
@@ -52,7 +53,7 @@ function BottomNav() {
 
     >
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Appointments" component={Home} />
+      <Tab.Screen name="Appointments" component={MyAppointmentsNavigation} />
       <Tab.Screen name="Orders" component={Home} />
       <Tab.Screen name="Chat" component={ChatNavigation} />
     </Tab.Navigator>

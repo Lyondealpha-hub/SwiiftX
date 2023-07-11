@@ -23,9 +23,9 @@ export default function TopNav() {
   return (
     <View className='mt-2'>
       <View className='container flex flex-row   justify-between items-center'>
-        <TouchableOpacity className='w-1/2  justify-start pl-4 items-center  flex flex-row' onPress={()=>{setOpenProfile(true)}}>
+        <TouchableOpacity className='w-1/2 space-x-2 justify-start pl-4 items-center  flex flex-row' onPress={()=>{setOpenProfile(true)}}>
             <Image  className='justify-center items-center ' source={user} />
-            {/* <Text className=' items-center'>Hello Good Morning!</Text> */}
+            <Text style={fontFamily.BHeading} className=' text-lg items-center'>Hello Good Morning!</Text>
         </TouchableOpacity>
 
         <View className='w-1/2 justify-end flex flex-row '>
@@ -65,4 +65,16 @@ const navStyles = StyleSheet.create({
     
     
   },
+})
+
+const fontFamily = StyleSheet.create({
+  mediumHeading: {
+      fontFamily: 'AppleSDGothicNeo-Medium',
+  },
+  semiBHeading: {
+      fontFamily: 'AppleSDGothicNeo-SemiBold',
+  },
+  BHeading: {
+      fontFamily: 'AppleSDGothicNeo-Bold',
+  }
 })

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import personnel from './../../assets/personnel.png';
 import doctor from './../../assets/doctor.png';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -19,14 +19,14 @@ export default function MyAppointmentsCompleted(){
     return(
         <View className='container h-screen  mt-5 bg-white'>
             <ScrollView  showsVerticalScrollIndicator={false}  alwaysBounceVertical={true}  >
-          <View className='container h-full px-3'> 
+          <View className='container h-full px-2'> 
           {
             appointments.map((doc, index)=>{
               return(
                 // Card design
-                  <View key={index} className='container h-40  p-1 mb-2 bg-white rounded-xl shadow-2xl '>
-                    <View className='flex justify-center items-center bg-purple-600 py-2 rounded-t-xl'>
-                        <Text className="text-white">Schediel tome and datyu here</Text>
+                  <View key={index} className='container h-40  mb-2 bg-white rounded-xl shadow-2xl '>
+                    <View className='flex justify-center h-12 mb-0.5 items-center bg-purple-400 py-2 rounded-t-xl'>
+                        <Text style={fontFamily.BHeading} className="text-white">Schediel tome and datyu here</Text>
                     </View>
                     
                     {/* Profile */}
@@ -37,20 +37,20 @@ export default function MyAppointmentsCompleted(){
 
                         {/* Content texts */}
                         <View className='w-4/6 justify-center '>
-                            <Text className='text-lg'>{doc.name} </Text>
-                            <Text className='text-sm '>{doc.occupation}</Text>
+                            <Text style={fontFamily.BHeading} className='text-lg'>{doc.name} </Text>
+                            <Text style={fontFamily.mediumHeading} className='text-sm '>{doc.occupation}</Text>
                         </View>
                     </View>
                     {/* reschedule & accp   */}
                     <View className='container p-1.5 flex flex-row justify-between items-center '>
                         <TouchableOpacity className='w-1/2 items-center flex flex-row justify-center'>
                             <MaterialIcons name='view-headline' size={30} color={'purple'} />
-                            <Text className=' text-lg'>View</Text>
+                            <Text style={fontFamily.mediumHeading} className=' text-lg'>View</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity className='w-1/2 items-center flex flex-row  justify-center'>
                             <MaterialIcons name='verified' size={30} color={'blue'} />
-                          <Text className='text-lg' >Completed</Text>
+                          <Text style={fontFamily.mediumHeading} className='text-lg' >Completed</Text>
                         </TouchableOpacity>
 
                       </View>
@@ -65,3 +65,15 @@ export default function MyAppointmentsCompleted(){
         </View>
     )
 }
+
+const fontFamily = StyleSheet.create({
+  mediumHeading: {
+      fontFamily: 'AppleSDGothicNeo-Medium',
+  },
+  semiBHeading: {
+      fontFamily: 'AppleSDGothicNeo-SemiBold',
+  },
+  BHeading: {
+      fontFamily: 'AppleSDGothicNeo-Bold',
+  }
+})
