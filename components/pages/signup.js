@@ -133,7 +133,7 @@ export default function SignUp() {
                                     </TouchableOpacity>
 
                                     <View className="w-full flex flex-row justify-center items-center  inset-x-0 bottom-0 h-16">
-                                        <Text className="text-lg">Join us before? <TouchableOpacity onPress={()=>{navigation.navigate('Login')}} ><Text className="font-semibold text-xl">Login</Text></TouchableOpacity></Text>
+                                        <Text className="text-lg">Join us before? <TouchableOpacity onPress={() => { navigation.navigate('Login') }} ><Text className="font-semibold text-xl">Login</Text></TouchableOpacity></Text>
                                     </View>
 
                                     {/* Below demostrates how it should work here  */}
@@ -204,7 +204,7 @@ export default function SignUp() {
                                     </TouchableOpacity>
 
                                     <View className="w-full flex flex-row justify-center items-center  inset-x-0 bottom-0 h-16">
-                                        <Text className="text-lg">Join us before? <TouchableOpacity onPress={()=>{navigation.navigate('Login')}} ><Text className="font-semibold text-xl">Login</Text></TouchableOpacity></Text>
+                                        <Text className="text-lg">Join us before? <TouchableOpacity onPress={() => { navigation.navigate('Login') }} ><Text className="font-semibold text-xl">Login</Text></TouchableOpacity></Text>
                                     </View>
                                 </View>
                             )}

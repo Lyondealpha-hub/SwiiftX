@@ -17,17 +17,42 @@ import cart from '../../../assets/shopping-cart.png';
 import { AirbnbRating, Rating } from 'react-native-ratings';
 import { useNavigation } from '@react-navigation/native';
 import { Stack, Surface, Box, Wrap } from '@react-native-material/core'
+<<<<<<< HEAD
+=======
+import PharmacyModal from '../../Modals/pharmacyModal';
+import { useState } from 'react';
+>>>>>>> 050bbf1004cadf3ac8c7b35797ca82cc2ae07923
 
 
 export default function Home() {
 
   const navigation = useNavigation()
 
+<<<<<<< HEAD
+=======
+  const [states, setStates] = useState({
+    openPharmacyModal: false,
+  })
+
+  // const updateStates = (key, value) => {
+  //   setStates((prev) => ({ ...prev, [key]: value }))
+  // }
+
+>>>>>>> 050bbf1004cadf3ac8c7b35797ca82cc2ae07923
   const DoctorsLink = () => {
     navigation.navigate('Doctor Profile')
     alert('Welcome to Doctor Profile');
   }
 
+<<<<<<< HEAD
+=======
+  // const buyProduct = () => {
+  //   updateStates('openPharmacyModal', true)
+  // }
+
+  const [openModal, setOpenModal] = useState(false)
+
+>>>>>>> 050bbf1004cadf3ac8c7b35797ca82cc2ae07923
   // Categories
   const categories = [
     { id: 0, image: doctor, text: 'Doctor' },
@@ -45,6 +70,7 @@ export default function Home() {
   ]
 
   const products = [
+<<<<<<< HEAD
     { id: 0, image: erp, text: 'Doctor', price: 30.00, buy: cart },
     { id: 1, image: perp1, text: 'Checkup', price: 30.00, buy: cart },
     { id: 2, image: prep, text: 'Lab', price: 30.00, buy: cart },
@@ -53,6 +79,16 @@ export default function Home() {
     { id: 5, image: prep, text: 'Pharmacy', price: 30.00, buy: cart },
     { id: 6, image: erp, text: 'Pharmacy', price: 30.00, buy: cart },
     { id: 7, image: perp1, text: 'Pharmacy', price: 30.00, buy: cart },
+=======
+    { id: 0, image: erp, text: 'Doctor', price: 30.00, buy: cart, },
+    { id: 1, image: perp1, text: 'Checkup', price: 30.00, buy: cart, },
+    { id: 2, image: prep, text: 'Lab', price: 30.00, buy: cart, },
+    { id: 3, image: erp, text: 'Pharmacy', price: 30.00, buy: cart, },
+    { id: 4, image: perp1, text: 'Pharmacy', price: 30.00, buy: cart, },
+    { id: 5, image: prep, text: 'Pharmacy', price: 30.00, buy: cart, },
+    { id: 6, image: erp, text: 'Pharmacy', price: 30.00, buy: cart, },
+    { id: 7, image: perp1, text: 'Pharmacy', price: 30.00, buy: cart, },
+>>>>>>> 050bbf1004cadf3ac8c7b35797ca82cc2ae07923
 
   ]
 
@@ -62,9 +98,19 @@ export default function Home() {
 
 
   return (
+<<<<<<< HEAD
     <View className='container h-full' >
       <TopNav />
 
+=======
+    <View className='container' >
+      <TopNav />
+
+      <View>
+        <PharmacyModal openModal={openModal} setOpenModal={setOpenModal} />
+      </View>
+
+>>>>>>> 050bbf1004cadf3ac8c7b35797ca82cc2ae07923
       {/* Image render */}
       <View className='contianer h-1/6'>
         <ImageBackground resizeMode='cover' source={doc} className='h-full flex  flex-row  mx-5 rounded-3xl py-1 '>
@@ -103,7 +149,11 @@ export default function Home() {
 
       <ScrollView>
         {/* Parent div */}
+<<<<<<< HEAD
         <View className=' container h-screen'>
+=======
+        <View className=' container h-full'>
+>>>>>>> 050bbf1004cadf3ac8c7b35797ca82cc2ae07923
           {/* For Doctors Page */}
           <View className='container h-4/6 '>
             <View className='container flex flex-row justify-between items-center px-2'>
@@ -153,11 +203,28 @@ export default function Home() {
                       </View>
 
 
+<<<<<<< HEAD
+=======
+
+
+                      {/* cost & button   */}
+                      <View className=' flex flex-row justify-between items-center '>
+                        <Text className='w-2/5 justify-start'>Cost: ${doc.cost}</Text>
+                        <TouchableOpacity className='w-3/5 justify-end '>
+                          <Text className='px-0.5' onPress={doc.pressable} >Book Appointment</Text>
+                        </TouchableOpacity>
+
+                      </View>
+
+
+
+>>>>>>> 050bbf1004cadf3ac8c7b35797ca82cc2ae07923
                     </TouchableOpacity>
                   )
                 })
               }
             </ScrollView>
+<<<<<<< HEAD
           </View>
           {/* For products */}
           <View className='container  h-2/6 '>
@@ -197,9 +264,45 @@ export default function Home() {
                 )
               })}
             </ScrollView>
+=======
 
+            {/* For products */}
+            <View className='container  h-2/6 '>
+              <View className='container flex flex-row justify-between items-center px-2'>
+                <Text style={fontFamilyDM} className='text-2xl px-2 py-1 italic'>Best Delivery Products</Text>
+                <TouchableOpacity><Text>View all</Text></TouchableOpacity>
+              </View>
+              <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} className=' mx-3'>
+                {products.map((prod, index) => {
+                  return (
+
+                    <Surface elevation={6} style={{ marginHorizontal: 5, marginVertical: 5 }} >
+                      <Wrap shouldWrapChildren={true} m={4} className='container'>
+                        <TouchableOpacity onPress={() => { setOpenModal(true) }} className=' items-center ' style={{ width: '100%', height: 700 }}>
+                          <View style={{ width: 160, height: 230 }} className='justify-center items-center' >
+                            <Image style={{ width: 150, height: 190 }} className='justify-center flex-row items-center' source={prod.image}></Image>
+
+                            <View className='flex flex-row justify-between items-center w-full p-2'>
+                              <Text className='items-center'>GHC {prod.price}</Text>
+                              <Image source={prod.buy} />
+                            </View>
+                          </View>
+
+                        </TouchableOpacity>
+                      </Wrap>
+
+                      {/* // </View>  */}
+                    </Surface>
+
+                  )
+                })}
+              </ScrollView>
+>>>>>>> 050bbf1004cadf3ac8c7b35797ca82cc2ae07923
+
+            </View>
           </View>
         </View>
+<<<<<<< HEAD
 
         {/* other details  */}
         <View className="container">
@@ -233,7 +336,14 @@ export default function Home() {
 
 
 
+=======
+      </ScrollView>
+
+>>>>>>> 050bbf1004cadf3ac8c7b35797ca82cc2ae07923
     </View>
+
+
+
   )
 }
 

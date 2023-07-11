@@ -9,25 +9,26 @@ import ProfileEdit from './components/pages/profileEdit';
 
 
 export default function App() {
- 
-  return (
-     
-    <SafeAreaView>
-      <View  className='container h-full '>
-       <StatusBar style="auto"  />
-         
-           <NavigationController />
-          {/* <ProfileEdit /> */}
 
-  </View>
+
+  return (
+
+    <SafeAreaView>
+      <View className='container h-full '>
+        <StatusBar style="auto" />
+
+        <NavigationController />
+        {/* <ProfileEdit /> */}
+
+      </View>
     </SafeAreaView>
-     
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    
+
     fontFamily: 'Narnoor'
   },
 });
