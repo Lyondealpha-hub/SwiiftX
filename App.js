@@ -1,20 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { SafeAreaView, View, StyleSheet } from 'react-native';
+import BottomNav from './components/navigaton/BottomNav';
+import Profile from './components/Modals/sheets/profile';
+import NavigationController from './components/hooks/navigationController';
+import SignUp from './components/pages/signup';
+import ProfileEdit from './components/pages/profileEdit';
+
 
 export default function App() {
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+    <SafeAreaView>
+      <View className='container h-full '>
+        <StatusBar style="auto" />
+
+        <NavigationController />
+        {/* <ProfileEdit /> */}
+
+      </View>
+    </SafeAreaView>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+
+    fontFamily: 'Narnoor'
   },
 });
