@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
-import { Avatar, Button } from '@rneui/themed';
+import { Avatar, Button,Divider  } from '@rneui/themed';
 import user from '../../../assets/user.png';
 import settings_cog from '../../../assets/settings-cog.png';
 import cart from '../../../assets/shopping-cart.png';
@@ -70,6 +70,7 @@ export default function TopNav({ isSearch }) {
               </View>
 
           </View>
+
 
           {/* button */}
           <View className='w-[30%]'>
