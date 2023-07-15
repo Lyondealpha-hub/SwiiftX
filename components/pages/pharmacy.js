@@ -39,7 +39,7 @@ export default function Pharmacy() {
 
   return (
     <View className='container '>
-        <TopNav />
+        <TopNav isSearch={true} />
         <View className='container'>
             <Text className='text-2xl px-3'>Categories</Text>
         </View>

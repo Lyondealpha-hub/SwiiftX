@@ -80,7 +80,7 @@ export default function Home() {
 
   return (
     <View className='container ' >
-      <TopNav />
+      <TopNav isSearch={false} />
 
       <View>
         <PharmacyModal openModal={openModal} setOpenModal={setOpenModal} />
