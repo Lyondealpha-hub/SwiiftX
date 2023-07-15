@@ -39,6 +39,7 @@ export default function Home() {
     alert('Welcome to Doctor Profile');
   }
 
+
   // const buyProduct = () => {
   //   updateStates('openPharmacyModal', true)
   // }
@@ -49,7 +50,7 @@ export default function Home() {
   const categories = [
     { id: 0, image: doctor, text: 'Doctor' },
     { id: 1, image: checkup, text: 'Checkup' },
-    { id: 2, image: lab, text: 'Lab' },
+    { id: 2, image: lab, text: 'Lab', trigger: () => { navigation.navigate('Labs') } },
     { id: 3, image: aid, text: 'Pharmacy', trigger: () => { navigation.navigate('Pharmacy') } },
 
   ]
@@ -107,7 +108,7 @@ export default function Home() {
                 <View key={index} className='  px-4 justify-evenly items-center rounded-md shadow-2xl '>
                   <TouchableOpacity className=' items-center ' onPress={cat.trigger} >
                     <Image className='justify-center items-center ' source={cat.image}></Image>
-                    <Text style={fontFamily.mediumHeading} className='items-center'>{cat.text}</Text>
+                    <Text style={fontFamily.mediumHeading} className='items-center pb-2'>{cat.text}</Text>
                   </TouchableOpacity>
                 </View>
               )
@@ -186,7 +187,7 @@ export default function Home() {
             <View className='container  h-2/6 my-0 '>
               <View className='container flex flex-row justify-between items-center px-2'>
                 <Text style={fontFamily.BHeading} className='text-2xl px-2 py-1 text-slate-800'>Best Delivery Products</Text>
-                <TouchableOpacity onPress={()=>{navigation.navigate('Pharmacy')}}><Text style={fontFamily.BHeading}>View all</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => { navigation.navigate('Pharmacy') }}><Text style={fontFamily.BHeading}>View all</Text></TouchableOpacity>
               </View>
               <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} className=' mx-3'>
                 {products.map((prod, index) => {
@@ -214,7 +215,7 @@ export default function Home() {
                 })}
               </ScrollView>
 
-              
+
 
             </View>
 
@@ -222,31 +223,31 @@ export default function Home() {
           {/* End of Doctors and pharmacy */}
 
 
-           {/* Other details */}
+          {/* Other details */}
           <View className='container  h-full'>
-              <View className='container m-4'>
-                <Button buttonStyle={{ width: '30%', paddingHorizontal: 5, }} color={'gray'} radius={'sm'} type="solid">
+            <View className='container m-4'>
+              <Button buttonStyle={{ width: '30%', paddingHorizontal: 5, }} color={'gray'} radius={'sm'} type="solid">
 
-                  <Icon name="save" color="white" />
-                  Upload
+                <Icon name="save" color="white" />
+                Upload
 
-                </Button>
-              </View>
+              </Button>
+            </View>
 
-              {/* display recent uploaded content */}
-              <View className=''>
-                <ListItem
-                  leadingMode="avatar"
-                  leading={
-                    <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} />
-                  }
-                  title="Preview uploaded Prescriptions..."
-                  secondaryText="myPrescriptions.pdf"
-                />
-
-              </View>
+            {/* display recent uploaded content */}
+            <View className=''>
+              <ListItem
+                leadingMode="avatar"
+                leading={
+                  <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} />
+                }
+                title="Preview uploaded Prescriptions..."
+                secondaryText="myPrescriptions.pdf"
+              />
 
             </View>
+
+          </View>
         </View>
       </ScrollView>
 
