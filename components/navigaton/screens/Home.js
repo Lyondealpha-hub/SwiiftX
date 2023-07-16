@@ -89,7 +89,7 @@ export default function Home() {
 
       {/* Image render */}
       <View className='contianer h-1/6'>
-        <ImageBackground resizeMode='cover' source={doc} className='h-full flex  flex-row  mx-5 rounded-3xl py-1 '>
+        <ImageBackground resizeMode='cover' source={doc} className='h-full flex  flex-row  mx-2 rounded-3xl py-1 '>
           <View className='w-4/5 justify-center px-3'>
             <Text className='text-xl  text-white items-center flex-wrap-reverse'>Looking For Specialist Doctor?</Text>
             <Text className='text-white'>Join with an Online consultation</Text>
