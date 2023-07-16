@@ -1,17 +1,17 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import TopNav from '../navigaton/reusable/TopNav';
 import InputTemplate from '../templates/inputTemplate';
-import { Stack, Surface, Box, Wrap, ListItem, Avatar } from '@react-native-material/core'
-
+import { ListItem, Icon } from '@rneui/themed';
+import redoarrow from '../../assets/redoarrow.png'
 
 export default function Labs() {
 
     const labList = [
-        { id: 0, label: 'Add Tests', desc: 'Add previous tests to lab list' },
-        { id: 1, label: 'Add Health Checkups', desc: 'Add previous tests to lab list' },
-        { id: 2, label: 'Questionnaire Test', desc: 'Add previous tests to lab list' },
-        { id: 3, label: 'Upload prescription', desc: 'Add previous tests to lab list' },
+        { id: 0, label: 'Add Tests', desc: 'Add previous tests to lab list', bg: 'violet' },
+        { id: 1, label: 'Add Health Checkups', desc: 'Add previous tests to lab list', bg: 'pink' },
+        { id: 2, label: 'Questionnaire Test', desc: 'Add previous tests to lab list', bg: 'violet' },
+        { id: 3, label: 'Upload prescription', desc: 'Add previous tests to lab list', bg: 'pink' },
     ]
 
     return (
@@ -55,18 +55,25 @@ export default function Labs() {
                 </View>
                 {/* End of input feilds */}
 
-                <View className='container my-4 px-3 '>
+                <View className='container my-1 px-3 '>
 
-                    {labList.map(({ id, label, desc }) => {
+                    {labList.map(({ id, label, desc, bg }) => {
                         return (
                             <View key={id} className='container py-1 rounded-xl '>
                                 <ListItem
-                                    // leadingMode="avatar"
-                                    title={label}
-                                    secondaryText={desc}
+                                    bottomDivider={true}
+                                    containerStyle={{ borderRadius: 15, backgroundColor: bg }}
+                                    className={`py-2.5 rounded-xl `}
 
-
-                                />
+                                >
+                                    <ListItem.Content className={`py-2.5 rounded-xl  `}>
+                                        <ListItem.Title className='py-1'>{label}</ListItem.Title>
+                                        <ListItem.Subtitle className='text-xs'>{desc}</ListItem.Subtitle>
+                                    </ListItem.Content>
+                                    {/* <ListItem.Chevron /> */}
+                                    <Image source={redoarrow} alt="" />
+                                    {/* <Icon name="inbox" type="material-community" color="grey" /> */}
+                                </ListItem>
 
                             </View>
 

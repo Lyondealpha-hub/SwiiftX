@@ -74,7 +74,7 @@ export default function TopNav({ isSearch }) {
 
           {/* button */}
           <View className='w-[30%]'>
-            <Button buttonStyle={{ borderRadius: 20, }} >
+            <Button color={'purple'} buttonStyle={{ borderRadius: 20, }} >
               Call
             </Button>
           </View>

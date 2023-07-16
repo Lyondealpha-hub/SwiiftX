@@ -226,7 +226,7 @@ export default function Home() {
           {/* Other details */}
           <View className='container  h-full'>
             <View className='container m-4'>
-              <Button buttonStyle={{ width: '30%', paddingHorizontal: 5, }} color={'gray'} radius={'sm'} type="solid">
+              <Button buttonStyle={{ width: '30%', paddingHorizontal: 5, borderRadius: 10 }} color={'purple'} radius={'sm'} type="solid">
 
                 <Icon name="save" color="white" />
                 Upload
