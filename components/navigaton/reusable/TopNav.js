@@ -14,10 +14,11 @@ import UserProfileModal from '../../Modals/userModal';
 
 
 
-export default function TopNav({ isSearch }) {
+export default function TopNav({ isSearch, setOpenSheet }) {
   const navigation = useNavigation()
 
   const [openProfile, setOpenProfile] = useState(false)
+  const [sheet, setSheet] = useState(false)
 
 
 
@@ -27,7 +28,7 @@ export default function TopNav({ isSearch }) {
       <View className='container flex flex-row   justify-between items-center'>
         <TouchableOpacity className='w-1/2 space-x-2 justify-start pl-4 items-center  flex flex-row' onPress={() => { setOpenProfile(true) }}>
           <Image className='justify-center items-center ' source={user} />
-          <Text style={fontFamily.BHeading} className=' text-lg items-center'>Hello Good Morning!</Text>
+          <Text style={fontFamily.BHeading} className=' text-lg items-center'>Hey Swiifie! </Text>
         </TouchableOpacity>
 
         <View className='w-1/2 justify-end flex flex-row '>
@@ -74,7 +75,7 @@ export default function TopNav({ isSearch }) {
 
           {/* button */}
           <View className='w-[30%]'>
-            <Button buttonStyle={{borderRadius: 20,}} >
+            <Button buttonStyle={{borderRadius: 20,}} onPress={()=>{setOpenSheet(!sheet)}} >
               Call
             </Button>
           </View>

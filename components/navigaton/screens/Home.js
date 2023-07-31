@@ -20,6 +20,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Stack, Surface, Box, Wrap, ListItem, Avatar } from '@react-native-material/core'
 import PharmacyModal from '../../Modals/pharmacyModal';
 import { useState } from 'react';
+import { BottomSheetComp } from '../../templates/bottomSheet';
 
 
 export default function Home() {
@@ -44,6 +45,7 @@ export default function Home() {
   // }
 
   const [openModal, setOpenModal] = useState(false)
+  const [openSheet, setOpenSheet] = useState(false)
 
   // Categories
   const categories = [
@@ -76,11 +78,24 @@ export default function Home() {
   //  Rating reviews 
   const rating = ['1', '2.5', '3.5', '4.8', '5',]
 
+  // bottomSheet
+  const list = [
+    { title: '055 735 6616' },
+    { title: 'Send a feedback' },
+    {
+      title: 'Cancel',
+      containerStyle: { backgroundColor: 'red' },
+      titleStyle: { color: 'white' },
+      onPress: () => setOpenSheet(false),
+    },
+  ];
+
 
 
   return (
     <View className='container ' >
-      <TopNav isSearch={false} />
+      <TopNav isSearch={false} setOpenSheet={setOpenSheet} />
+      <BottomSheetComp isVisible={openSheet} list={list}  />
 
       <View>
         <PharmacyModal openModal={openModal} setOpenModal={setOpenModal} />
