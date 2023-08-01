@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
-import { Avatar, Button,Divider  } from '@rneui/themed';
+import { Avatar, Button, Divider } from '@rneui/themed';
 import user from '../../../assets/user.png';
 import settings_cog from '../../../assets/settings-cog.png';
 import cart from '../../../assets/shopping-cart.png';
@@ -59,16 +59,16 @@ export default function TopNav({ isSearch, setOpenSheet }) {
           {/* image and text */}
           <View className='w-containerflex flex-row '>
             <Avatar
-                size={60}
-                avatarStyle={{borderRadius: 100,}}
-                source={help}
-                // key={`${chunkIndex}-${i}`}
-              />
+              size={60}
+              avatarStyle={{ borderRadius: 100, }}
+              source={help}
+            // key={`${chunkIndex}-${i}`}
+            />
 
-              <View className='justify-start px-2 items-start space-y-0.5'>
-                <Text  className='font-bold '>Need Help ?</Text>
-                <Text style={fontFamily.mediumHeading} className='font-medium' >Request a call back </Text>
-              </View>
+            <View className='justify-start px-2 items-start space-y-0.5'>
+              <Text className='font-bold '>Need Help ?</Text>
+              <Text style={fontFamily.mediumHeading} className='font-medium' >Request a call back </Text>
+            </View>
 
           </View>
 
@@ -79,11 +79,11 @@ export default function TopNav({ isSearch, setOpenSheet }) {
               Call
             </Button>
           </View>
-          
+
 
         </View>
 
-  }
+      }
 
 
       <UserProfileModal openProfile={openProfile} setOpenProfile={setOpenProfile} />
