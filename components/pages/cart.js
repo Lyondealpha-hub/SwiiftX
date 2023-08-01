@@ -107,15 +107,10 @@ export default Cart
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-    container: {
-        flex: 1,
     },
 
     header: {
-    header: {
         flex: 7,
-        width: '100%',
-        height: '100%',
         width: '100%',
         height: '100%',
     },
