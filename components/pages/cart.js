@@ -4,8 +4,11 @@ import { } from 'react-native-gesture-handler'
 import { Icon } from '@rneui/themed'
 import clock from '../../assets/clock1.png'
 import pin from '../../assets/pin.png'
+import { useNavigation } from '@react-navigation/native'
 
 const Cart = () => {
+
+    const navigation = useNavigation()
 
     const items = [
         { id: 0, label: 'Subtotal', price: 200 },
@@ -51,7 +54,7 @@ const Cart = () => {
                             <Image source={clock} alt="timer" />
                             <Text className="text-white text-sm px-2.5" >30 - 45 mins</Text>
                         </View>
-                        <TouchableOpacity className='container flex flex-row justify-between'>
+                        <TouchableOpacity onPress={()=>{navigation.navigate('MapDirections')}} className='container flex flex-row justify-between'>
                             <View className=' flex flex-row items-center'>
                                 <Image source={pin} alt="timer" />
                                 <Text className="text-white text-lg py-1 px-2.5">Choose location</Text>
