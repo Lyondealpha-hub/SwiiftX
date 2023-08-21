@@ -7,7 +7,7 @@ import MapView, { Marker } from 'react-native-maps';
 export default function MapsDirection() {
 
     const [uselocations, setUselocations] = useState({
-        location: {},
+        location: {"lat": 24.26694, "lng": -98.8362755},
         description: '',
         destination : '',
     })
@@ -35,14 +35,31 @@ export default function MapsDirection() {
 
                       <MapView
                             className='flex-1 z-0'
-                            mapType='mutedStandard'
-                            initialRegion={{
-                                latitude: 51.5078788,
-                                longitude: -0.08773210000000001,
+                            provider={"google"} // will use google map default provider null for native map
+                            mapType="mutedStandard"
+                            region={{
+                                latitude: uselocations.location.lat,
+                                longitude: uselocations.location.lng,
                                 latitudeDelta: 0.005,
                                 longitudeDelta: 0.005,
                             }}
-                        />
+                        >
+                            {uselocations?.location && (
+                               
+                                <Marker 
+                                    coordinate={{
+                                        latitude : uselocations.location.lat,
+                                        longitude: uselocations.location.lng,
+                                    }}
+                                    title="MarkedLocation"
+                                    description={uselocations.description}
+                                    identifier="MarkedLocation"
+                                />
+
+                                
+                            )}
+
+                        </MapView>
                     
                         <GooglePlacesAutocomplete
                             className=''
@@ -63,7 +80,7 @@ export default function MapsDirection() {
                                 }
                             }}
                             // currentLocation={true}
-                            onPress={(data, details=null) => { console.log(data, details); updateStates('location', details.geometry.location, ) }}
+                            onPress={(data, details=null) => { console.log(data, details); updateStates('location', details.geometry.location ); updateStates('description', data.description ) }}
                             enablePoweredByContainer={false}
                             returnKeyType={'search'}
                             fetchDetails={true}
@@ -84,6 +101,10 @@ export default function MapsDirection() {
             </View>
 
             <View style={styles.footer}>
+                <Text className='text-center py-1 text-xl'>Choose a ride!</Text>
+                <View>
+
+                </View>
 
 
                 {/* Checkout button */}
@@ -110,7 +131,7 @@ const styles = StyleSheet.create({
     },
 
     footer: {
-        flex: 3,
+        flex: 4,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         backgroundColor: 'lightgrey',
