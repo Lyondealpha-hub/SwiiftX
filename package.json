@@ -24,6 +24,7 @@
     "@rneui/themed": "^4.0.0-rc.7",
     "@ui-kitten/components": "^5.3.1",
     "expo": "~47.0.12",
+    "expo-location": "~15.0.1",
     "expo-status-bar": "~1.4.2",
     "expo-updates": "~0.15.6",
     "formik": "^2.4.2",
