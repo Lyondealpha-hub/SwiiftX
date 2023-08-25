@@ -6,6 +6,7 @@ import MapView, { Marker } from 'react-native-maps';
 
 import * as Location from 'expo-location';
 import MapViewDirections from 'react-native-maps-directions';
+import RideOptionsCard from './RideOptionsCard';
 
 export default function MapsDirection() {
 
@@ -171,14 +172,9 @@ export default function MapsDirection() {
             </View>
 
             <View style={styles.footer}>
-                <Text className='text-center py-1 text-xl'>Choose a ride!</Text>
-                <View>
-                       
-                </View>
-
-
-                {/* Checkout button */}
-                <View className='container h-14   absolute px-5  inset-x-0 bottom-0  '>
+              <RideOptionsCard />
+              {/* Checkout button */}
+              <View className='container h-14 absolute px-5  inset-x-0 bottom-0  '>
                     <TouchableOpacity className='w-full mx-auto h-12 flex flex-row justify-center items-center  bg-purple-400 rounded-xl' >
                         <Text className='text-white text-lg   justify-center items-center'>Pick a ride!</Text>
                     </TouchableOpacity>
@@ -195,13 +191,13 @@ const styles = StyleSheet.create({
     },
 
     header: {
-        flex: 8,
+        flex: 6,
         width: '100%',
         height: '100%',
     },
 
     footer: {
-        flex: 4,
+        flex: 5,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         backgroundColor: 'lightgrey',
