@@ -18,14 +18,14 @@ const RideOptionsCard = () => {
             multiplier: 1.2,
             image: bike,
         },
-        
+
 
     ]
 
     return (
-        <View>
-            <View>
-                <Text className='container flex flex-row justify-center bg-red-500 items-center text-xl '>Select a Ride</Text>
+        <View className='container '>
+            <View className=' flex-row justify-center items-center'>
+                <Text className='p-2 text-xl '>Select a Ride</Text>
             </View>
 
             <View>
@@ -34,21 +34,25 @@ const RideOptionsCard = () => {
                     keyExtractor={(item) => item.id}
                     renderItem={({ item: { id, title, multiplier, image } }) => {
                         return (
-                            <TouchableOpacity>
-                                <Image
-                                    style={{
-                                        width: 100,
-                                        height: 100,
-                                        resizeMode: "contain",
-                                    }}
-                                    source={image}
-                                />
-                            </TouchableOpacity>
+                                <TouchableOpacity className='conatiner flex  flex-row p-2.5'>
+                                    <Image
+                                        style={{
+                                            width: 100,
+                                            height: 100,
+                                            resizeMode: "contain",
+                                        }}
+                                        source={image}
+                                    />
+                                    <View className='px-16 space-y-2 justify-center '>
+                                        <Text>Vehicle Name</Text>
+                                        <Text>Travel time</Text>
+                                    </View>
+                                </TouchableOpacity>
                         )
                     }}
 
                 />
-                
+
             </View>
         </View>
 

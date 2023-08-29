@@ -176,7 +176,7 @@ export default function MapsDirection() {
               {/* Checkout button */}
               <View className='container h-14 absolute px-5  inset-x-0 bottom-0  '>
                     <TouchableOpacity className='w-full mx-auto h-12 flex flex-row justify-center items-center  bg-purple-400 rounded-xl' >
-                        <Text className='text-white text-lg   justify-center items-center'>Pick a ride!</Text>
+                        <Text className='text-white text-lg   justify-center items-center'>Choose SwiiftX</Text>
                     </TouchableOpacity>
                 </View>
             </View>
