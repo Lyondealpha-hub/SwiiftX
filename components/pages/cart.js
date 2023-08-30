@@ -5,19 +5,21 @@ import { Icon } from '@rneui/themed'
 import clock from '../../assets/clock1.png'
 import pin from '../../assets/pin.png'
 import { useNavigation } from '@react-navigation/native'
+import { useSelectedRide } from '../store/useSelectedRide'
 
 const Cart = () => {
 
     const navigation = useNavigation()
+    const {rides, pickRide, setGeneralValues} = useSelectedRide();
+    const name = useSelectedRide((state)=>state.Ahmed)
+
 
     const items = [
-        { id: 0, label: 'Subtotal', price: 200 },
-        { id: 1, label: 'Delivery fee', price: 200 },
-        { id: 2, label: 'Total', price: 200 },
+        { id: 0, label: 'Subtotal', price: 200 + rides },
+        { id: 1, label: 'Delivery fee', price: 200 + rides },
+        { id: 2, label: 'Total', price: 200 * rides },
 
     ]
-
-
 
 
     return (
@@ -35,7 +37,9 @@ const Cart = () => {
                 </View>
                 <View className='continer flex flex-row '>
                     {/* Image */}
-                    <View></View>
+                    <View>
+                        <Text></Text>
+                    </View>
                     {/* details + counter */}
                     <View></View>
                     {/* delete icon */}
@@ -54,7 +58,7 @@ const Cart = () => {
                             <Image source={clock} alt="timer" />
                             <Text className="text-white text-sm px-2.5" >30 - 45 mins</Text>
                         </View>
-                        <TouchableOpacity onPress={()=>{navigation.navigate('MapDirections')}} className='container flex flex-row justify-between'>
+                        <TouchableOpacity onPress={() => { navigation.navigate('MapDirections') }} className='container flex flex-row justify-between'>
                             <View className=' flex flex-row items-center'>
                                 <Image source={pin} alt="timer" />
                                 <Text className="text-white text-lg py-1 px-2.5">Choose location</Text>
@@ -95,7 +99,13 @@ const Cart = () => {
 
                 {/* Checkout button */}
                 <View className='container h-14   absolute px-5  inset-x-0 bottom-0  '>
-                    <TouchableOpacity className='w-full mx-auto h-12 flex flex-row justify-center items-center  bg-purple-400 rounded-xl' >
+                    <TouchableOpacity 
+                    onPress={()=>{
+                        pickRide(70);
+                        setGeneralValues('Ahmed', 800)
+                        console.log(name)
+                    }} 
+                    className='w-full mx-auto h-12 flex flex-row justify-center items-center  bg-purple-400 rounded-xl' >
                         <Text className='text-white text-lg   justify-center items-center'>Checkout</Text>
                     </TouchableOpacity>
                 </View>
