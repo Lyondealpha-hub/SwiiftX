@@ -12,11 +12,11 @@ import { useSelectedRide } from '../store/useSelectedRide';
 export default function MapsDirection() {
 
     const mapRef = useRef(null)
-    const selectedRide = useSelectedRide((state)=>state.selectedRide)
+    const selectedRide = useSelectedRide((state) => state.selectedRide)
     const { setGeneralValues } = useSelectedRide()
 
     const [uselocations, setUselocations] = useState({
-        location: { "lat":24.26694 , "lng": -98.8362755 },
+        location: { "lat": 24.26694, "lng": -98.8362755 },
         description: '',
         destination: '',
         curLocation: {},
@@ -42,13 +42,13 @@ export default function MapsDirection() {
             }
             // this give long and lat
             let location = await Location.getCurrentPositionAsync({});
-            updateStates('curLocation', {lat: location.coords.latitude, lng: location.coords.longitude});
+            updateStates('curLocation', { lat: location.coords.latitude, lng: location.coords.longitude });
 
             // get the address name 
-            let address = await Location.reverseGeocodeAsync({latitude: location.coords.latitude, longitude:location.coords.longitude }, {})
+            let address = await Location.reverseGeocodeAsync({ latitude: location.coords.latitude, longitude: location.coords.longitude }, {})
             updateStates('description', (address[0].region + ", " + address[0].district + ", " + address[0].street + ", " + address[0].country));
 
-            console.log("CURR ADDERS",address)
+            console.log("CURR ADDERS", address)
 
         })();
 
@@ -63,34 +63,36 @@ export default function MapsDirection() {
         text = JSON.stringify(uselocations.curLocation);
     }
 
-// ZOOM TO FIT MAKERS
-    useEffect(()=>{
-        if(!uselocations.curLocation || !uselocations.location) return;
+    // ZOOM TO FIT MAKERS
+    useEffect(() => {
+        if (!uselocations.curLocation || !uselocations.location) return;
 
         // Zoom & fit to makers
-        mapRef.current.fitToSuppliedMarkers(['current_location','destination'],{
-            edgePadding : {top:50, right:80, bottom: 50, left:80},
+        mapRef.current.fitToSuppliedMarkers(['current_location', 'destination'], {
+            edgePadding: { top: 50, right: 80, bottom: 50, left: 80 },
         })
 
     }, [uselocations])
 
     // getTravel Time
 
-    useEffect(()=>{
+    useEffect(() => {
         if (!uselocations.curLocation || !uselocations.location) return;
-        const getTrvelTime = async()=>{
+        const getTrvelTime = async () => {
             fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${uselocations.description}&destinations=${uselocations.destination}&key=${GOOGLE_MAPS_APIKEY}`)
-            .then((res)=>
-                res.json()
-            ).then(data => {
-                console.log("hi", data.rows[0].elements[0])
-                setGeneralValues('setTravelTimeInfo', data?.rows[0]?.elements[0])
+                .then((res) =>
+                    res.json()
+                ).then(data => {
+                    console.log("hi", data.rows[0].elements[0])
+                    setGeneralValues('setTravelTimeInfo', data?.rows[0]?.elements[0])
 
-            });
+                });
         }
 
         getTrvelTime();
-    },[uselocations, GOOGLE_MAPS_APIKEY])
+
+        setGeneralValues('clientLocationDetails', uselocations)
+    }, [uselocations, GOOGLE_MAPS_APIKEY])
 
     return (
         <View style={styles.container} className='container '>
@@ -108,7 +110,7 @@ export default function MapsDirection() {
                         className='flex-1 z-0'
                         provider={undefined} // will use google map default provider null for native map
                         mapType="mutedStandard"
-                        
+
                         region={{
                             latitude: uselocations.curLocation.lat,
                             longitude: uselocations.curLocation.lng,
@@ -116,10 +118,10 @@ export default function MapsDirection() {
                             longitudeDelta: 0.005,
                         }}
                     >
-                        {uselocations.curLocation && uselocations.location &&  (
-                            <MapViewDirections 
-                                origin={{latitude : uselocations.curLocation.lat, longitude:uselocations.curLocation.lng}}
-                                destination={{latitude: uselocations.location.lat, longitude:uselocations.location.lng}}
+                        {uselocations.curLocation && uselocations.location && (
+                            <MapViewDirections
+                                origin={{ latitude: uselocations.curLocation.lat, longitude: uselocations.curLocation.lng }}
+                                destination={{ latitude: uselocations.location.lat, longitude: uselocations.location.lng }}
                                 apikey={GOOGLE_MAPS_APIKEY}
                                 strokeWidth={3}
                                 strokeColor={'blue'}
@@ -177,7 +179,7 @@ export default function MapsDirection() {
                             }
                         }}
                         // currentLocation={true}
-                        onPress={(data, details = null) => { console.log("DESTINATION",data, details); updateStates('location', details.geometry.location); updateStates('destination', data.description); setGeneralValues('destinationD', data.description);   }}
+                        onPress={(data, details = null) => { console.log("DESTINATION", data, details); updateStates('location', details.geometry.location); updateStates('destination', data.description); setGeneralValues('destinationD', data.description); }}
                         enablePoweredByContainer={false}
                         returnKeyType={'search'}
                         fetchDetails={true}
@@ -198,9 +200,9 @@ export default function MapsDirection() {
             </View>
 
             <View style={styles.footer}>
-              <RideOptionsCard />
-              {/* Checkout button */}
-              <View className='container h-14 absolute px-5  inset-x-0 bottom-0  '>
+                <RideOptionsCard />
+                {/* Checkout button */}
+                <View className='container h-14 absolute px-5  inset-x-0 bottom-0  '>
                     <TouchableOpacity disabled={selectedRide == undefined} className={`w-full mx-auto h-12 flex flex-row justify-center items-center ${selectedRide == undefined && 'bg-gray-200'}  bg-purple-400 rounded-xl`} >
                         <Text className='text-white text-lg   justify-center items-center'>{`Choose ${selectedRide?.title}`}</Text>
                     </TouchableOpacity>

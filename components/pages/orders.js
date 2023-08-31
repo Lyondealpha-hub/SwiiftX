@@ -1,10 +1,11 @@
-import { View, Text, TouchableOpacity, Image, FlatList, TextInput, ScrollView,ImageBackground } from 'react-native'
+import { View, Text, TouchableOpacity, Image, FlatList, TextInput, ScrollView, ImageBackground } from 'react-native'
 import React, { useState } from 'react'
 import prep from '../../assets/prep.jpeg'
 import prep1 from '../../assets/prep1.png'
 import prep2 from '../../assets/prep2.png'
 import { MaterialIcons } from '@expo/vector-icons';
 import doc from '../../assets/doc.jpg'
+import OrderMapModal from '../Modals/orderMapModal'
 
 
 export default function Orders() {
@@ -33,12 +34,11 @@ export default function Orders() {
 
 
     ]
-    const [noItem, setNoItem] = useState(0)
+    const [preview, setPreview] = useState(false)
 
     return (
         <View>
-            <Text>orders</Text>
-            <View className='contianer h-1/6'>
+            <View className='container h-[30%]'>
                 <ImageBackground resizeMode='cover' source={doc} className='h-full flex  flex-row  mx-2 rounded-3xl py-1 '>
                     <View className='w-4/5 justify-center px-3'>
                         <Text className='text-xl  text-white items-center flex-wrap-reverse'>Looking For Specialist Doctor?</Text>
@@ -48,7 +48,7 @@ export default function Orders() {
                 </ImageBackground>
             </View>
 
-            <View className='continer flex flex-row mt-36 '>
+            <View className='container flex flex-row  '>
                 <FlatList
                     data={carsData}
                     keyExtractor={(item) => item.id}
@@ -73,7 +73,7 @@ export default function Orders() {
 
                                 <View className=''>
 
-                                    <TouchableOpacity className='px-1 py-1 border-[1px] border-gray-300 rounded'   >
+                                    <TouchableOpacity onPress={() => { setPreview(true) }} className='px-1 py-1 border-[1px] border-gray-300 rounded'   >
                                         <Text>Status : <Text className='text-green-700'>Ongoing</Text></Text>
                                     </TouchableOpacity>
 
@@ -84,6 +84,8 @@ export default function Orders() {
 
                 />
             </View>
+
+            <OrderMapModal previewDelivery={preview} setPreviewDelivery={setPreview} />
         </View >
     )
 }
