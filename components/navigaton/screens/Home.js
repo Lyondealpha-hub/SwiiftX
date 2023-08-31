@@ -85,9 +85,9 @@ export default function Home() {
     { title: 'Send a feedback' },
     {
       title: 'Cancel',
-      containerStyle: { backgroundColor: 'red' },
+      containerStyle: { backgroundColor: 'red',  },
       titleStyle: { color: 'white' },
-      onPress: () => setOpenSheet(false),
+      onPress: () => {setOpenSheet(false); console.log('CALL OPENED')},
     },
   ];
 
@@ -96,7 +96,8 @@ export default function Home() {
   return (
     <View className='container ' >
       <TopNav isSearch={false} setOpenSheet={setOpenSheet} />
-      <BottomSheetComp isVisible={openSheet} list={list}  />
+
+      <BottomSheetComp isVisible={openSheet} list={list} />
 
       <View>
         <PharmacyModal openModal={openModal} setOpenModal={setOpenModal} />

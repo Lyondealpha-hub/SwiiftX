@@ -48,7 +48,7 @@ export default function Profile({ setOpenProfile }) {
         { id: 1, image: 'local-activity', label: 'My Appointments', button: MyAppointmentsLink },
         { id: 2, image: 'notifications-none', label: 'Reminders', },
         { id: 3, image: 'payment', label: 'Payments', },
-        { id: 4, image: 'switch-account', label: 'Add account', },
+        // { id: 4, image: 'switch-account', label: 'Add account', },
         { id: 5, image: 'share', label: 'Invite friends via ...', button: CustomShare },
         { id: 6, image: 'logout', label: 'Log out', button: LogOut },
     ]

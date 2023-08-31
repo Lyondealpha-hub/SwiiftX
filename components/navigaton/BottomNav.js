@@ -7,6 +7,7 @@ import Chat from './screens/Chat';
 import MyAppointmentsNavigation from './MyAppointmentsNav'
 import { Ionicons } from '@expo/vector-icons';
 import ChatNavigation from './ChatNav';
+import Orders from '../pages/orders';
 
 
 const Tab = createBottomTabNavigator();
@@ -54,7 +55,7 @@ function BottomNav() {
     >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Appointments" component={MyAppointmentsNavigation} />
-      <Tab.Screen name="Orders" component={Home} />
+      <Tab.Screen name="Orders" component={Orders} />
       <Tab.Screen name="Chat" component={ChatNavigation} />
     </Tab.Navigator>
 
