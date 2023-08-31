@@ -31,11 +31,12 @@ const RideOptionsCard = () => {
     // if there is a SURGE pricing , this goes up
 
     const SURGE_CHANGE_RATE = 1.5
+    
 
     return (
         <View className='container bg-white'>
             <View className=' flex-row justify-center items-center'>
-                <Text className='p-2 text-xl '>Select a Ride - {setTravelTimeInfo?.distance?.text}</Text>
+                <Text className='p-2 text-xl italic '>Ride distance - {setTravelTimeInfo?.distance?.text}</Text>
             </View>
 
             <View>
@@ -43,23 +44,26 @@ const RideOptionsCard = () => {
                     data={carsData}
                     keyExtractor={(item) => item.id}
                     renderItem={({ item: { id, title, multiplier, image }, item }) => {
+                        
                         return (
                                 <TouchableOpacity 
-                                    className={`conatiner flex justify-between items-center flex-row p-2.5 ${id === selectedRide?.id && 'bg-gray-200'} `}
+                                    className={`conatiner flex justify-between items-center flex-row p-1.5 ${id === selectedRide?.id && 'bg-gray-200'} `}
                                     onPress={()=>{
                                         setGeneralValues('selectedRide', item)
+                                        console.log("ITEEM",item)
+                                        setGeneralValues('deliveryDetails', {price : (setTravelTimeInfo?.duration?.value * SURGE_CHANGE_RATE * multiplier) / 100, time: setTravelTimeInfo?.duration?.text } )
                                        
                                     }}
                                 >
                                     <Image
                                         style={{
-                                            width: 100,
-                                            height: 100,
+                                            width: 90,
+                                            height: 90,
                                             resizeMode: "contain",
                                         }}
                                         source={image}
                                     />
-                                    <View className='ml-6 '>
+                                    <View className='ml-4 '>
                                         <Text className='text-lg font-semibold'>{title}</Text>
                                         <Text>{setTravelTimeInfo?.duration?.text} Travel Time</Text>
                                     </View>
@@ -71,8 +75,13 @@ const RideOptionsCard = () => {
                                             currency:'GHC',
                                         
                                         }).format(
-                                            (setTravelTimeInfo?.duration?.value * SURGE_CHANGE_RATE * multiplier) / 100
-                                        )}
+                                           (setTravelTimeInfo?.duration?.value * SURGE_CHANGE_RATE * multiplier) / 100,
+                                           
+                                        )
+                                        // {setGeneralValues('deliveryPrice', (setTravelTimeInfo?.duration?.value * SURGE_CHANGE_RATE * multiplier) / 100 )}
+
+                                        
+                                        }
                                     </Text>
                                 </TouchableOpacity>
                         )

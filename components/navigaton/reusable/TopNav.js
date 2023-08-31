@@ -32,7 +32,7 @@ export default function TopNav({ isSearch, setOpenSheet }) {
         </TouchableOpacity>
 
         <View className='w-1/2 justify-end flex flex-row '>
-          <View className='w-3/5 justify-evenly flex flex-row '>
+          <View className='w-3/5 justify-evenly flex flex-row space-x-3 '>
             <Image className='justify-center items-center ' source={notification} />
 
             <TouchableOpacity onPress={() => { navigation.navigate('MyCart') }}>

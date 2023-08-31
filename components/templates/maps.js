@@ -84,7 +84,7 @@ export default function MapsDirection() {
                 res.json()
             ).then(data => {
                 console.log("hi", data.rows[0].elements[0])
-                setGeneralValues('setTravelTimeInfo', data.rows[0].elements[0])
+                setGeneralValues('setTravelTimeInfo', data?.rows[0]?.elements[0])
 
             });
         }
@@ -177,7 +177,7 @@ export default function MapsDirection() {
                             }
                         }}
                         // currentLocation={true}
-                        onPress={(data, details = null) => { console.log(data, details); updateStates('location', details.geometry.location); updateStates('destination', data.description) }}
+                        onPress={(data, details = null) => { console.log("DESTINATION",data, details); updateStates('location', details.geometry.location); updateStates('destination', data.description); setGeneralValues('destinationD', data.description);   }}
                         enablePoweredByContainer={false}
                         returnKeyType={'search'}
                         fetchDetails={true}
