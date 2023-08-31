@@ -81,7 +81,7 @@ const Cart = () => {
                                             resizeMode: "contain",
                                         }}
                                         source={image}
-                                        className='border-[1px] rounded-xl'
+                                        className='border-[1px] rounded-xl border-gray-300'
                                     />
                                     <View className='w-[37%] '>
                                         <Text className='text-lg font-semibold'>{title}</Text>
@@ -91,14 +91,14 @@ const Cart = () => {
 
                                     <View className=''>
                                         <View className=' flex flex-row items-center  rounded-lg h-10  justify-evenly space-x-3'>
-                                            <TouchableOpacity className='px-1 py-1 border-[1px] rounded'   >
+                                            <TouchableOpacity className='px-1 py-1 border-[1px] border-gray-300 rounded'   >
                                                 <MaterialIcons name='remove' size={30} color='black' disabled={noItem <= 0 ? true : false} onPress={() => { setNoItem(noItem - 1) }} />
                                             </TouchableOpacity>
 
 
                                             <TextInput keyboardType={'number-pad'} focusable={true}   className='text-2xl flex-row justify-center items-center'>{noItem}</TextInput>
 
-                                            <TouchableOpacity className='px-1 py-1 border-[1px] rounded' onPress={() => { setNoItem(noItem + 1) }}>
+                                            <TouchableOpacity className='px-1 py-1 border-[1px] border-gray-300 rounded' onPress={() => { setNoItem(noItem + 1) }}>
                                                 <MaterialIcons name='add' size={30} color='black' />
                                             </TouchableOpacity>
                                         </View>
@@ -113,50 +113,50 @@ const Cart = () => {
 
             </View>
 
-            <View style={styles.footer}>
+            <View style={styles.footer} className='bg-purple-300 text-gray-700'>
 
 
                 <View className='container  p-4'>
-                    <View className='border-[1px] border-yellow-100 rounded px-2.5 my-2'>
+                    <View className='border-[1px] border-purple-200 rounded-xl  px-2.5 my-2'>
                         <ScrollView className='p-1'>
-                            <Text className="text-white text-xl py-2.5 font-semibold">Delivery details</Text>
+                            <Text className=" text-xl text-gray-00 font-semibold py-2.5">Delivery details</Text>
                             <View className=' space-y-0.5 h-20 rounded'>
                                 <View className=' flex flex-row items-center  '>
                                     {/* icon here */}
                                     <Image source={clock} alt="timer" />
-                                    <Text className="text-white text-sm px-1.5" >45 - {zusStates?.deliveryDetails?.time} </Text>
+                                    <Text className=" text-sm px-1.5" >45 - {zusStates?.deliveryDetails?.time} </Text>
                                 </View>
                                 <TouchableOpacity onPress={() => { navigation.navigate('MapDirections') }} className='w-full flex flex-row justify-between'>
-                                    <View className='w-1/2 flex flex-row items-center'>
-                                        <Image source={pin} alt="timer" />
-                                        <Text className="text-white text-lg py-1 px-1.5">Pick location</Text>
+                                    <View className='w-1/2  flex flex-row items-center'>
+                                        <Image source={pin} alt="loc" />
+                                        <Text className=" text-base  py-1 px-1.5">Pick location</Text>
                                     </View>
 
                                     <View className='w-1/2 flex flex-row justify-end items-center '>
-                                        <Text className='text-lg text-white'>{zusStates?.destinationD}</Text>
+                                        <Text className='text-base '>{zusStates?.destinationD}</Text>
                                     </View>
                                 </TouchableOpacity>
                             </View>
                         </ScrollView>
                     </View>
 
-                    <Text className="text-white text-xl pt-2.5  pb-1 font-semibold ">Summary</Text>
+                    <Text className="text-gray-00 text-xl pt-2.5  pb-1 font-semibold ">Summary</Text>
 
 
                     {items.map(({ id, label, price }) => {
                         return (
                             <View key={id} className='container flex  flex-row justify-between p-0.5'>
                                 <View>
-                                    {id === 2 ? <Text className='text-white text-base font-semibold py-1.5'>{label}</Text>
+                                    {id === 2 ? <Text className=' text-gray-600 text-base font-semibold py-1.5'>{label}</Text>
                                         :
-                                        <Text className="text-white text-sm">{label}</Text>
+                                        <Text className="  text-gray-600  text-sm">{label}</Text>
                                     }
                                 </View>
 
                                 <View>
-                                    {id === 2 ? <Text className='text-white text-base font-semibold py-1.5'>GHC {price * 2}</Text>
+                                    {id === 2 ? <Text className='text-gray-600 text-base  py-1.5'>GHC {price * 2}</Text>
                                         :
-                                        <Text className="text-white text-sm">GHC {price}</Text>
+                                        <Text className="text-gray-600 text-sm">GHC {price}</Text>
                                     }
                                 </View>
 
@@ -176,7 +176,7 @@ const Cart = () => {
                             setGeneralValues('Ahmed', 800)
                             console.log(zusStates.Ahmed)
                         }}
-                        className='w-full mx-auto h-12 flex flex-row justify-center items-center  bg-purple-400 rounded-xl' >
+                        className='w-full mx-auto h-12 flex flex-row justify-center items-center  bg-purple-600 rounded-xl' >
                         <Text className='text-white text-lg   justify-center items-center'>Place Order</Text>
                     </TouchableOpacity>
                 </View>
@@ -200,11 +200,11 @@ const styles = StyleSheet.create({
     },
 
     footer: {
-        flex: 6,
+        flex: 7,
         width: '100%',
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
-        backgroundColor: 'purple',
+        // backgroundColor: 'purple',
 
     },
 })
