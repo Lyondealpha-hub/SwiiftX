@@ -67,7 +67,7 @@ export default function TopNav({ isSearch, setOpenSheet }) {
 
             <View className='justify-start px-2 items-start space-y-0.5'>
               <Text className='font-bold '>Need Help ?</Text>
-              <Text style={fontFamily.mediumHeading} className='font-medium' >Request a call back </Text>
+              <Text style={fontFamily.mediumHeading} className='font-medium' >Request a call back  </Text>
             </View>
 
           </View>
@@ -75,7 +75,7 @@ export default function TopNav({ isSearch, setOpenSheet }) {
 
           {/* button */}
           <View className='w-[30%]'>
-            <Button buttonStyle={{borderRadius: 20,}} onPress={()=>{setOpenSheet(!sheet)}} >
+            <Button buttonStyle={{ borderRadius: 20, }} onPress={() => { setOpenSheet(!sheet) }} >
               Call
             </Button>
           </View>

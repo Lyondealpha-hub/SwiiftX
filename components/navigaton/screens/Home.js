@@ -50,7 +50,7 @@ export default function Home() {
 
   // Categories
   const categories = [
-    { id: 0, image: doctor, text: 'Doctor' },
+    { id: 0, image: doctor, text: 'Doctor', trigger: () => { navigation.navigate('Doctors') } },
     { id: 1, image: checkup, text: 'Checkup' },
     { id: 2, image: lab, text: 'Lab', trigger: () => { navigation.navigate('Labs') } },
     { id: 3, image: aid, text: 'Pharmacy', trigger: () => { navigation.navigate('Pharmacy') } },
@@ -81,13 +81,15 @@ export default function Home() {
 
   // bottomSheet
   const list = [
-    { title: '055 735 6616' },
+    { title: '911 - Ambulance' },
+    { title: '211 - Fire service' },
+    { title: '511 - Police' },
     { title: 'Send a feedback' },
     {
       title: 'Cancel',
-      containerStyle: { backgroundColor: 'red',  },
+      containerStyle: { backgroundColor: 'red', },
       titleStyle: { color: 'white' },
-      onPress: () => {setOpenSheet(false); console.log('CALL OPENED')},
+      onPress: () => { setOpenSheet(false); console.log('CALL OPENED') },
     },
   ];
 

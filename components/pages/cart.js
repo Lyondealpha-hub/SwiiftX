@@ -17,7 +17,7 @@ const Cart = () => {
     const navigation = useNavigation()
     const { rides, pickRide, setGeneralValues } = useSelectedRide();
     const zusStates = useSelectedRide((state) => state)
-    
+
 
     let Subtotal = 1
 
@@ -45,7 +45,7 @@ const Cart = () => {
     ]
 
     const items = [
-        { id: 0, label: 'Subtotal', price: Subtotal },
+        { id: 0, label: 'Delivery Type', price: zusStates?.selectedRide?.title },
         { id: 1, label: 'Delivery fee', price: zusStates?.deliveryDetails?.price },
         { id: 2, label: 'Total', price: zusStates?.deliveryDetails?.price * Subtotal },
 
@@ -73,7 +73,7 @@ const Cart = () => {
                         renderItem={({ item: { id, title, multiplier, image }, item }) => {
 
                             return (
-                                <View  className={`conatiner flex justify-between items-center flex-row p-1.5  `}>
+                                <View className={`conatiner flex justify-between items-center flex-row p-1.5  `}>
                                     <Image
                                         style={{
                                             width: 90,
@@ -96,7 +96,7 @@ const Cart = () => {
                                             </TouchableOpacity>
 
 
-                                            <TextInput keyboardType={'number-pad'} focusable={true}   className='text-2xl flex-row justify-center items-center'>{noItem}</TextInput>
+                                            <TextInput keyboardType={'number-pad'} focusable={true} className='text-2xl flex-row justify-center items-center'>{noItem}</TextInput>
 
                                             <TouchableOpacity className='px-1 py-1 border-[1px] border-gray-300 rounded' onPress={() => { setNoItem(noItem + 1) }}>
                                                 <MaterialIcons name='add' size={30} color='black' />
@@ -156,7 +156,7 @@ const Cart = () => {
                                 <View>
                                     {id === 2 ? <Text className='text-gray-600 text-base  py-1.5'>GHC {price * 2}</Text>
                                         :
-                                        <Text className="text-gray-600 text-sm">GHC {price}</Text>
+                                        <Text className="text-gray-600 text-sm">{id === 0 ? "" : 'GHC'} {price}</Text>
                                     }
                                 </View>
 

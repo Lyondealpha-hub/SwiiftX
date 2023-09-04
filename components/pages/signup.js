@@ -49,7 +49,7 @@ export default function SignUp() {
                 <View className="w-1/2 flex-row justify-end ">
                     <FAB
                         visible={states.userPage}
-                        onPress={() => { updateStates('userPage', false) }}
+                        onPress={() => { updateStates('userPage', false); navigation.navigate('BottomTab') }}
                         size='small'
                         title="Doctor"
                         upperCase
@@ -88,7 +88,7 @@ export default function SignUp() {
                                 <View>
                                     <View id="username">
                                         <Input
-                                        style={fontFamily.mediumHeading}
+                                            style={fontFamily.mediumHeading}
                                             placeholder="Username or Full Name "
                                             leftIcon={{ type: 'material', name: "person", size: 30 }}
                                             onChangeText={handleChange('userName')}
@@ -97,7 +97,7 @@ export default function SignUp() {
 
                                     <View id="email">
                                         <Input
-                                        style={fontFamily.mediumHeading}
+                                            style={fontFamily.mediumHeading}
                                             placeholder="Enter Email Address"
                                             // errorMessage='password must be at least'
                                             onChange={(e) => { console.log(e) }}
@@ -107,7 +107,7 @@ export default function SignUp() {
                                     </View>
                                     <View id="mobile">
                                         <Input
-                                        style={fontFamily.mediumHeading}
+                                            style={fontFamily.mediumHeading}
                                             placeholder="Enter Mobile Number "
                                             leftIcon={{ type: 'material', name: "call", size: 30 }}
                                             onChangeText={handleChange('mobile')}
@@ -115,7 +115,7 @@ export default function SignUp() {
                                     </View>
                                     <View id="password">
                                         <Input
-                                        style={fontFamily.mediumHeading}
+                                            style={fontFamily.mediumHeading}
                                             placeholder="Enter Password "
                                             secureTextEntry={true}
                                             leftIcon={{ type: 'material', name: "lock", size: 30 }}
@@ -127,7 +127,7 @@ export default function SignUp() {
                                     <View id="agreement">
 
                                         <CheckBox
-                                        style={fontFamily.mediumHeading}
+                                            style={fontFamily.mediumHeading}
                                             checked={states.agree}
                                             onPress={() => { updateStates('agree', !states.agree) }}
                                             title="By signing up, you agree to our Terms & Conditions and Privacy Policy"
@@ -164,7 +164,7 @@ export default function SignUp() {
                                 <View>
                                     <View id="username">
                                         <Input
-                                        style={fontFamily.mediumHeading}
+                                            style={fontFamily.mediumHeading}
                                             placeholder="Identification card "
                                             leftIcon={{ type: 'material', name: "person", size: 30 }}
                                             onChangeText={handleChange('userName')}
@@ -173,7 +173,7 @@ export default function SignUp() {
 
                                     <View id="email">
                                         <Input
-                                        style={fontFamily.mediumHeading}
+                                            style={fontFamily.mediumHeading}
                                             placeholder="Enter Email Address"
                                             // errorMessage='password must be at least'
                                             onChange={(e) => { console.log(e) }}
@@ -183,7 +183,7 @@ export default function SignUp() {
                                     </View>
                                     <View id="mobile">
                                         <Input
-                                        style={fontFamily.mediumHeading}
+                                            style={fontFamily.mediumHeading}
                                             placeholder="Enter Mobile Number "
                                             leftIcon={{ type: 'material', name: "call", size: 30 }}
                                             onChangeText={handleChange('mobile')}
@@ -191,7 +191,7 @@ export default function SignUp() {
                                     </View>
                                     <View id="password">
                                         <Input
-                                        style={fontFamily.mediumHeading}
+                                            style={fontFamily.mediumHeading}
                                             placeholder="Enter Password "
                                             secureTextEntry={true}
                                             leftIcon={{ type: 'material', name: "lock", size: 30 }}
@@ -203,7 +203,7 @@ export default function SignUp() {
                                     <View id="agreement">
 
                                         <CheckBox
-                                        style={fontFamily.mediumHeading}
+                                            style={fontFamily.mediumHeading}
                                             checked={states.agree}
                                             onPress={() => { updateStates('agree', !states.agree) }}
                                             title="By signing up, you agree to our Terms & Conditions and Privacy Policy"

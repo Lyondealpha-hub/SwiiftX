@@ -8,9 +8,12 @@ import * as Location from 'expo-location';
 import MapViewDirections from 'react-native-maps-directions';
 import RideOptionsCard from './RideOptionsCard';
 import { useSelectedRide } from '../store/useSelectedRide';
+import { useNavigation } from '@react-navigation/native';
 
 export default function MapsDirection() {
 
+
+    const navigation = useNavigation()
     const mapRef = useRef(null)
     const selectedRide = useSelectedRide((state) => state.selectedRide)
     const { setGeneralValues } = useSelectedRide()
@@ -44,7 +47,7 @@ export default function MapsDirection() {
             let location = await Location.getCurrentPositionAsync({});
             updateStates('curLocation', { lat: location.coords.latitude, lng: location.coords.longitude });
 
-            // get the address name 
+            // get the address name  by passing latitude and longitude
             let address = await Location.reverseGeocodeAsync({ latitude: location.coords.latitude, longitude: location.coords.longitude }, {})
             updateStates('description', (address[0].region + ", " + address[0].district + ", " + address[0].street + ", " + address[0].country));
 
@@ -203,7 +206,7 @@ export default function MapsDirection() {
                 <RideOptionsCard />
                 {/* Checkout button */}
                 <View className='container h-14 absolute px-5  inset-x-0 bottom-0  '>
-                    <TouchableOpacity disabled={selectedRide == undefined} className={`w-full mx-auto h-12 flex flex-row justify-center items-center ${selectedRide == undefined && 'bg-gray-200'}  bg-purple-400 rounded-xl`} >
+                    <TouchableOpacity onPress={() => { navigation.navigate('MyCart') }} disabled={selectedRide == undefined} className={`w-full mx-auto h-12 flex flex-row justify-center items-center ${selectedRide == undefined && 'bg-gray-200'}  bg-purple-400 rounded-xl`} >
                         <Text className='text-white text-lg   justify-center items-center'>{`Choose ${selectedRide?.title}`}</Text>
                     </TouchableOpacity>
                 </View>
