@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, Image, Button, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, Image, Button, TouchableOpacity, StyleSheet, } from 'react-native'
 import { FAB, Icon, Input, CheckBox, SocialIcon } from '@rneui/themed';
 import logo from '../../assets/logo.jpg';
 import { Formik } from 'formik';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import google from '../../assets/google.png'
+import { Platform } from 'react-native';
 
 export default function Login() {
 
@@ -66,7 +67,7 @@ export default function Login() {
 
             {/* Logo */}
             <View className='w-full  justify-center items-center py-5'>
-                <Text style={fontFamily.BHeading} className="text-3xl ">Welcome Back!</Text>
+                <Text style={`${Platform.OS == "ios" && fontFamily.BHeading}`} className="text-3xl ">Welcome Back!</Text>
                 <View className='flex-row justify-items-center'>
                     <Image className="w-36 h-36 bg-transparent" source={logo} alt='' />
                 </View>
@@ -91,7 +92,7 @@ export default function Login() {
 
                                     <View id="email">
                                         <Input
-                                        style={fontFamily.mediumHeading}
+                                            style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`}
                                             placeholder="Enter Email Address"
                                             // errorMessage='password must be at least'
                                             onChange={(e) => { console.log(e) }}
@@ -102,7 +103,7 @@ export default function Login() {
 
                                     <View id="password">
                                         <Input
-                                        style={fontFamily.mediumHeading}
+                                            style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`}
                                             placeholder="Enter Password "
                                             secureTextEntry={true}
                                             leftIcon={{ type: 'material', name: "lock", size: 30 }}
@@ -113,11 +114,11 @@ export default function Login() {
 
 
                                     <TouchableOpacity onPress={handleSubmit} className=" bg-purple-400 rounded-md mx-auto px-[135px] py-1 mt-5 mb-1 drop-shadow-2xl justify-center items-center">
-                                        <Text style={fontFamily.mediumHeading} className="text-2xl flex flex-col justify-center text-white">Login</Text>
+                                        <Text style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`} className="text-2xl flex flex-col justify-center text-white">Login</Text>
                                     </TouchableOpacity>
 
                                     <View className='w-full  flex flex-row  justify-center items-center my-1 '>
-                                        <Text style={fontFamily.mediumHeading} className='text-xl'>OR</Text>
+                                        <Text style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`} className='text-xl'>OR</Text>
                                     </View>
 
                                     <TouchableOpacity onPress={handleSubmit} className=" shadow-xl bg-slate-200 flex flex-row space-x-2 rounded-md mx-auto w-[333px] py-1 my-0.5 drop-shadow-2xl justify-between">
@@ -125,12 +126,12 @@ export default function Login() {
                                             <Image source={google} alt="" />
                                         </View>
                                         <View className='w-3/4'>
-                                        <Text style={fontFamily.mediumHeading} className="text-2xl border-[2px] text-slate-600">Sign in with Google </Text>
+                                            <Text style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`} className="text-2xl border-[2px] text-slate-600">Sign in with Google </Text>
                                         </View>
                                     </TouchableOpacity>
 
                                     <View className="w-full flex flex-row justify-center items-center  inset-x-0 bottom-0 h-28">
-                                        <Text style={fontFamily.mediumHeading} className="text-lg">Are you New? <TouchableOpacity onPress={() => { navigation.navigate('SignUp') }} ><Text style={fontFamily.semiBHeading} className="h-full flex-row justify-center underline items-center text-xl">SignUp</Text></TouchableOpacity></Text>
+                                        <Text style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`} className="text-lg">Are you New? <TouchableOpacity onPress={() => { navigation.navigate('SignUp') }} ><Text style={`${Platform.OS == "ios" && fontFamily.semiBHeading}`} className="h-full flex-row justify-center underline items-center text-xl">SignUp</Text></TouchableOpacity></Text>
                                     </View>
 
                                     {/* Below demostrates how it should work here  */}
@@ -156,7 +157,7 @@ export default function Login() {
                                 <View>
                                     <View id="username">
                                         <Input
-                                            style={fontFamily.mediumHeading}
+                                            style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`}
                                             placeholder="Identification card "
                                             leftIcon={{ type: 'material', name: "person", size: 30 }}
                                             onChangeText={handleChange('userName')}
@@ -165,7 +166,7 @@ export default function Login() {
 
                                     <View id="email">
                                         <Input
-                                            style={fontFamily.mediumHeading}
+                                            style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`}
                                             placeholder="Enter Email Address"
                                             // errorMessage='password must be at least'
                                             onChange={(e) => { console.log(e) }}
@@ -176,7 +177,7 @@ export default function Login() {
 
                                     <View id="password">
                                         <Input
-                                            style={fontFamily.mediumHeading}
+                                            style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`}
                                             placeholder="Enter Password "
                                             secureTextEntry={true}
                                             leftIcon={{ type: 'material', name: "lock", size: 30 }}
@@ -187,11 +188,11 @@ export default function Login() {
 
 
                                     <TouchableOpacity onPress={handleSubmit} className=" bg-purple-400 rounded-md mx-auto px-[135px] py-1 mt-5 mb-1 drop-shadow-2xl justify-center items-center">
-                                        <Text style={fontFamily.mediumHeading} className="text-2xl flex flex-col justify-center text-white">Login</Text>
+                                        <Text style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`} className="text-2xl flex flex-col justify-center text-white">Login</Text>
                                     </TouchableOpacity>
 
                                     <View className='w-full  flex flex-row  justify-center items-center my-1 '>
-                                        <Text style={fontFamily.mediumHeading} className='text-xl'>OR</Text>
+                                        <Text style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`} className='text-xl'>OR</Text>
                                     </View>
 
                                     <TouchableOpacity onPress={handleSubmit} className=" shadow-xl bg-slate-200 flex flex-row space-x-2 rounded-md mx-auto w-[333px] py-1 my-0.5 drop-shadow-2xl justify-between">
@@ -199,12 +200,12 @@ export default function Login() {
                                             <Image source={google} alt="" />
                                         </View>
                                         <View className='w-3/4'>
-                                        <Text style={fontFamily.mediumHeading} className="text-2xl border-[2px] text-slate-600">Sign in with Google </Text>
+                                            <Text style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`} className="text-2xl border-[2px] text-slate-600">Sign in with Google </Text>
                                         </View>
                                     </TouchableOpacity>
 
                                     <View className="w-full flex flex-row justify-center items-center  inset-x-0 bottom-0 h-28">
-                                        <Text style={fontFamily.mediumHeading} className="text-lg">Are you New? <TouchableOpacity onPress={() => { navigation.navigate('SignUp') }} ><Text style={fontFamily.semiBHeading} className="h-full flex-row justify-center underline items-center text-xl">SignUp</Text></TouchableOpacity></Text>
+                                        <Text style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`} className="text-lg">Are you New? <TouchableOpacity onPress={() => { navigation.navigate('SignUp') }} ><Text style={`${Platform.OS == "ios" && fontFamily.semiBHeading}`} className="h-full flex-row justify-center underline items-center text-xl">SignUp</Text></TouchableOpacity></Text>
                                     </View>
                                 </View>
                             )}

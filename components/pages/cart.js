@@ -11,12 +11,16 @@ import prep from '../../assets/prep.jpeg'
 import prep1 from '../../assets/prep1.png'
 import prep2 from '../../assets/prep2.png'
 import { MaterialIcons } from '@expo/vector-icons';
+import { BottomSheetComp } from '../templates/bottomSheet'
 
 const Cart = () => {
 
     const navigation = useNavigation()
     const { rides, pickRide, setGeneralValues } = useSelectedRide();
     const zusStates = useSelectedRide((state) => state)
+    const [isOpenBtmSheet, setisOpenBtmSheet] = useState(false)
+    const [noItem, setNoItem] = useState(0)
+
 
 
     let Subtotal = 1
@@ -50,11 +54,25 @@ const Cart = () => {
         { id: 2, label: 'Total', price: zusStates?.deliveryDetails?.price * Subtotal },
 
     ]
-    const [noItem, setNoItem] = useState(0)
+
+    // bottomSheet
+    const list = [
+        { title: 'Mobile money' },
+        { title: 'Pay with cash' },
+
+        {
+            title: 'Cancel',
+            containerStyle: { backgroundColor: 'red', },
+            titleStyle: { color: 'white' },
+            onPress: () => { setisOpenBtmSheet(false); console.log('CALL OPENED') },
+        },
+    ];
 
 
     return (
         <View style={styles.container} className='container'>
+            <BottomSheetComp isVisible={isOpenBtmSheet} list={list} />
+
             {/* Header */}
             <View style={styles.header}>
                 <View className='flex flex-row justify-between py-5 px-3'>
@@ -154,7 +172,7 @@ const Cart = () => {
                                 </View>
 
                                 <View>
-                                    {id === 2 ? <Text className='text-gray-600 text-base  py-1.5'>GHC {price * 2}</Text>
+                                    {id === 2 ? <Text className='text-gray-600 text-base  py-1.5'>GHC {price}</Text>
                                         :
                                         <Text className="text-gray-600 text-sm">{id === 0 ? "" : 'GHC'} {price}</Text>
                                     }
@@ -175,6 +193,7 @@ const Cart = () => {
                             pickRide(70);
                             setGeneralValues('Ahmed', 800)
                             console.log(zusStates.Ahmed)
+                            setisOpenBtmSheet(true)
                         }}
                         className='w-full mx-auto h-12 flex flex-row justify-center items-center  bg-purple-600 rounded-xl' >
                         <Text className='text-white text-lg   justify-center items-center'>Place Order</Text>

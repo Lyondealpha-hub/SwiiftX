@@ -1,4 +1,4 @@
-import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
+import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet, FlatList, Platform } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { AirbnbRating, Rating } from 'react-native-ratings';
 import { useNavigation } from '@react-navigation/native';
@@ -51,14 +51,14 @@ export default function Doctors() {
                                 </View>
                                 {/* Content texts */}
                                 <View className='w-4/6 justify-center '>
-                                    <Text style={fontFamily.mediumHeading} className='text-lg'>{name} </Text>
-                                    <Text style={fontFamily.mediumHeading} className='text-sm '>{occupation}</Text>
+                                    <Text style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`} className='text-lg'>{name} </Text>
+                                    <Text style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`} className='text-sm '>{occupation}</Text>
                                     {/* Rating and years in feild  */}
                                     <View className='w-full flex flex-row justify-between items-center '>
                                         {/* <Rating showRating  type='heart' ratingCount={3} imageSize={20} /> */}
                                         <View className='w-1/2 flex flex-row items-center'>
                                             <MaterialIcons name='history' size={22} />
-                                            <Text style={fontFamily.mediumHeading} className='px-1'>{years} Years</Text>
+                                            <Text style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`} className='px-1'>{years} Years</Text>
                                         </View>
                                         {/* <Rating  imageSize={10} readonly={true} showRating={true}  showReadOnlyText={false} ratingCount={3} fractions={1} jumpValue={0.5}  className='flex-row-reverse text-xs' /> */}
                                         {/* <Text>10Yrs</Text> */}
@@ -71,7 +71,7 @@ export default function Doctors() {
                                     <View className=' flex flex-row justify-between items-center '>
                                         <Text className='w-2/5 justify-start'>Cost: ${cost}</Text>
                                         <TouchableOpacity className='w-3/5 justify-end '>
-                                            <Text style={fontFamily.semiBHeading} className='px-0.5' onPress={() => { navigation.navigate('Doctor Profile') }} >Book Appointment</Text>
+                                            <Text style={`${Platform.OS == "ios" && fontFamily.semiBHeading}`} className='px-0.5' onPress={() => { navigation.navigate('Doctor Profile') }} >Book Appointment</Text>
                                         </TouchableOpacity>
                                     </View>
                                 </View>

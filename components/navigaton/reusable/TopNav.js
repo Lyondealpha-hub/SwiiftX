@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TextInput, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import { Avatar, Button, Divider } from '@rneui/themed';
 import user from '../../../assets/user.png';
 import settings_cog from '../../../assets/settings-cog.png';
@@ -28,7 +28,7 @@ export default function TopNav({ isSearch, setOpenSheet }) {
       <View className='container flex flex-row   justify-between items-center'>
         <TouchableOpacity className='w-1/2 space-x-2 justify-start pl-4 items-center  flex flex-row' onPress={() => { setOpenProfile(true) }}>
           <Image className='justify-center items-center ' source={user} />
-          <Text style={fontFamily.BHeading} className=' text-lg items-center'>Hey Swiifie! </Text>
+          <Text style={`${Platform.OS == "ios" && fontFamily.BHeading}`} className=' text-lg items-center'>Hey Swiifie! </Text>
         </TouchableOpacity>
 
         <View className='w-1/2 justify-end flex flex-row '>
@@ -67,7 +67,7 @@ export default function TopNav({ isSearch, setOpenSheet }) {
 
             <View className='justify-start px-2 items-start space-y-0.5'>
               <Text className='font-bold '>Need Help ?</Text>
-              <Text style={fontFamily.mediumHeading} className='font-medium' >Request a call back  </Text>
+              <Text style={`${Platform.OS == 'ios' && fontFamily.mediumHeading}`} className='font-medium' >Request a call back  </Text>
             </View>
 
           </View>

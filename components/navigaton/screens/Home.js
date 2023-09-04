@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, Image, ImageBackground, TouchableOpacity, Pressable, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
+import { Text, View, Image, ImageBackground, TouchableOpacity, Pressable, SafeAreaView, ScrollView, StyleSheet, Platform } from 'react-native';
 import { Entypo, FontAwesome5, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { FAB, Icon, Input, CheckBox, Button } from '@rneui/themed';
 import TopNav from '../reusable/TopNav';
@@ -126,7 +126,7 @@ export default function Home() {
                 <View key={index} className='  px-4 justify-evenly items-center rounded-md shadow-2xl '>
                   <TouchableOpacity className=' items-center ' onPress={cat.trigger} >
                     <Image className='justify-center items-center ' source={cat.image}></Image>
-                    <Text style={fontFamily.mediumHeading} className='items-center pb-2'>{cat.text}</Text>
+                    <Text style={`${Platform.OS == "ios" && fontFamily.mediumHeading}`} className='items-center pb-2'>{cat.text}</Text>
                   </TouchableOpacity>
                 </View>
               )
@@ -147,8 +147,8 @@ export default function Home() {
           {/* For Doctors Page */}
           <View className='container h-4/6  my-0 '>
             <View className='container  flex flex-row justify-between items-center px-2'>
-              <Text style={fontFamily.BHeading} className='text-2xl px-2 py-1 text-slate-800'>Featured Doctors</Text>
-              <TouchableOpacity><Text style={fontFamily.BHeading}>View all</Text></TouchableOpacity>
+              <Text style={`${Platform.OS === "ios" && fontFamily.BHeading}`} className='text-2xl px-2 py-1 text-slate-800'>Featured Doctors</Text>
+              <TouchableOpacity><Text style={`${Platform.OS == "ios" && fontFamily.BHeading}`}>View all</Text></TouchableOpacity>
             </View>
             <ScrollView showsVerticalScrollIndicator={false} className=' mx-3'>
               {
@@ -163,14 +163,14 @@ export default function Home() {
 
                       {/* Content texts */}
                       <View className='w-4/6 justify-center '>
-                        <Text style={fontFamily.mediumHeading} className='text-lg'>{doc.name} </Text>
-                        <Text style={fontFamily.mediumHeading} className='text-sm '>{doc.occupation}</Text>
+                        <Text style={`${Platform.OS === "ios" && fontFamily.mediumHeading}`} className='text-lg'>{doc.name} </Text>
+                        <Text style={`${Platform.OS === "ios" && fontFamily.mediumHeading}`} className='text-sm '>{doc.occupation}</Text>
                         {/* Rating and years in feild  */}
                         <View className='w-full flex flex-row justify-between items-center '>
                           {/* <Rating showRating  type='heart' ratingCount={3} imageSize={20} /> */}
                           <View className='w-1/2 flex flex-row items-center'>
                             <MaterialIcons name='history' size={22} />
-                            <Text style={fontFamily.mediumHeading} className='px-1'>{doc.years} Years</Text>
+                            <Text style={`${Platform.OS === "ios" && fontFamily.mediumHeading}`} className='px-1'>{doc.years} Years</Text>
                           </View>
                           {/* <Rating  imageSize={10} readonly={true} showRating={true}  showReadOnlyText={false} ratingCount={3} fractions={1} jumpValue={0.5}  className='flex-row-reverse text-xs' /> */}
                           {/* <Text>10Yrs</Text> */}
@@ -186,7 +186,7 @@ export default function Home() {
                         <View className=' flex flex-row justify-between items-center '>
                           <Text className='w-2/5 justify-start'>Cost: ${doc.cost}</Text>
                           <TouchableOpacity className='w-3/5 justify-end '>
-                            <Text style={fontFamily.semiBHeading} className='px-0.5' onPress={doc.pressable} >Book Appointment</Text>
+                            <Text style={`${Platform.OS == "ios" && fontFamily.semiBHeading}`} className='px-0.5' onPress={doc.pressable} >Book Appointment</Text>
                           </TouchableOpacity>
 
                         </View>
@@ -204,8 +204,8 @@ export default function Home() {
             {/* For products */}
             <View className='container  h-2/6 my-0 '>
               <View className='container flex flex-row justify-between items-center px-2'>
-                <Text style={fontFamily.BHeading} className='text-2xl px-2 py-1 text-slate-800'>Best Delivery Products</Text>
-                <TouchableOpacity onPress={() => { navigation.navigate('Pharmacy') }}><Text style={fontFamily.BHeading}>View all</Text></TouchableOpacity>
+                <Text style={`${Platform.OS == "ios" && fontFamily.BHeading}`} className='text-2xl px-2 py-1 text-slate-800'>Best Delivery Products</Text>
+                <TouchableOpacity onPress={() => { navigation.navigate('Pharmacy') }}><Text style={`${Platform.OS == "ios" && fontFamily.BHeading}`}>View all</Text></TouchableOpacity>
               </View>
               <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} className=' mx-3'>
                 {products.map((prod, index) => {
@@ -218,7 +218,7 @@ export default function Home() {
                             <Image style={{ width: 150, height: 190 }} className='justify-center flex-row items-center' source={prod.image}></Image>
 
                             <View className='flex flex-row justify-between items-center w-full p-2'>
-                              <Text style={fontFamily.mediumHeading} className='items-center'>GHC {prod.price}</Text>
+                              <Text style={`${Platform.OS === "ios" && fontFamily.mediumHeading}`} className='items-center'>GHC {prod.price}</Text>
                               <Image source={prod.buy} />
                             </View>
                           </View>
