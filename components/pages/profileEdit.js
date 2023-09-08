@@ -51,13 +51,13 @@ export default function ProfileEdit() {
                 >
                     <Tab.Item
                         title="Personal Information"
-                        titleStyle={{ fontSize: 16 }}
+                        titleStyle={{ fontSize: '16px' }}
                         icon={{ name: 'timer', type: 'ionicon', color: 'white' }}
                     />
 
                     <Tab.Item
                         title="Professional Information"
-                        titleStyle={{ fontSize: 16 }}
+                        titleStyle={{ fontSize: '16px' }}
                         icon={{ name: 'heart', type: 'ionicon', color: 'white' }}
 
 

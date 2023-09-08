@@ -10,11 +10,15 @@ import DateTimePicker from '@react-native-community/datetimepicker'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Chip, Stack, Surface, } from '@react-native-material/core';
 import { CheckBox } from '@rneui/base';
+import dayjs from 'dayjs';
 
 
 
 export default function DoctorProfile() {
 
+
+    const [currentDate, setcurrentDate] = useState(dayjs().format('ddd DD MMM YYYY'));
+    const [currentTime, setcurrentTime] = useState(dayjs().format('HH:mm:ss'));
     const [date, setDate] = useState(new Date())
     const [showPicker, setShowPicker] = useState(false)
     const [showTime, setShowTime] = useState(false)
@@ -28,10 +32,11 @@ export default function DoctorProfile() {
         setShowTime(!showTime)
     }
 
-    const onChange = ({ type }, selectedDate) => {
+    const onChange = (type, selectedDate) => {
         if (type == 'set') {
             const currentDate = selectedDate;
             setDate(currentDate)
+
 
             if (Platform.OS === 'android') {
                 toggleDatepicker();
@@ -129,6 +134,15 @@ export default function DoctorProfile() {
                         </View>
 
 
+                        {(showPicker || showTime && Platform.OS === 'ios') && (
+                            <View>
+                                <Button onPress={showPicker ? toggleDatepicker : showTime && toggleTimepicker} title='Submit' />
+                                {/* For buttons  */}
+                            </View>
+                        )}
+
+
+
 
                         {/* Date and Time */}
                         <View className='container flex flex-row justify-between items-center'>
@@ -136,75 +150,62 @@ export default function DoctorProfile() {
 
                             <View className='w-1/2 px-3 py-2 flex flex-row'>
 
-                                <Pressable onPress={toggleDatepicker} className='container'>
-                                    <TextInput style={{ borderWidth: 0.5 }}
-                                        className='w-full h-9  rounded-2xl  px-3 text-base items-center justify-center'
-                                        // placeholder={'Search Date'}
-                                        // defaultValue={'Search Date'} 
-                                        value={date}
-                                        editable={false}
-                                        onPressIn={toggleDatepicker} // for IOS
-
-                                    > </TextInput>
+                                <Pressable onPress={toggleDatepicker} className='container border-[1px] border-slate-400 h-9 rounded-2xl  text-base  justify-center'>
+                                    <Text className='flex-row px-2 text-base'>{currentDate}</Text>
                                 </Pressable>
 
                                 <Image style={dateTimeStyles.search_icon} className='justify-center items-center' source={datex} />
                                 {/* <MaterialIcons  style={dateTimeStyles.search_icon} name='date-range' size={30} color={'purple'} /> */}
                             </View>
 
+
                             <View className='w-1/2 px-3 py-2 flex flex-row'>
 
-                                <Pressable onPress={toggleTimepicker} className='container'>
-                                    <TextInput style={{ borderWidth: 0.5 }}
-                                        className='w-full h-9  rounded-2xl  px-3 text-base items-center justify-center'
-                                        // placeholder={'Search Time'}
-                                        // defaultValue={'Search Time'} 
-                                        value={date}
-                                        editable={false}
-                                        onPressIn={toggleTimepicker} // for IOS
 
-                                    > </TextInput>
+                                <Pressable onPress={toggleTimepicker} className='container border-[1px] border-slate-400 h-9 rounded-2xl  text-base  justify-center'>
+                                    <Text className='flex-row px-5 text-base'>{currentTime}</Text>
                                 </Pressable>
                                 <Image style={dateTimeStyles.search_icon} className='justify-center items-center' source={clock} />
                                 {/* <MaterialIcons  style={dateTimeStyles.search_icon} name='timeline' size={30} color={'purple'} /> */}
                             </View>
                         </View>
                         {/* DatePicker Dispayed here */}
-                        {showPicker && (
+                        {showPicker ? (
                             <DateTimePicker
                                 className='h-10'
-                                mode='date'
-                                value={date}
+                                mode={"datetime"}
+                                value={currentDate}
                                 display={'spinner'}
-                                onChange={onChange}
+                                onChange={(event, selectedDate) => {
+                                    const currentDate = selectedDate || currentTime;
+                                    // setShowDatePicker(false);
+                                    setcurrentTime(currentDate.getTime());
+                                    console.log("TIIIIIIIIIIIIIMMMMMMMMEEEEEEEEE", selectedDate);
+                                }}
 
                             />
-                        )}
+                        )
+                            :
 
-                        {showPicker && Platform.OS === 'ios' && (
-                            <View>
-                                <Button onPress={toggleDatepicker} title='Submit' />
-                                {/* For buttons  */}
-                            </View>
-                        )}
+                            showTime && (
+                                <DateTimePicker
+                                    className='h-10'
+                                    mode='time'
+                                    value={date}
+                                    display={'spinner'}
+                                    onChange={() => { onChange('set') }}
+
+                                />
+                            )
+
+                        }
+
+
 
                         {/* DatePicker Dispayed here */}
-                        {showTime && (
-                            <DateTimePicker
-                                className='h-10'
-                                mode='time'
-                                value={date}
-                                display={'spinner'}
-                                onChange={onChange}
-                            />
-                        )}
+                        { }
 
-                        {showTime && Platform.OS === 'ios' && (
-                            <View>
-                                <Button onPress={toggleTimepicker} title='Submit' />
-                                {/* For buttons  */}
-                            </View>
-                        )}
+
 
                         {/*ONline or IN-visit */}
                         {!(showPicker || showTime) && (

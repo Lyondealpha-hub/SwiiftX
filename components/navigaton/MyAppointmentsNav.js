@@ -25,7 +25,7 @@ export default function MyAppointmentsNavigation() {
         animationEnabled: true,
         tabBarActiveTintColor: '#e91e63',
         tabBarShowLabel: true,
-        tabBarLabelStyle: { fontSize: 20 },
+        tabBarLabelStyle: { fontSize: '20px' },
 
         tabBarStyle: {
 

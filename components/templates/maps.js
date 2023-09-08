@@ -177,7 +177,7 @@ export default function MapsDirection() {
 
                             },
                             textInput: {
-                                fontSize: 18,
+                                fontSize: '18px',
                                 borderWidth: 1,
                             }
                         }}
