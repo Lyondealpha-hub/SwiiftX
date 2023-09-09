@@ -68,10 +68,10 @@ export default function Doctors() {
                                         {/* <AirbnbRating starImage={year}  size={30} showRating={false}  ratingContainerStyle={{flexDirection: 'row-reverse',}} reviews={rating}  reviewSize={10} count={1}  isDisabled={true} /> */}
                                     </View>
                                     {/* cost & button   */}
-                                    <View className=' flex flex-row justify-between items-center '>
+                                    <View className=' flex flex-row justify-between items-center px-1 '>
                                         <Text className='w-2/5 justify-start'>Cost: ${cost}</Text>
-                                        <TouchableOpacity className='w-3/5 justify-end '>
-                                            <Text style={`${Platform.OS == "ios" && fontFamily.semiBHeading}`} className='px-0.5' onPress={() => { navigation.navigate('Doctor Profile') }} >Book Appointment</Text>
+                                        <TouchableOpacity onPress={doc.pressable} className='w-3/5 justify-end border-[1px] border-slate-400 rounded p-2  '>
+                                            <Text style={`${Platform.OS == "ios" && fontFamily.semiBHeading}`} className='px-0.5  ' >Book Appointment</Text>
                                         </TouchableOpacity>
                                     </View>
                                 </View>

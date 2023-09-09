@@ -59,7 +59,7 @@ export default function Labs() {
 
                     {labList.map(({ id, label, desc, bg }) => {
                         return (
-                            <View key={id} className='container py-1 rounded-xl '>
+                            <TouchableOpacity key={id} className='container py-1 rounded-xl '>
                                 <ListItem
                                     bottomDivider={true}
                                     containerStyle={{ borderRadius: 15, backgroundColor: bg }}
@@ -75,7 +75,7 @@ export default function Labs() {
                                     {/* <Icon name="inbox" type="material-community" color="grey" /> */}
                                 </ListItem>
 
-                            </View>
+                            </TouchableOpacity>
 
                         )
                     })}

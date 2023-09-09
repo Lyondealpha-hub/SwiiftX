@@ -11,6 +11,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Chip, Stack, Surface, } from '@react-native-material/core';
 import { CheckBox } from '@rneui/base';
 import dayjs from 'dayjs';
+import ModalPop from '../templates/modalPop';
 
 
 
@@ -61,10 +62,15 @@ export default function DoctorProfile() {
         }
     }
 
+    // Modal Pop
+    const [isVisible, setisVisible] = useState(false);
+    const title = "Reason"
 
 
     return (
         <View className='container h-full '>
+
+            <ModalPop isVisible={isVisible} setisVisible={setisVisible} title={title} />
 
             <View className='container mt-4 h-full'>
                 {/* Profile space */}
@@ -274,7 +280,7 @@ export default function DoctorProfile() {
                     </View>
                 </ScrollView>
                 <View className='container h-20  absolute px-5  inset-x-0 bottom-0  '>
-                    <TouchableOpacity className='w-full mx-auto h-12 flex flex-row justify-center items-center  bg-purple-400 rounded-xl' >
+                    <TouchableOpacity onPress={() => { setisVisible(true) }} className='w-full mx-auto h-12 flex flex-row justify-center items-center  bg-purple-400 rounded-xl' >
                         <Text className='text-white text-lg   justify-center items-center'>Book an Appointment</Text>
                     </TouchableOpacity>
                 </View>

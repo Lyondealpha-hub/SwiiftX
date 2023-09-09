@@ -145,10 +145,10 @@ export default function Home() {
         {/* Parent div */}
         <View className=' container h-full'>
           {/* For Doctors Page */}
-          <View className='container h-4/6  my-0 '>
+          <View className='container h-4/6   my-0 '>
             <View className='container  flex flex-row justify-between items-center px-2'>
               <Text style={`${Platform.OS === "ios" && fontFamily.BHeading}`} className='text-2xl px-2 py-1 text-slate-800'>Featured Doctors</Text>
-              <TouchableOpacity><Text style={`${Platform.OS == "ios" && fontFamily.BHeading}`}>View all</Text></TouchableOpacity>
+              <TouchableOpacity onPress={() => { navigation.navigate('Doctors') }}><Text style={`${Platform.OS == "ios" && fontFamily.BHeading}`}>View all</Text></TouchableOpacity>
             </View>
             <ScrollView showsVerticalScrollIndicator={false} className=' mx-3'>
               {
@@ -185,8 +185,8 @@ export default function Home() {
                         {/* cost & button   */}
                         <View className=' flex flex-row justify-between items-center '>
                           <Text className='w-2/5 justify-start'>Cost: ${doc.cost}</Text>
-                          <TouchableOpacity className='w-3/5 justify-end '>
-                            <Text style={`${Platform.OS == "ios" && fontFamily.semiBHeading}`} className='px-0.5' onPress={doc.pressable} >Book Appointment</Text>
+                          <TouchableOpacity onPress={doc.pressable} className='w-3/5 justify-end border-[1px] border-slate-400 rounded p-2  '>
+                            <Text style={`${Platform.OS == "ios" && fontFamily.semiBHeading}`} className='px-0.5  ' >Book Appointment</Text>
                           </TouchableOpacity>
 
                         </View>
