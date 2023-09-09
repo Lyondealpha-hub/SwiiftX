@@ -19,7 +19,6 @@ export default function ChatNavigation() {
 
         <Tab.Navigator
             style={{
-                marginTop: 30,
                 backgroundColor: '#ffffff'
             }}
             screenOptions={({ route }) => ({
@@ -65,7 +64,7 @@ export default function ChatNavigation() {
         >
             <Tab.Screen name="Chats" component={Chat} options={{ tabBarLabel: 'Chats', }} />
             <Tab.Screen name="Calls" component={Chat} options={{ tabBarLabel: 'Calls' }} />
-            <Tab.Screen name="Recents" component={Chat} options={{ tabBarLabel: 'Recents' }} />
+            {/* <Tab.Screen name="Recents" component={Chat} options={{ tabBarLabel: 'Recents' }} /> */}
         </Tab.Navigator>
 
 

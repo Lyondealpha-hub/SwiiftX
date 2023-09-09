@@ -36,7 +36,8 @@ export default function Profile({ setOpenProfile }) {
     }
     const EditLink = () => {
         navigation.navigate('Edit Profile')
-        alert(setOpenProfile(false));
+        // alert(setOpenProfile(false));
+        setOpenProfile !== undefined && setOpenProfile(false)
     }
 
     const profile = [
@@ -64,8 +65,8 @@ export default function Profile({ setOpenProfile }) {
                     </View>
                     {/* Name */}
                     <View className='justify-center items-center'>
-                        <Text className='text-lg'>Dr. Afrane Aykire</Text>
-                        <Text className='text-sm '>Dentist, BSMMC Hospital</Text>
+                        <Text className='text-lg'>Client's Username </Text>
+                        {/* <Text className='text-sm '>Dentist, BSMMC Hospital</Text> */}
                     </View>
                     <TouchableOpacity onPress={EditLink} className='ml-8 justify-center items-center '>
                         <Image className='' source={edit} />

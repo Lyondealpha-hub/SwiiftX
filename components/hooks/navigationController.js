@@ -16,6 +16,7 @@ import Login from "../pages/login";
 import Labs from "../pages/lab";
 import Maps from "../pages/maps";
 import Doctors from "../pages/doctors";
+import MessageScreen from "../pages/messageScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -27,8 +28,10 @@ export default function NavigationController() {
 
                 <Stack.Screen options={{ headerLargeTitle: false, headerShown: false, headerLargeTitleStyle: { fontSize: '28px', fontWeight: 'lighter' }, headerTransparent: false, headerShadowVisible: false, animation: 'default' }} name='SignUp' component={SignUp} />
                 <Stack.Screen options={{ headerLargeTitle: false, headerShown: false, headerLargeTitleStyle: { fontSize: '28px', fontWeight: 'lighter' }, headerTransparent: false, headerShadowVisible: false, animation: 'default' }} name='Login' component={Login} />
-                <Stack.Screen options={{ headerLargeTitle: false, headerShown: false, }} name='BottomTab' component={BottomNav} />
                 <Stack.Screen options={{ headerLargeTitle: false, headerShown: true, headerLargeTitleStyle: { fontSize: '28px', fontWeight: 'lighter' }, headerTransparent: false, headerShadowVisible: false, animation: 'default' }} name='Edit Profile' component={ProfileEdit} />
+
+                <Stack.Screen options={{ headerLargeTitle: false, headerShown: false, }} name='BottomTab' component={BottomNav} />
+                <Stack.Screen options={({ route }) => ({ title: route.params.userName, headerLargeTitle: false, headerShown: true, headerLargeTitleStyle: { fontSize: '28px', fontWeight: 'lighter' }, headerTransparent: false, headerShadowVisible: true, animation: "default", headerBackTitle: false })} name='Message' component={MessageScreen} />
 
                 <Stack.Screen options={{ headerLargeTitle: true, headerShown: true, headerLargeTitleStyle: { fontSize: '28px', fontWeight: 'lighter' }, headerTransparent: false, headerShadowVisible: true, animation: 'default' }} name='Appointment' component={MyAppointmentsNavigation} />
                 <Stack.Screen options={{ headerLargeTitle: false, headerShown: true, headerLargeTitleStyle: { fontSize: '28px', fontWeight: 'lighter' }, headerTransparent: false, headerShadowVisible: true, animation: 'default' }} name='Doctor Profile' component={DoctorProfile} />

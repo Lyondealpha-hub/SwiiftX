@@ -57,7 +57,7 @@ export default function TopNav({ isSearch, setOpenSheet }) {
 
         <View className='container px-6 py-2 flex flex-row justify-between'>
           {/* image and text */}
-          <View className='w-containerflex flex-row '>
+          <View className='w-container flex flex-row '>
             <Avatar
               size={60}
               avatarStyle={{ borderRadius: 100, }}
@@ -75,7 +75,11 @@ export default function TopNav({ isSearch, setOpenSheet }) {
 
           {/* button */}
           <View className='w-[30%]'>
-            <Button buttonStyle={{ borderRadius: 20, }} onPress={() => { setOpenSheet(!sheet) }} >
+            <Button
+              buttonStyle={{ borderRadius: 20, }}
+              onPress={() => { setOpenSheet(!sheet) }}
+              color={'#9F7AEA'}
+            >
               Call
             </Button>
           </View>

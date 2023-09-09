@@ -183,7 +183,7 @@ export default function Home() {
                         </View>
 
                         {/* cost & button   */}
-                        <View className=' flex flex-row justify-between items-center '>
+                        <View className=' flex flex-row justify-between items-center px-1 '>
                           <Text className='w-2/5 justify-start'>Cost: ${doc.cost}</Text>
                           <TouchableOpacity onPress={doc.pressable} className='w-3/5 justify-end border-[1px] border-slate-400 rounded p-2  '>
                             <Text style={`${Platform.OS == "ios" && fontFamily.semiBHeading}`} className='px-0.5  ' >Book Appointment</Text>
@@ -244,7 +244,12 @@ export default function Home() {
           {/* Other details */}
           <View className='container  h-full'>
             <View className='container m-4'>
-              <Button buttonStyle={{ width: '30%', paddingHorizontal: 5, borderRadius: 10 }} color={'purple'} radius={'sm'} type="solid">
+              <Button
+                buttonStyle={{ width: '30%', paddingHorizontal: 5, borderRadius: 10 }}
+                color={'#9F7AEA'}
+                radius={'sm'}
+                type="solid"
+              >
 
                 <Icon name="save" color="white" />
                 Upload
